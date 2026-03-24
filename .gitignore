@@ -1,0 +1,24 @@
+# Claude
+.claude/
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Cached OSM graph (large binary, re-downloadable)
+data/graph_bloomington.pkl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Streamlit
+.streamlit/
+
+# macOS
+.DS_Store

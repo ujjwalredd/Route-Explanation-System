@@ -1,0 +1,215 @@
+[
+  {
+    "id": 1,
+    "origin_name": "IU Sample Gates",
+    "dest_name": "Monroe County Courthouse",
+    "preferred_route_type": "Easiest Route",
+    "reason": "user preferred fewer turns during morning rush hour",
+    "profile": {
+      "difficult_turns": 0,
+      "moderate_turns": 2,
+      "avg_road_stress": 1.3,
+      "distance_km": 2.1,
+      "travel_time_min": 7.5,
+      "dominant_road_type": "residential",
+      "stress_label": "quiet side street"
+    },
+    "user_preference": "low_stress",
+    "feedback_score": 5,
+    "timestamp": "2025-09-10T08:15:00"
+  },
+  {
+    "id": 2,
+    "origin_name": "IU Memorial Union",
+    "dest_name": "IU Health Bloomington Hospital",
+    "preferred_route_type": "Fastest Route",
+    "reason": "user was in a hurry and accepted busier roads",
+    "profile": {
+      "difficult_turns": 2,
+      "moderate_turns": 3,
+      "avg_road_stress": 3.2,
+      "distance_km": 3.4,
+      "travel_time_min": 8.0,
+      "dominant_road_type": "primary",
+      "stress_label": "busy arterial"
+    },
+    "user_preference": "fast",
+    "feedback_score": 4,
+    "timestamp": "2025-09-18T09:00:00"
+  },
+  {
+    "id": 3,
+    "origin_name": "Kirkwood Ave",
+    "dest_name": "IU Memorial Stadium",
+    "preferred_route_type": "Easiest Route",
+    "reason": "user consistently avoids difficult left turns near downtown",
+    "profile": {
+      "difficult_turns": 0,
+      "moderate_turns": 1,
+      "avg_road_stress": 1.5,
+      "distance_km": 1.8,
+      "travel_time_min": 6.0,
+      "dominant_road_type": "residential",
+      "stress_label": "quiet side street"
+    },
+    "user_preference": "low_stress",
+    "feedback_score": 5,
+    "timestamp": "2025-10-02T17:30:00"
+  },
+  {
+    "id": 4,
+    "origin_name": "Bloomington City Hall",
+    "dest_name": "IU Kelley School of Business",
+    "preferred_route_type": "Balanced Route",
+    "reason": "user valued time savings without completely avoiding main roads",
+    "profile": {
+      "difficult_turns": 1,
+      "moderate_turns": 2,
+      "avg_road_stress": 2.1,
+      "distance_km": 1.6,
+      "travel_time_min": 5.5,
+      "dominant_road_type": "secondary",
+      "stress_label": "moderate main road"
+    },
+    "user_preference": "balanced",
+    "feedback_score": 4,
+    "timestamp": "2025-10-12T14:00:00"
+  },
+  {
+    "id": 5,
+    "origin_name": "Eastside neighborhood",
+    "dest_name": "Bloomington Square",
+    "preferred_route_type": "Easiest Route",
+    "reason": "user preferred residential streets to avoid the College Ave on-ramp merge",
+    "profile": {
+      "difficult_turns": 0,
+      "moderate_turns": 3,
+      "avg_road_stress": 1.4,
+      "distance_km": 4.0,
+      "travel_time_min": 11.5,
+      "dominant_road_type": "residential",
+      "stress_label": "quiet side street"
+    },
+    "user_preference": "low_stress",
+    "feedback_score": 5,
+    "timestamp": "2025-10-20T07:45:00"
+  },
+  {
+    "id": 6,
+    "origin_name": "IU East Parking Garage",
+    "dest_name": "Kroger on 3rd Street",
+    "preferred_route_type": "Fastest Route",
+    "reason": "quick errand, user prioritized speed over comfort",
+    "profile": {
+      "difficult_turns": 1,
+      "moderate_turns": 2,
+      "avg_road_stress": 2.6,
+      "distance_km": 2.0,
+      "travel_time_min": 5.5,
+      "dominant_road_type": "tertiary",
+      "stress_label": "moderate main road"
+    },
+    "user_preference": "fast",
+    "feedback_score": 4,
+    "timestamp": "2025-10-25T11:00:00"
+  },
+  {
+    "id": 7,
+    "origin_name": "IU Wells Library",
+    "dest_name": "Olcott Park",
+    "preferred_route_type": "Easiest Route",
+    "reason": "evening drive, user preferred the predictability of residential streets",
+    "profile": {
+      "difficult_turns": 0,
+      "moderate_turns": 2,
+      "avg_road_stress": 1.2,
+      "distance_km": 3.1,
+      "travel_time_min": 9.0,
+      "dominant_road_type": "residential",
+      "stress_label": "quiet side street"
+    },
+    "user_preference": "low_stress",
+    "feedback_score": 5,
+    "timestamp": "2025-11-05T20:00:00"
+  },
+  {
+    "id": 8,
+    "origin_name": "Uptown Bloomington",
+    "dest_name": "IU Sample Gates",
+    "preferred_route_type": "Balanced Route",
+    "reason": "user new to the area, preferred clearly-marked main roads",
+    "profile": {
+      "difficult_turns": 1,
+      "moderate_turns": 3,
+      "avg_road_stress": 2.3,
+      "distance_km": 2.8,
+      "travel_time_min": 9.5,
+      "dominant_road_type": "secondary",
+      "stress_label": "moderate main road"
+    },
+    "user_preference": "balanced",
+    "feedback_score": 3,
+    "timestamp": "2025-11-12T10:30:00"
+  },
+  {
+    "id": 9,
+    "origin_name": "Bryan Park",
+    "dest_name": "IU Memorial Union",
+    "preferred_route_type": "Fastest Route",
+    "reason": "running late to a meeting, fastest path was the clear choice",
+    "profile": {
+      "difficult_turns": 2,
+      "moderate_turns": 1,
+      "avg_road_stress": 3.0,
+      "distance_km": 2.5,
+      "travel_time_min": 7.0,
+      "dominant_road_type": "primary",
+      "stress_label": "busy arterial"
+    },
+    "user_preference": "fast",
+    "feedback_score": 4,
+    "timestamp": "2025-11-20T08:50:00"
+  },
+  {
+    "id": 10,
+    "origin_name": "Winslow Farm",
+    "dest_name": "Monroe County Courthouse",
+    "preferred_route_type": "Balanced Route",
+    "reason": "user wanted a route that saves time but avoids the tricky downtown left turns",
+    "profile": {
+      "difficult_turns": 1,
+      "moderate_turns": 2,
+      "avg_road_stress": 2.0,
+      "distance_km": 5.5,
+      "travel_time_min": 13.0,
+      "dominant_road_type": "secondary",
+      "stress_label": "moderate main road"
+    },
+    "user_preference": "balanced",
+    "feedback_score": 5,
+    "timestamp": "2025-12-01T16:00:00"
+  },
+  {
+    "id": 11,
+    "origin_name": "IU Sample Gates",
+    "dest_name": "Monroe County Courthouse",
+    "preferred_route_type": "Fastest Route",
+    "reason": "user chose Fastest Route and rated it 5/5",
+    "profile": {
+      "total_length_km": 1.31,
+      "avg_road_stress": 1.47,
+      "difficult_turns": 1,
+      "moderate_turns": 1,
+      "highway_pct": 0.0,
+      "residential_pct": 58.5,
+      "dominant_road_type": "residential",
+      "stress_label": "very calm local road",
+      "turn_summary": "1 sharp/difficult turn and 1 moderate",
+      "travel_time_min": 1.9,
+      "distance_km": 1.31
+    },
+    "user_preference": "fast",
+    "feedback_score": 5,
+    "timestamp": "2026-03-24T19:42:04.585585"
+  }
+]
