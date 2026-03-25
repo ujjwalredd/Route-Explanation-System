@@ -77,8 +77,7 @@ Write a 3-4 sentence explanation for why this route was chosen. Be direct, human
                 yield token
 
     except Exception as e:
-        yield _template_explanation(chosen_route, all_routes, similar_cases)
-        yield f"\n\n_(Ollama unavailable: {e})_"
+        yield f"**Ollama Error:** Unable to generate AI explanation.\n\n`{e}`\n\nPlease ensure Ollama is running and the model is pulled (`ollama pull {OLLAMA_MODEL}`)."
 
 
 def _template_explanation(chosen_route, all_routes, similar_cases):
