@@ -118,10 +118,12 @@ def _extract_edges(G, path):
             enriched["turn_angle"] = angle
             enriched["turn_label"] = t_label
             enriched["turn_difficulty"] = t_score
+            enriched["turn_coord"] = [G.nodes[u]["y"], G.nodes[u]["x"]] # Frontend pinpoint reference
         else:
             enriched["turn_angle"] = 0.0
             enriched["turn_label"] = "start"
             enriched["turn_difficulty"] = 0.0
+            enriched["turn_coord"] = [G.nodes[u]["y"], G.nodes[u]["x"]] # Added coordinate
 
         edges.append(enriched)
     return edges
