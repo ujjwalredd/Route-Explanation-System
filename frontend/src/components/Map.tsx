@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Map, { Source, Layer, Marker } from 'react-map-gl/maplibre';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import type { Route, Landmark } from '../types';
@@ -13,6 +13,34 @@ interface MapProps {
 
 export const MapComponent: React.FC<MapProps> = ({ routes, selectedRouteName, origin, dest, focusedTurnCoord }) => {
   const mapRef = useRef<any>(null);
+  const [routeReveal, setRouteReveal] = useState<Record<string, number>>({});
+  const animRef = useRef<number>(0);
+
+  useEffect(() => {
+    cancelAnimationFrame(animRef.current);
+    if (routes.length === 0) { setRouteReveal({}); return; }
+
+    const startTime = performance.now();
+    const DURATION = 1000;
+    const STAGGER = 160;
+
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const reveal: Record<string, number> = {};
+      let allDone = true;
+      routes.forEach((route, i) => {
+        const t = Math.min(Math.max((elapsed - i * STAGGER) / DURATION, 0), 1);
+        // ease-in-out cubic
+        const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        reveal[route.name] = eased;
+        if (t < 1) allDone = false;
+      });
+      setRouteReveal(reveal);
+      if (!allDone) animRef.current = requestAnimationFrame(step);
+    };
+    animRef.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animRef.current);
+  }, [routes]);
 
   useEffect(() => {
     if (!mapRef.current) return;
@@ -64,30 +92,26 @@ export const MapComponent: React.FC<MapProps> = ({ routes, selectedRouteName, or
         mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
         interactive={true}
       >
-        <Layer
-          id="3d-buildings"
-          source="carto"
-          source-layer="building"
-          type="fill-extrusion"
-          minzoom={15}
-          paint={{
-            'fill-extrusion-color': '#e2e8f0',
-            'fill-extrusion-height': ['get', 'render_height'],
-            'fill-extrusion-base': ['get', 'render_min_height'],
-            'fill-extrusion-opacity': 0.8
-          }}
-        />
-
         {routes.map(route => {
           const isSelected = selectedRouteName === route.name;
-          const routeColor = isSelected ? '#2563eb' : '#94a3b8';
-          
-          const fullPositions = [...route.coords] as [number, number][];
-          if (origin && fullPositions.length > 0) fullPositions.unshift(origin.coords);
-          if (dest && fullPositions.length > 0) fullPositions.push(dest.coords);
 
-          // MapLibre requires [lng, lat] arrays strictly
-          const geoJsonCoords = fullPositions.map(c => [c[1], c[0]]);
+          // Each route always keeps its own color — visible and distinct in 3D
+          const ROUTE_COLORS: Record<string, string> = {
+            'Fastest Route': '#ef4444',
+            'Easiest Route': '#22c55e',
+            'Balanced Route': '#2563eb',
+          };
+          const routeColor = ROUTE_COLORS[route.name] ?? '#2563eb';
+
+          const lineCoords: [number, number][] = [
+            ...(origin ? [origin.coords] : []),
+            ...route.coords,
+            ...(dest ? [dest.coords] : []),
+          ];
+          const allGeoJsonCoords = lineCoords.map(c => [c[1], c[0]]);
+          const reveal = routeReveal[route.name] ?? 1;
+          const visibleCount = Math.max(2, Math.round(allGeoJsonCoords.length * reveal));
+          const geoJsonCoords = allGeoJsonCoords.slice(0, visibleCount);
 
           const geojson: any = {
             type: 'Feature',
@@ -99,12 +123,12 @@ export const MapComponent: React.FC<MapProps> = ({ routes, selectedRouteName, or
             <Source key={route.name} id={`route-${route.name}`} type="geojson" data={geojson}>
               {isSelected ? (
                 <>
-                  <Layer id={`route-glow-${route.name}`} type="line" paint={{ 'line-color': routeColor, 'line-width': 26, 'line-opacity': 0.15, 'line-blur': 10 }} />
-                  <Layer id={`route-bg-${route.name}`} type="line" paint={{ 'line-color': '#ffffff', 'line-width': 10 }} />
-                  <Layer id={`route-core-${route.name}`} type="line" paint={{ 'line-color': routeColor, 'line-width': 6 }} />
+                  <Layer id={`route-glow-${route.name}`} type="line" paint={{ 'line-color': routeColor, 'line-width': 28, 'line-opacity': 0.18, 'line-blur': 12 }} />
+                  <Layer id={`route-bg-${route.name}`} type="line" paint={{ 'line-color': '#ffffff', 'line-width': 12 }} />
+                  <Layer id={`route-core-${route.name}`} type="line" paint={{ 'line-color': routeColor, 'line-width': 7 }} />
                 </>
               ) : (
-                <Layer id={`route-unselected-${route.name}`} type="line" paint={{ 'line-color': routeColor, 'line-width': 5, 'line-opacity': 0.65 }} />
+                <Layer id={`route-unselected-${route.name}`} type="line" paint={{ 'line-color': routeColor, 'line-width': 4, 'line-opacity': 0.55 }} />
               )}
             </Source>
           );

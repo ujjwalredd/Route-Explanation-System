@@ -59,7 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           <button
             onClick={onSearch}
-            disabled={isLoading || !originName || !destName}
+            disabled={isLoading || !originName || !destName || originName === destName}
             className="w-full mt-4 bg-slate-900 hover:bg-black text-white py-4 px-6 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-slate-900/20 active:scale-[0.98]"
           >
             {isLoading ? (

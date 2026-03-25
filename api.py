@@ -78,6 +78,8 @@ def get_routes(req: RouteRequest):
     
     if not orig_ll or not dest_ll:
         raise HTTPException(status_code=400, detail="Invalid landmarks")
+    if req.origin_name == req.dest_name:
+        raise HTTPException(status_code=400, detail="Origin and destination must be different")
         
     orig_node, dest_node = get_nearest_nodes(G, orig_ll, dest_ll)
     routes = generate_candidate_routes(G, orig_node, dest_node)
@@ -98,10 +100,16 @@ def get_routes(req: RouteRequest):
 @app.post("/api/explain")
 def get_explanation(req: ExplainRequest):
     if req.use_llm:
-        return StreamingResponse(stream_llm_explanation(req.chosen_route, req.all_routes), media_type="text/plain")
-    else:
-        expl = explain_route(req.chosen_route, req.all_routes)
-        return {"explanation": expl}
+        return StreamingResponse(
+            stream_llm_explanation(req.chosen_route, req.all_routes),
+            media_type="text/plain",
+        )
+    # Template mode: wrap as a single-chunk stream so the frontend
+    # can use the same streaming reader for both modes.
+    def _template_stream():
+        yield explain_route(req.chosen_route, req.all_routes)
+
+    return StreamingResponse(_template_stream(), media_type="text/plain")
 
 @app.post("/api/feedback")
 def submit_feedback(req: FeedbackRequest):

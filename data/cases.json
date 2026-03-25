@@ -211,5 +211,28 @@
     "user_preference": "fast",
     "feedback_score": 5,
     "timestamp": "2026-03-24T19:42:04.585585"
+  },
+  {
+    "id": 12,
+    "origin_name": "Monroe County Courthouse",
+    "dest_name": "Bloomington City Hall",
+    "preferred_route_type": "Easiest Route",
+    "reason": "user chose Easiest Route and rated it 5/5",
+    "profile": {
+      "total_length_km": 0.54,
+      "avg_road_stress": 1.04,
+      "difficult_turns": 1,
+      "moderate_turns": 0,
+      "highway_pct": 0,
+      "residential_pct": 100,
+      "dominant_road_type": "residential",
+      "stress_label": "very calm local road",
+      "turn_summary": "1 sharp/difficult turn",
+      "travel_time_min": 0.8,
+      "distance_km": 0.54
+    },
+    "user_preference": "low_stress",
+    "feedback_score": 5,
+    "timestamp": "2026-03-24T21:54:46.861434"
   }
 ]

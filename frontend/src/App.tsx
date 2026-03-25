@@ -120,8 +120,8 @@ const App = () => {
       />
 
       <div className="flex-1 p-2 md:p-6 flex flex-col h-[65vh] md:h-screen overflow-hidden relative z-10 w-full mb-[35vh] md:mb-0">
-        <div className="w-full max-w-[1600px] mx-auto flex flex-col h-full gap-4 md:gap-6">
-          <div className="flex-1 relative z-0">
+        <div className="w-full flex flex-col h-full gap-4 md:gap-6">
+          <div className="flex-1 relative z-0 min-h-0">
             <Map 
               routes={routes} 
               selectedRouteName={selectedRoute?.name} 
@@ -137,11 +137,11 @@ const App = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 50 }}
-                className="grid grid-cols-1 lg:grid-cols-[2fr,1fr] xl:grid-cols-[1fr,420px] gap-4 lg:gap-6 shrink-0 z-10 lg:h-[320px] xl:h-[350px] overflow-visible pb-[20vh] md:pb-0"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 shrink-0 z-10 lg:h-[340px] xl:h-[360px] overflow-visible pb-[20vh] md:pb-0"
               >
                 <div className="flex flex-col h-[280px] lg:h-full bg-white shadow-xl shadow-slate-200/50 border border-slate-200 rounded-2xl p-5 lg:p-6 overflow-hidden min-h-0">
                   <h3 className="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest mb-3 lg:mb-4 px-1 shrink-0">Proposed Routes</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5 overflow-y-auto custom-scrollbar pr-2 md:pr-0 content-start flex-1 pb-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5 overflow-y-auto custom-scrollbar pr-2 md:pr-0 flex-1 pb-2 auto-rows-fr">
                     {isLoading ? (
                       <>
                         {[1, 2, 3].map((i, idx) => (

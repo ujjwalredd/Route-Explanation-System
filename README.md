@@ -70,6 +70,13 @@ The explainer takes the chosen route, the full list of candidate routes, and the
 
 ## Running it
 
+### Clone the repo
+
+```bash
+git clone https://github.com/ujjwalredd/Route-Explanation-System.git
+cd Route-Explanation-System
+```
+
 ### Prerequisites
 
 Create and activate a virtual environment first:
@@ -91,14 +98,23 @@ ollama serve
 ```
 The model `llama3.2:latest` should already be pulled. If not: `ollama pull llama3.2`.
 
-### Start the app
+### Start the backend
 
 ```bash
-cd "Route Explanation System"
-streamlit run app.py
+python api.py
 ```
 
-The first time you run it, the app downloads and caches the Bloomington road network from OpenStreetMap. This takes about 30 seconds. Every run after that is instant.
+The first time it starts, it downloads and caches the Bloomington road network from OpenStreetMap (~30 sec). Every run after that is instant. The API runs at `http://localhost:8000`.
+
+### Start the frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
 
 ### Using it
 
