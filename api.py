@@ -33,6 +33,14 @@ LANDMARKS = {
     "Olcott Park": (39.1534, -86.5162),
     "Bryan Park": (39.1600, -86.5180),
     "Uptown Bloomington": (39.1720, -86.5380),
+    "IU Assembly Hall": (39.1843, -86.5244),
+    "Eskenazi Museum of Art": (39.1700, -86.5220),
+    "Switchyard Park": (39.1568, -86.5340),
+    "College Mall": (39.1520, -86.5058),
+    "IU Luddy School of Informatics": (39.1746, -86.5122),
+    "IU Musical Arts Center": (39.1672, -86.5168),
+    "Cascades Park": (39.1522, -86.5408),
+    "IU Ballantine Hall": (39.1697, -86.5192),
 }
 
 # Pre-load graph

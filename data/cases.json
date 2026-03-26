@@ -234,5 +234,195 @@
     "user_preference": "low_stress",
     "feedback_score": 5,
     "timestamp": "2026-03-24T21:54:46.861434"
+  },
+  {
+    "id": 13,
+    "origin_name": "IU Assembly Hall",
+    "dest_name": "IU Kelley School of Business",
+    "preferred_route_type": "Balanced Route",
+    "reason": "cross-campus commute, user wanted reasonable time without the stress of Fee Lane",
+    "profile": {
+      "difficult_turns": 1,
+      "moderate_turns": 3,
+      "avg_road_stress": 2.2,
+      "distance_km": 2.5,
+      "travel_time_min": 8.0,
+      "dominant_road_type": "secondary",
+      "stress_label": "moderate main road"
+    },
+    "user_preference": "balanced",
+    "feedback_score": 4,
+    "timestamp": "2025-12-08T10:00:00"
+  },
+  {
+    "id": 14,
+    "origin_name": "College Mall",
+    "dest_name": "IU Memorial Union",
+    "preferred_route_type": "Fastest Route",
+    "reason": "user driving back from errands, wanted to get to campus quickly via 3rd Street",
+    "profile": {
+      "difficult_turns": 2,
+      "moderate_turns": 2,
+      "avg_road_stress": 3.1,
+      "distance_km": 3.9,
+      "travel_time_min": 9.0,
+      "dominant_road_type": "primary",
+      "stress_label": "busy arterial"
+    },
+    "user_preference": "fast",
+    "feedback_score": 4,
+    "timestamp": "2025-12-15T13:30:00"
+  },
+  {
+    "id": 15,
+    "origin_name": "Cascades Park",
+    "dest_name": "Bloomington City Hall",
+    "preferred_route_type": "Easiest Route",
+    "reason": "user unfamiliar with downtown grid, preferred residential approach to avoid turning onto W 2nd",
+    "profile": {
+      "difficult_turns": 0,
+      "moderate_turns": 2,
+      "avg_road_stress": 1.4,
+      "distance_km": 3.5,
+      "travel_time_min": 11.0,
+      "dominant_road_type": "residential",
+      "stress_label": "quiet side street"
+    },
+    "user_preference": "low_stress",
+    "feedback_score": 5,
+    "timestamp": "2026-01-05T09:00:00"
+  },
+  {
+    "id": 16,
+    "origin_name": "IU Luddy School of Informatics",
+    "dest_name": "IU Health Bloomington Hospital",
+    "preferred_route_type": "Fastest Route",
+    "reason": "urgent trip to hospital, user accepted all arterials to save every minute",
+    "profile": {
+      "difficult_turns": 2,
+      "moderate_turns": 2,
+      "avg_road_stress": 3.0,
+      "distance_km": 4.1,
+      "travel_time_min": 8.5,
+      "dominant_road_type": "primary",
+      "stress_label": "busy arterial"
+    },
+    "user_preference": "fast",
+    "feedback_score": 5,
+    "timestamp": "2026-01-12T11:20:00"
+  },
+  {
+    "id": 17,
+    "origin_name": "Switchyard Park",
+    "dest_name": "IU Sample Gates",
+    "preferred_route_type": "Balanced Route",
+    "reason": "regular commute, user comfortable with a mix of local and main roads",
+    "profile": {
+      "difficult_turns": 1,
+      "moderate_turns": 2,
+      "avg_road_stress": 2.0,
+      "distance_km": 2.0,
+      "travel_time_min": 6.5,
+      "dominant_road_type": "secondary",
+      "stress_label": "moderate main road"
+    },
+    "user_preference": "balanced",
+    "feedback_score": 4,
+    "timestamp": "2026-01-20T08:30:00"
+  },
+  {
+    "id": 18,
+    "origin_name": "Uptown Bloomington",
+    "dest_name": "IU Assembly Hall",
+    "preferred_route_type": "Easiest Route",
+    "reason": "user attending an evening event, preferred the low-stress route through neighborhood streets",
+    "profile": {
+      "difficult_turns": 0,
+      "moderate_turns": 1,
+      "avg_road_stress": 1.3,
+      "distance_km": 3.2,
+      "travel_time_min": 10.0,
+      "dominant_road_type": "residential",
+      "stress_label": "quiet side street"
+    },
+    "user_preference": "low_stress",
+    "feedback_score": 5,
+    "timestamp": "2026-01-28T19:00:00"
+  },
+  {
+    "id": 19,
+    "origin_name": "IU Musical Arts Center",
+    "dest_name": "Monroe County Courthouse",
+    "preferred_route_type": "Fastest Route",
+    "reason": "quick trip downtown, short distance made the fastest route the obvious choice",
+    "profile": {
+      "difficult_turns": 1,
+      "moderate_turns": 2,
+      "avg_road_stress": 2.8,
+      "distance_km": 1.8,
+      "travel_time_min": 5.0,
+      "dominant_road_type": "tertiary",
+      "stress_label": "moderate main road"
+    },
+    "user_preference": "fast",
+    "feedback_score": 4,
+    "timestamp": "2026-02-03T14:00:00"
+  },
+  {
+    "id": 20,
+    "origin_name": "Bryan Park",
+    "dest_name": "College Mall",
+    "preferred_route_type": "Balanced Route",
+    "reason": "cross-town errand, user wanted reasonable speed without the full College Ave arterial run",
+    "profile": {
+      "difficult_turns": 1,
+      "moderate_turns": 3,
+      "avg_road_stress": 2.4,
+      "distance_km": 5.2,
+      "travel_time_min": 12.0,
+      "dominant_road_type": "secondary",
+      "stress_label": "moderate main road"
+    },
+    "user_preference": "balanced",
+    "feedback_score": 4,
+    "timestamp": "2026-02-10T16:45:00"
+  },
+  {
+    "id": 21,
+    "origin_name": "Eskenazi Museum of Art",
+    "dest_name": "Cascades Park",
+    "preferred_route_type": "Easiest Route",
+    "reason": "weekend leisure drive, user explicitly chose the quieter residential path",
+    "profile": {
+      "difficult_turns": 0,
+      "moderate_turns": 2,
+      "avg_road_stress": 1.5,
+      "distance_km": 3.8,
+      "travel_time_min": 11.0,
+      "dominant_road_type": "residential",
+      "stress_label": "quiet side street"
+    },
+    "user_preference": "low_stress",
+    "feedback_score": 5,
+    "timestamp": "2026-02-22T11:00:00"
+  },
+  {
+    "id": 22,
+    "origin_name": "IU Ballantine Hall",
+    "dest_name": "IU Health Bloomington Hospital",
+    "preferred_route_type": "Balanced Route",
+    "reason": "non-urgent medical appointment, user preferred predictable roads over racing down arterials",
+    "profile": {
+      "difficult_turns": 1,
+      "moderate_turns": 2,
+      "avg_road_stress": 2.2,
+      "distance_km": 3.3,
+      "travel_time_min": 8.0,
+      "dominant_road_type": "secondary",
+      "stress_label": "moderate main road"
+    },
+    "user_preference": "balanced",
+    "feedback_score": 4,
+    "timestamp": "2026-03-01T10:30:00"
   }
 ]
