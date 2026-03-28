@@ -452,23 +452,6 @@ Route Explanation System/
 
 ---
 
-## Landmark Coordinate Corrections
-
-All 20 landmarks were validated by snapping each coordinate to the nearest OSM road node and measuring the snap distance. Four coordinates were corrected where the original values placed the pin far from the actual location:
-
-| Landmark | Original coords | Corrected coords | Snap distance before | After |
-|---|---|---|---|---|
-| IU Luddy School of Informatics | (39.1746, -86.5122) | **(39.1727, -86.5233)** | 246 m | **27 m** |
-| College Mall | (39.1520, -86.5058) | **(39.1645, -86.4950)** | 106 m | **31 m** |
-| IU Assembly Hall | (39.1843, -86.5244) | **(39.1814, -86.5263)** | 290 m | **180 m** |
-| Olcott Park | (39.1534, -86.5162) | **(39.1483, -86.5140)** | 148 m | **43 m** |
-
-The remaining 16 landmarks all snap within 100 m (most under 50 m), which is acceptable for routing purposes. Assembly Hall remains at 180 m because the building sits in the middle of campus away from drivable roads — the nearest accessible road node is on the stadium perimeter.
-
-Benchmark results reported above use the corrected coordinates.
-
----
-
 ## Datasets and credits
 
 ### OpenStreetMap
