@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import type { Route, Landmark } from './types';
 import { Sidebar } from './components/Sidebar';
 import { MapComponent as Map } from './components/Map';

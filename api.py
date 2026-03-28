@@ -1,5 +1,8 @@
 import os
 import json
+import time
+from pathlib import Path
+from datetime import datetime
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -8,7 +11,7 @@ from fastapi.responses import StreamingResponse
 
 from router import get_nearest_nodes, generate_candidate_routes, load_or_fetch_graph
 from cbr import load_cases, get_preference_summary, retrieve_similar_cases, store_case
-from explainer import explain_route, stream_llm_explanation
+from explainer import explain_route, stream_llm_explanation, explain_route_template
 
 try:
     from argumentation import build_argumentation_framework, generate_argument_explanation
@@ -18,6 +21,20 @@ except ImportError:
     _ARG_AVAILABLE = False
 
 app = FastAPI(title="Route AI API")
+
+LOG_DIR = Path("data") / "logs"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+EXPLANATION_MODE = os.getenv("EXPLANATION_MODE", "request").lower()
+
+
+def _log_event(event: str, payload: dict):
+    entry = {"event": event, "ts": time.time(), **payload}
+    fname = LOG_DIR / f"{datetime.utcnow().date()}_events.jsonl"
+    try:
+        with fname.open("a") as f:
+            f.write(json.dumps(entry) + "\n")
+    except Exception:
+        pass
 
 # Allow requests from Vite dev server
 app.add_middleware(
@@ -72,6 +89,7 @@ class ExplainRequest(BaseModel):
     chosen_route: dict
     all_routes: list
     use_llm: bool = False
+    mode: str | None = None  # "template", "argumentation", "llm", or None to follow env/default
 
 class ArgueRequest(BaseModel):
     chosen_route: dict
@@ -79,6 +97,17 @@ class ArgueRequest(BaseModel):
 
 class KBRefineRequest(BaseModel):
     dry_run: bool = True
+
+
+class StudyResponse(BaseModel):
+    participant_id: str
+    condition: str  # template | argumentation | llm
+    trust: int
+    clarity: int
+    safety: int
+    chosen_route_name: str
+    preferred_route_name: str | None = None
+    notes: str | None = None
 
 @app.get("/api/landmarks")
 def get_landmarks():
@@ -93,6 +122,7 @@ def get_cases_summary():
 @app.post("/api/routes")
 def get_routes(req: RouteRequest):
     global G
+    start_ts = time.perf_counter()
     if G is None:
         G = load_or_fetch_graph("Bloomington, Indiana, USA")
         
@@ -117,27 +147,66 @@ def get_routes(req: RouteRequest):
             clean_edges.append(clean_edge)
         clean_r["edges"] = clean_edges
         clean_routes.append(clean_r)
+
+    _log_event("routes_generated", {
+        "origin": req.origin_name,
+        "dest": req.dest_name,
+        "route_count": len(clean_routes),
+        "latency_ms": round((time.perf_counter() - start_ts) * 1000, 1),
+    })
     
     return {"routes": clean_routes}
 
 @app.post("/api/explain")
 def get_explanation(req: ExplainRequest):
-    if req.use_llm:
-        return StreamingResponse(
-            stream_llm_explanation(req.chosen_route, req.all_routes),
-            media_type="text/plain",
-        )
-    # Template mode: wrap as a single-chunk stream so the frontend
-    # can use the same streaming reader for both modes.
-    def _template_stream():
-        yield explain_route(req.chosen_route, req.all_routes)
+    start_ts = time.perf_counter()
 
-    return StreamingResponse(_template_stream(), media_type="text/plain")
+    def resolve_mode():
+        if EXPLANATION_MODE != "request":
+            return EXPLANATION_MODE
+        if req.mode:
+            return req.mode.lower()
+        if req.use_llm:
+            return "llm"
+        return "argumentation"
+
+    mode = resolve_mode()
+
+    if mode == "llm":
+        stream = stream_llm_explanation(req.chosen_route, req.all_routes)
+        resp = StreamingResponse(stream, media_type="text/plain")
+    elif mode == "template":
+        def _template_stream():
+            yield explain_route_template(req.chosen_route, req.all_routes)
+        resp = StreamingResponse(_template_stream(), media_type="text/plain")
+    else:  # argumentation (default)
+        def _af_stream():
+            yield explain_route(req.chosen_route, req.all_routes)
+        resp = StreamingResponse(_af_stream(), media_type="text/plain")
+
+    _log_event("explain", {
+        "mode": mode,
+        "route": req.chosen_route.get("name"),
+        "latency_ms": round((time.perf_counter() - start_ts) * 1000, 1),
+    })
+    return resp
 
 @app.post("/api/feedback")
 def submit_feedback(req: FeedbackRequest):
     new_case = store_case(req.origin_name, req.dest_name, req.chosen_route, req.feedback_score)
     return {"status": "success", "case": new_case}
+
+
+@app.post("/api/study/response")
+def submit_study_response(req: StudyResponse):
+    record = req.dict()
+    record["ts"] = time.time()
+    out_path = Path("data") / "study_responses.jsonl"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with out_path.open("a") as f:
+        f.write(json.dumps(record) + "\n")
+    _log_event("study_response", {k: record[k] for k in ("participant_id", "condition", "chosen_route_name")})
+    return {"status": "recorded"}
 
 # ---------------------------------------------------------------------------
 # Argumentation endpoints (research / debug layer)

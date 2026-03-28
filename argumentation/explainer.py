@@ -8,12 +8,7 @@ from __future__ import annotations
 from typing import List, Optional
 from .framework import ArgumentationFramework
 
-_DIM_ICONS = {"time": "⏱", "stress": "🛣", "turns": "🔄", "cbr": "📚"}
-_ROUTE_ICONS = {
-    "Fastest Route": "⚡",
-    "Easiest Route": "🌿",
-    "Balanced Route": "⚖️",
-}
+_DIM_LABELS = {"time": "Time", "stress": "Stress", "turns": "Turns", "cbr": "Experience"}
 
 
 def generate_argument_explanation(
@@ -37,11 +32,10 @@ def generate_argument_explanation(
     """
     trace = af.trace()
     rn = chosen_route["name"]
-    icon = _ROUTE_ICONS.get(rn, "")
     lines: List[str] = []
 
     # ---- Header ----
-    lines.append(f"**{icon} {rn}** *(Argumentation-Based Reasoning)*")
+    lines.append(f"**{rn}** *(Argumentation-Based Reasoning)*")
 
     # ---- Winning arguments ----
     winning_pros = [
@@ -53,8 +47,8 @@ def generate_argument_explanation(
     if winning_pros:
         lines.append("\n**Why this route was chosen:**")
         for a in winning_pros:
-            dim_icon = _DIM_ICONS.get(a["dimension"], "•")
-            lines.append(f"- {dim_icon} {a['claim']}")
+            dim_label = _DIM_LABELS.get(a["dimension"], a["dimension"].title())
+            lines.append(f"- {dim_label}: {a['claim']}")
 
     # ---- Why not alternatives ----
     alternatives = [r["name"] for r in all_routes if r["name"] != rn]
@@ -64,7 +58,6 @@ def generate_argument_explanation(
     if alternatives:
         lines.append("\n**Why the alternatives were ruled out:**")
         for alt_name in alternatives:
-            alt_icon = _ROUTE_ICONS.get(alt_name, "")
             rejected_pros = [
                 a for a in trace["rejected"]
                 if a["route"] == alt_name and a["polarity"] == "pro"
@@ -76,12 +69,12 @@ def generate_argument_explanation(
 
             if not rejected_pros and not surviving_cons:
                 lines.append(
-                    f"\n- **{alt_icon} {alt_name}**: arguments were undecided — "
+                    f"\n- **{alt_name}**: arguments were undecided — "
                     f"insufficient evidence to prefer it over {rn}."
                 )
                 continue
 
-            lines.append(f"\n*{alt_icon} {alt_name}:*")
+            lines.append(f"\n*{alt_name}:*")
             for a in rejected_pros:
                 defeater_id = succeeded_attacks.get(a["id"])
                 if defeater_id:
@@ -98,8 +91,8 @@ def generate_argument_explanation(
                 lines.append(f"  - ~~{a['claim']}~~{reason}")
 
             for a in surviving_cons:
-                dim_icon = _DIM_ICONS.get(a["dimension"], "⚠️")
-                lines.append(f"  - {dim_icon} {a['claim']}")
+                dim_label = _DIM_LABELS.get(a["dimension"], a["dimension"].title())
+                lines.append(f"  - {dim_label}: {a['claim']}")
 
     # ---- Argumentation stats ----
     n_accepted  = len(trace["accepted"])

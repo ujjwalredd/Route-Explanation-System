@@ -92,7 +92,13 @@ export const MapComponent: React.FC<MapProps> = ({ routes, selectedRouteName, or
         mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
         interactive={true}
       >
-        {routes.map(route => {
+        {[...routes]
+          .sort((a, b) => {
+            if (a.name === selectedRouteName) return 1;
+            if (b.name === selectedRouteName) return -1;
+            return 0;
+          })
+          .map(route => {
           const isSelected = selectedRouteName === route.name;
 
           // Each route always keeps its own color — visible and distinct in 3D
@@ -103,11 +109,33 @@ export const MapComponent: React.FC<MapProps> = ({ routes, selectedRouteName, or
           };
           const routeColor = ROUTE_COLORS[route.name] ?? '#2563eb';
 
-          const lineCoords: [number, number][] = [
-            ...(origin ? [origin.coords] : []),
-            ...route.coords,
-            ...(dest ? [dest.coords] : []),
-          ];
+          const lineCoords: [number, number][] = [...route.coords];
+
+          // Snap the line to user pins if they're not already the endpoints.
+          const prependOrigin = origin && lineCoords.length > 0;
+          if (prependOrigin) {
+            const [olat, olng] = origin!.coords;
+            const [slat, slng] = lineCoords[0];
+            const distSq = Math.pow(olat - slat, 2) + Math.pow(olng - slng, 2);
+            if (distSq > 1e-8) {
+              lineCoords.unshift(origin!.coords);
+            }
+          } else if (origin && lineCoords.length === 0) {
+            lineCoords.push(origin.coords);
+          }
+
+          const appendDest = dest && lineCoords.length > 0;
+          if (appendDest) {
+            const [dlat, dlng] = dest!.coords;
+            const [elat, elng] = lineCoords[lineCoords.length - 1];
+            const distSq = Math.pow(dlat - elat, 2) + Math.pow(dlng - elng, 2);
+            if (distSq > 1e-8) {
+              lineCoords.push(dest!.coords);
+            }
+          } else if (dest && lineCoords.length === 0) {
+            lineCoords.push(dest.coords);
+          }
+
           const allGeoJsonCoords = lineCoords.map(c => [c[1], c[0]]);
           const reveal = routeReveal[route.name] ?? 1;
           const visibleCount = Math.max(2, Math.round(allGeoJsonCoords.length * reveal));
@@ -119,17 +147,27 @@ export const MapComponent: React.FC<MapProps> = ({ routes, selectedRouteName, or
             geometry: { type: 'LineString', coordinates: geoJsonCoords }
           };
 
+          // Always render the same stable layer IDs — control visibility via opacity.
+          // This prevents MapLibre from adding/removing layers when isSelected changes,
+          // which would cause layer-ID conflicts and broken rendering.
           return (
             <Source key={route.name} id={`route-${route.name}`} type="geojson" data={geojson}>
-              {isSelected ? (
-                <>
-                  <Layer id={`route-glow-${route.name}`} type="line" paint={{ 'line-color': routeColor, 'line-width': 28, 'line-opacity': 0.18, 'line-blur': 12 }} />
-                  <Layer id={`route-bg-${route.name}`} type="line" paint={{ 'line-color': '#ffffff', 'line-width': 12 }} />
-                  <Layer id={`route-core-${route.name}`} type="line" paint={{ 'line-color': routeColor, 'line-width': 7 }} />
-                </>
-              ) : (
-                <Layer id={`route-unselected-${route.name}`} type="line" paint={{ 'line-color': routeColor, 'line-width': 4, 'line-opacity': 0.55 }} />
-              )}
+              <Layer id={`route-glow-${route.name}`} type="line" paint={{
+                'line-color': routeColor,
+                'line-width': 28,
+                'line-opacity': isSelected ? 0.18 : 0,
+                'line-blur': 12,
+              }} />
+              <Layer id={`route-bg-${route.name}`} type="line" paint={{
+                'line-color': '#ffffff',
+                'line-width': 12,
+                'line-opacity': isSelected ? 1 : 0,
+              }} />
+              <Layer id={`route-core-${route.name}`} type="line" paint={{
+                'line-color': routeColor,
+                'line-width': isSelected ? 7 : 4,
+                'line-opacity': isSelected ? 1 : 0.55,
+              }} />
             </Source>
           );
         })}

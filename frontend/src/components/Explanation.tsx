@@ -12,11 +12,23 @@ interface ExplanationProps {
 }
 
 export const Explanation: React.FC<ExplanationProps> = ({ route, explanation, isStreaming, onFeedback, feedbackGiven, onHoverTurn }) => {
-  // Inject robust visual DOM hooks onto specific terms flowing from the local Ollama LLM
-  let html = explanation.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  html = html.replace(/_(.*?)_/g, '<em>$1</em>');
-  html = html.replace(/- \*\*(.*?)\*\*/g, '<br/>&bull; <strong>$1</strong>');
-  html = html.replace(/Turn Complexity/gi, '<span class="turn-scrub-trigger font-extrabold text-rose-500 border-b-2 border-rose-500/30 cursor-crosshair transition-all hover:bg-rose-500/10 px-1 rounded">Turn Complexity</span>');
+
+  const normalize = (text: string) => {
+    const escaped = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    let html = escaped;
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/_(.*?)_/g, '<em>$1</em>');
+    html = html.replace(/^\s*-\s+(.*)$/gm, '<div class="pl-3">• $1</div>');
+    html = html.replace(/Turn Complexity/gi, '<span class="turn-scrub-trigger font-extrabold text-rose-500 border-b-2 border-rose-500/30 cursor-crosshair transition-all hover:bg-rose-500/10 px-1 rounded">Turn Complexity</span>');
+    html = html.replace(/\n{2,}/g, '<br/><br/>').replace(/\n/g, '<br/>');
+    return html;
+  };
+
+  const html = normalize(explanation || '');
 
   const handleMouseOver = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
@@ -68,7 +80,7 @@ export const Explanation: React.FC<ExplanationProps> = ({ route, explanation, is
       </div>
 
       <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between shrink-0">
-        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Rate this Route</span>
+        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Route feedback</span>
         <div className="flex items-center gap-2">
           {feedbackGiven ? (
             <span className="text-sm font-semibold text-emerald-500 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100">Thanks for your feedback!</span>

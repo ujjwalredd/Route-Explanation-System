@@ -64,7 +64,12 @@ def explain_route(chosen_route, all_routes):
             return _argumentation_explanation(chosen_route, all_routes)
         except Exception:
             pass  # silent fallback — never break the UI
-    return _template_explanation(chosen_route, all_routes, _get_similar_cases(chosen_route))
+        return _template_explanation(chosen_route, all_routes, _get_similar_cases(chosen_route))
+
+
+    def explain_route_template(chosen_route, all_routes):
+        """Deterministic template-only explanation (no LLM, no argumentation)."""
+        return _template_explanation(chosen_route, all_routes, _get_similar_cases(chosen_route))
 
 
 def _argumentation_explanation(chosen_route, all_routes):
@@ -89,7 +94,7 @@ def _fallback_prompt(chosen_route, all_routes, alt_lines, cbr_lines):
         f"Alternatives considered:\n{alt_lines}\n\n"
         f"Relevant past cases (Case-Based Reasoning):\n{cbr_lines}\n\n"
         f"Write a 3-4 sentence explanation for why this route was chosen. Be direct, "
-        f"human, and practical. Do not use bullet points or headers, just plain conversational text."
+        f"human, and practical. Do not include emojis. Use short paragraphs; no markdown headers."
     )
 
 

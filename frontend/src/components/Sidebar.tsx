@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Landmark } from '../types';
-import { Search, MapPin, Target, Sparkles, Navigation2 } from 'lucide-react';
+import { Search, Navigation2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface SidebarProps {
