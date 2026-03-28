@@ -1,6 +1,16 @@
 import os
 from cbr import retrieve_similar_cases, get_preference_summary
 
+try:
+    from argumentation import (
+        build_argumentation_framework,
+        generate_argument_explanation,
+        build_ollama_prompt_from_af,
+    )
+    _ARGUMENTATION_AVAILABLE = True
+except ImportError:
+    _ARGUMENTATION_AVAILABLE = False
+
 OLLAMA_MODEL = "llama3.2:latest"
 
 PREF_MAP = {
@@ -27,8 +37,60 @@ def _get_similar_cases(chosen_route):
     )
 
 
+def _get_cbr_cases_for_all_routes(all_routes):
+    """Retrieve similar cases for every route (needed by the argumentation generator)."""
+    result = {}
+    for route in all_routes:
+        profile = route["profile"]
+        stats = route["stats"]
+        pref = PREF_MAP.get(route["name"], "balanced")
+        result[route["name"]] = retrieve_similar_cases(
+            {**profile,
+             "travel_time_min": stats["travel_time_min"],
+             "distance_km": stats["distance_km"]},
+            target_preference=pref,
+            top_k=3,
+        )
+    return result
+
+
 def explain_route(chosen_route, all_routes):
+    """
+    Primary explanation entry point.
+    Uses argumentation-based reasoning when available, falls back to template.
+    """
+    if _ARGUMENTATION_AVAILABLE:
+        try:
+            return _argumentation_explanation(chosen_route, all_routes)
+        except Exception:
+            pass  # silent fallback — never break the UI
     return _template_explanation(chosen_route, all_routes, _get_similar_cases(chosen_route))
+
+
+def _argumentation_explanation(chosen_route, all_routes):
+    """Build AF, run grounded semantics, generate NL explanation."""
+    cbr_per_route = _get_cbr_cases_for_all_routes(all_routes)
+    af = build_argumentation_framework(all_routes, cbr_per_route)
+    af.compute_grounded_extension()
+    pref = get_preference_summary()
+    return generate_argument_explanation(af, chosen_route, all_routes, pref_summary=pref)
+
+
+def _fallback_prompt(chosen_route, all_routes, alt_lines, cbr_lines):
+    stats = chosen_route["stats"]
+    profile = chosen_route["profile"]
+    return (
+        f"You are a navigation assistant explaining a route recommendation to a driver.\n\n"
+        f"Selected route: {chosen_route['name']}\n"
+        f"- Distance: {stats['distance_km']} km, Time: {stats['travel_time_min']} min\n"
+        f"- Road type: {profile.get('dominant_road_type', 'mixed')} ({profile.get('stress_label', '')})\n"
+        f"- Difficult turns: {profile.get('difficult_turns', 0)}, "
+        f"Turn summary: {profile.get('turn_summary', '')}\n\n"
+        f"Alternatives considered:\n{alt_lines}\n\n"
+        f"Relevant past cases (Case-Based Reasoning):\n{cbr_lines}\n\n"
+        f"Write a 3-4 sentence explanation for why this route was chosen. Be direct, "
+        f"human, and practical. Do not use bullet points or headers, just plain conversational text."
+    )
 
 
 def stream_llm_explanation(chosen_route, all_routes):
@@ -51,20 +113,16 @@ def stream_llm_explanation(chosen_route, all_routes):
             for _, c in similar_cases
         ) or "  No directly matching past cases."
 
-        prompt = f"""You are a navigation assistant explaining a route recommendation to a driver.
-
-Selected route: {chosen_route['name']}
-- Distance: {stats['distance_km']} km, Time: {stats['travel_time_min']} min
-- Road type: {profile.get('dominant_road_type', 'mixed')} ({profile.get('stress_label', '')})
-- Difficult turns: {profile.get('difficult_turns', 0)}, Turn summary: {profile.get('turn_summary', '')}
-
-Alternatives considered:
-{alt_lines}
-
-Relevant past cases (Case-Based Reasoning):
-{cbr_lines}
-
-Write a 3-4 sentence explanation for why this route was chosen. Be direct, human, and practical — explain what makes it better for the driver (safety, ease, time), why alternatives fall short, and reference past cases naturally. Do not use bullet points or headers, just plain conversational text."""
+        if _ARGUMENTATION_AVAILABLE:
+            try:
+                cbr_per_route = _get_cbr_cases_for_all_routes(all_routes)
+                af = build_argumentation_framework(all_routes, cbr_per_route)
+                af.compute_grounded_extension()
+                prompt = build_ollama_prompt_from_af(af, chosen_route, all_routes)
+            except Exception:
+                prompt = _fallback_prompt(chosen_route, all_routes, alt_lines, cbr_lines)
+        else:
+            prompt = _fallback_prompt(chosen_route, all_routes, alt_lines, cbr_lines)
 
         stream = ollama.chat(
             model=OLLAMA_MODEL,

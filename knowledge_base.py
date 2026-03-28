@@ -1,4 +1,16 @@
-ROAD_STRESS_SCORES = {
+import json as _json
+import os as _os
+
+# ---------------------------------------------------------------------------
+# Load parameterised KB values from data/kb_params.json if available.
+# Falls back to hardcoded defaults so the system starts cleanly even before
+# the params file exists. After kb_refinement.py updates the file, call
+# reload_kb_params() to pick up the new values.
+# ---------------------------------------------------------------------------
+
+_KB_PARAMS_PATH = _os.path.join(_os.path.dirname(__file__), "data", "kb_params.json")
+
+_DEFAULT_ROAD_STRESS = {
     "motorway": 5.0,
     "trunk": 4.5,
     "primary": 3.5,
@@ -11,16 +23,64 @@ ROAD_STRESS_SCORES = {
     "road": 2.0,
 }
 
-# Turn difficulty rules — angle thresholds map to driving effort scores.
-# Penalties are added for: unprotected turns (no signal), left turns across
-# oncoming traffic, and multi-lane turns that require lane discipline.
-TURN_DIFFICULTY_RULES = [
+_DEFAULT_TURN_RULES = [
     {"min_angle": 0,   "max_angle": 15,  "label": "straight ahead",       "base_score": 0.0},
     {"min_angle": 15,  "max_angle": 45,  "label": "gentle curve",          "base_score": 0.3},
     {"min_angle": 45,  "max_angle": 90,  "label": "moderate turn",         "base_score": 1.0},
     {"min_angle": 90,  "max_angle": 135, "label": "sharp turn",            "base_score": 2.0},
     {"min_angle": 135, "max_angle": 180, "label": "very sharp / U-turn",   "base_score": 3.0},
 ]
+
+_DEFAULT_TURN_PENALTIES = {
+    "no_signal_penalty": 0.5,
+    "left_turn_penalty": 0.3,
+    "multilane_threshold": 3,
+    "multilane_penalty": 0.3,
+    "penalty_applies_above_base_score": 1.0,
+    "max_turn_score": 3.0,
+}
+
+
+def _load_kb_params() -> dict:
+    try:
+        with open(_KB_PARAMS_PATH) as _f:
+            _p = _json.load(_f)
+        return {
+            "road_stress": _p.get("road_stress_scores", _DEFAULT_ROAD_STRESS),
+            "turn_rules":  _p.get("turn_difficulty_rules", _DEFAULT_TURN_RULES),
+            "turn_penalties": _p.get("turn_penalties", _DEFAULT_TURN_PENALTIES),
+        }
+    except (FileNotFoundError, _json.JSONDecodeError):
+        return {
+            "road_stress": _DEFAULT_ROAD_STRESS,
+            "turn_rules":  _DEFAULT_TURN_RULES,
+            "turn_penalties": _DEFAULT_TURN_PENALTIES,
+        }
+
+
+_KB = _load_kb_params()
+
+ROAD_STRESS_SCORES = _KB["road_stress"]
+
+# Turn difficulty rules — angle thresholds map to driving effort scores.
+# Penalties are added for: unprotected turns (no signal), left turns across
+# oncoming traffic, and multi-lane turns that require lane discipline.
+TURN_DIFFICULTY_RULES = _KB["turn_rules"]
+
+_TURN_PENALTIES = _KB["turn_penalties"]
+
+
+def reload_kb_params() -> None:
+    """
+    Reload knowledge base parameters from disk.
+    Call after kb_refinement.py applies a refinement so the router and scorer
+    pick up updated values on the next request without restarting the server.
+    """
+    global ROAD_STRESS_SCORES, TURN_DIFFICULTY_RULES, _TURN_PENALTIES, _KB
+    _KB = _load_kb_params()
+    ROAD_STRESS_SCORES = _KB["road_stress"]
+    TURN_DIFFICULTY_RULES = _KB["turn_rules"]
+    _TURN_PENALTIES = _KB["turn_penalties"]
 
 
 def get_road_stress(highway_type, maxspeed=None, lanes=None):
@@ -90,15 +150,19 @@ def classify_turn(angle_deg, has_signal=False, lanes=1, is_left_turn=False):
         label = "very sharp / U-turn"
         base_score = 3.0
 
-    if base_score >= 1.0:
+    penalties = _TURN_PENALTIES
+    threshold = penalties.get("penalty_applies_above_base_score", 1.0)
+    if base_score >= threshold:
         if not has_signal:
-            base_score += 0.5
+            base_score += penalties.get("no_signal_penalty", 0.5)
         if is_left_turn:
-            base_score += 0.3
-        if isinstance(lanes, (int, float)) and lanes >= 3:
-            base_score += 0.3
+            base_score += penalties.get("left_turn_penalty", 0.3)
+        ml_thresh = penalties.get("multilane_threshold", 3)
+        if isinstance(lanes, (int, float)) and lanes >= ml_thresh:
+            base_score += penalties.get("multilane_penalty", 0.3)
 
-    return label, round(min(3.0, base_score), 2)
+    max_score = penalties.get("max_turn_score", 3.0)
+    return label, round(min(max_score, base_score), 2)
 
 
 def score_edge(edge_data):

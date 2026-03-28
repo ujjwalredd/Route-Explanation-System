@@ -11,36 +11,48 @@ Indiana University, Fall 2026
 
 Most navigation apps tell you a route and a time. They don't tell you *why*. This system does.
 
-Given a start and end point in Bloomington, Indiana, it generates three candidate routes — optimized for speed, ease of driving, or a balanced trade-off — and produces a natural language explanation for why a particular route was chosen. The explanation covers things like road character, turn complexity, and how similar routes have been handled in the past. The whole point is to make routing decisions transparent and human-centric, not just numerically optimal.
+Given a start and end point in Bloomington, Indiana, it generates three candidate routes — optimized for speed, ease of driving, or a balanced trade-off — and produces a structured natural-language explanation for why a particular route was chosen. The explanation is grounded in a formal **argumentation framework**: route properties generate pro/con arguments, arguments attack each other, and a grounded-semantics solver determines which arguments survive.
 
-This is a Knowledge-Based AI project. The system doesn't use a neural network to make decisions. It uses explicit knowledge representations, case-based reasoning, and means-ends analysis to justify each recommendation in terms a driver actually cares about.
+This is a Knowledge-Based AI project. The system does not use a neural network to make decisions. It uses explicit knowledge representations, case-based reasoning, formal argumentation, and adaptive knowledge refinement to justify each recommendation in terms a driver actually cares about.
 
 ---
 
-## The four components
+## Architecture
 
-### 1. Knowledge Base (`knowledge_base.py`)
+```
+OpenStreetMap (Bloomington road network)
+        ↓
+Knowledge Base — parameterized rules (kb_params.json)
+  road stress scores, turn difficulty rules, turn penalties
+        ↓
+Multi-Objective Router — weighted shortest path (3 route objectives)
+        ↓
+Argument Generator — pro/con arguments per route × dimension
+  (time, road stress, turn complexity, CBR evidence)
+        ↓
+Argumentation Framework — Dung grounded semantics resolves conflicts
+        ↓
+Explanation Generator — traces winning argument chain → natural language
+        ↑
+User Feedback → CBR Case Library → KB Refinement Analyzer
+  detects miscalibrated rules and updates kb_params.json
+```
 
-This is where the domain knowledge lives. It answers the professor's question directly: what makes a turn "difficult"?
+---
 
-Every road edge from OpenStreetMap gets scored on two axes:
+## The five components
 
-**Road stress** is computed from the road type (residential vs. arterial vs. highway), speed limit, and number of lanes. A residential street at 25 mph scores around 1.2/5. A four-lane primary arterial at 45 mph scores around 3.5/5. The reasoning: more lanes, higher speeds, and busier road classes require more driver attention and create more cognitive load.
+### 1. Knowledge Base (`knowledge_base.py` + `data/kb_params.json`)
 
-**Turn difficulty** is computed from the deflection angle between consecutive road segments. A turn under 15 degrees is essentially straight. A 90-120 degree turn becomes a "sharp turn" with a base difficulty score of 2.0. On top of that, unprotected turns (no traffic signal) are penalized because they require yielding to oncoming traffic. Left turns get an additional penalty under US driving rules for the same reason. Multi-lane turns add a precision penalty.
+All scoring rules are stored in `data/kb_params.json` and loaded at startup, making them inspectable, editable, and — critically — updatable by the adaptive refinement module without restarting the server.
 
-These aren't magic numbers — they're grounded in what actually makes driving harder. The knowledge base translates all of this into labels like "quiet side street," "busy arterial," and "mostly straight, no significant turns" that mean something to a person.
+**Road stress** is scored from road type, speed limit, and lane count. A residential street at 25 mph scores 1.2/5. A four-lane primary arterial at 45 mph scores ~3.5/5. The reasoning: more lanes, higher speeds, and busier road classes demand more driver attention.
+
+**Turn difficulty** is computed from the deflection angle between consecutive road segments. Turns over 90° become "sharp" (base score 2.0). Unprotected turns add a 0.5 penalty; left turns across traffic add 0.3; multi-lane turns add 0.3 more. These are grounded in what makes driving harder — and they are now parameters, not magic numbers.
 
 ### 2. Multi-Objective Router (`router.py`)
 
-The router uses OSMnx to pull a real road network graph for Bloomington from OpenStreetMap, then runs a modified shortest-path algorithm (via NetworkX) with a weighted cost function combining:
-
-- **Travel time** — estimated from edge length and speed
-- **Road stress** — from the knowledge base
-- **Turn difficulty** — from the knowledge base
-- **Distance** — used lightly as a tiebreaker
-
-By varying these weights, the same graph produces three meaningfully different paths:
+Uses OSMnx to pull the Bloomington road graph from OpenStreetMap and NetworkX for weighted shortest-path search. Three routes are generated by varying the cost function:
 
 | Route | Time weight | Stress weight | Turn weight |
 |---|---|---|---|
@@ -48,55 +60,61 @@ By varying these weights, the same graph produces three meaningfully different p
 | Easiest | 0.2 | 1.0 | 1.8 |
 | Balanced | 0.6 | 0.6 | 0.8 |
 
-The graph is cached to disk after the first download so subsequent runs are instant.
+The graph is cached to disk after first download.
 
 ### 3. Case-Based Reasoning (`cbr.py`)
 
-The case library stores past routing decisions. Each case records the origin, destination, chosen route type, the reason it was chosen, a qualitative profile of that route, a user preference tag (fast / low_stress / balanced), and a 1-5 feedback score.
+Stores past routing decisions as cases: origin, destination, chosen route type, route profile, user preference tag, and feedback score. Similarity is computed across four features: difficult turns, average road stress, distance, and travel time. Cases matching the user's apparent preference and with higher scores rank higher.
 
-The library is seeded with 10 realistic Bloomington scenarios. When a new route is generated, the system retrieves the top matching cases using a similarity measure across four features: number of difficult turns, average road stress, distance, and travel time. Cases that match the user's apparent preference and have higher feedback scores rank higher.
+The library is seeded with 20 realistic Bloomington scenarios covering all three route types and a range of distances and road characters. As you rate routes, new cases are added and the preference profile evolves.
 
-Over time, as you use the system and rate routes, the case library grows and becomes more personalized. A user who consistently rates low-stress routes highly will see that reflected in future explanations — and eventually in which routes get surfaced first.
+### 4. Argumentation Framework (`argumentation/`)
 
-### 4. Explanation Generator (`explainer.py`)
+**The novel contribution.** No prior work applies formal argumentation to route explanation. This module implements a Dung-style Abstract Argumentation Framework (AF) with strength-weighted grounded semantics.
 
-The explainer takes the chosen route, the full list of candidate routes, and the retrieved CBR cases, then builds an explanation. Two modes:
+**Arguments** are generated for each route across four dimensions:
+- `time` — is this route time-efficient relative to alternatives?
+- `stress` — do its roads fall within the safe stress ceiling?
+- `turns` — does it avoid difficult navigation maneuvers?
+- `cbr` — does past experience support or warn against this route type?
 
-**Template mode** (default): structured text that covers route character, turn complexity, why alternatives were rejected (with specific reasons like "2 more difficult turns" or "0.8 higher road stress"), the most relevant CBR cases, and a preference profile summary if enough feedback history exists.
+**Attacks** are computed from cross-route comparisons and intra-route conflicts:
+- A route with higher road stress has its `stress:con` attack its own `time:pro` (self-undermining)
+- A route that is strictly better on a dimension attacks the weaker route's pro argument on that dimension (cross-route)
+- Strong CBR evidence for one route attacks the opponent's time advantage (CBR rebuttal)
 
-**Ollama mode** (toggle in sidebar): passes the same structured data to `llama3.2` running locally via Ollama. The model produces a 3-4 sentence conversational explanation. No API key, no internet required. `llama3.2:latest` (3B parameters, 2GB) is the recommended model — it's fast and specifically good at instruction-following and natural language generation. `phi3.5:3.8b` is a solid alternative if you want slightly more careful reasoning.
+**Grounded semantics** (the unique, skeptically justified extension of Dung 1995) resolves all conflicts. An argument is accepted (`IN`) only if all its attackers are rejected. Attack success is strength-weighted: a weak attacker cannot defeat a much stronger target.
+
+The resolved argument trace drives the natural-language explanation — sections map directly to accepted/rejected arguments.
+
+### 5. Adaptive KB Refinement (`kb_refinement.py`)
+
+Closes the loop between CBR experience and KB rules. When user feedback systematically diverges from what the knowledge base predicts, the refinement module detects the miscalibration and proposes updates to `kb_params.json`.
+
+Three analysers run on accumulated cases:
+- **Stress calibration:** if routes dominated by `primary` roads are consistently rated higher than expected, the stress score for `primary` is overestimated — reduce it.
+- **Turn penalty calibration:** if routes with difficult turns are rated much lower than turn-free routes, the `left_turn_penalty` is too lenient — increase it.
+- **Argument threshold calibration:** if highly-rated low-stress trips have higher average stress than the current `stress_pro_ceiling`, shift the ceiling toward observed reality.
+
+All adjustments are capped and stepped conservatively (learning rate 0.05). Updates are atomic — a temp file is written and renamed so corruption on interrupt is impossible.
 
 ---
 
 ## Running it
 
-### Clone the repo
-
-```bash
-git clone https://github.com/ujjwalredd/Route-Explanation-System.git
-cd Route-Explanation-System
-```
-
 ### Prerequisites
-
-Create and activate a virtual environment first:
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-```
-
-Then install dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
-Ollama must be running if you want LLM explanations:
+Ollama (optional, for LLM explanations):
 ```bash
 ollama serve
+ollama pull llama3.2
 ```
-The model `llama3.2:latest` should already be pulled. If not: `ollama pull llama3.2`.
 
 ### Start the backend
 
@@ -104,7 +122,7 @@ The model `llama3.2:latest` should already be pulled. If not: `ollama pull llama
 python api.py
 ```
 
-The first time it starts, it downloads and caches the Bloomington road network from OpenStreetMap (~30 sec). Every run after that is instant. The API runs at `http://localhost:8000`.
+The first run downloads and caches the Bloomington road network (~30 sec). Every subsequent run is instant. API at `http://localhost:8000`.
 
 ### Start the frontend
 
@@ -114,16 +132,78 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:5173` in your browser.
+Open `http://localhost:5173`.
 
 ### Using it
 
-1. Pick an origin and destination from the dropdown (12 Bloomington landmarks included)
+1. Pick an origin and destination from the dropdown (20 Bloomington landmarks)
 2. Click **Find Routes**
 3. Three routes appear on the map and in the comparison table
-4. Select a route with the radio buttons to see its explanation
-5. Rate the route with the feedback buttons — this adds a new case to the CBR library
-6. Toggle **Ollama (llama3.2)** in the sidebar for a conversational explanation instead of the structured template
+4. Select a route with the radio buttons — an argumentation-based explanation appears
+5. Rate the route — this adds a case to the CBR library and eventually triggers KB refinement
+6. Toggle **Ollama** in the sidebar for a conversational explanation grounded in the argument trace
+
+---
+
+## API endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/landmarks` | List all 20 landmarks |
+| POST | `/api/routes` | Generate 3 candidate routes |
+| POST | `/api/explain` | Template or LLM explanation (streaming) |
+| POST | `/api/argue` | Full argumentation trace + NL explanation |
+| POST | `/api/feedback` | Submit route rating (adds CBR case) |
+| GET | `/api/kb/params` | View current KB parameters |
+| POST | `/api/kb/refine` | Run KB refinement analyser (`dry_run` flag) |
+
+### `/api/argue` response structure
+
+```json
+{
+  "argumentation_framework": {
+    "arguments": [
+      {
+        "id": "easiest_route:stress:pro",
+        "route": "Easiest Route",
+        "dimension": "stress",
+        "polarity": "pro",
+        "strength": 0.74,
+        "claim": "Easiest Route uses quiet side street roads (avg stress 1.3/5)...",
+        "status": "IN"
+      }
+    ],
+    "attacks": [
+      {
+        "attacker_id": "fastest_route:stress:con",
+        "target_id": "fastest_route:time:pro",
+        "kind": "self_undermining",
+        "weight": 0.75,
+        "succeeds": true
+      }
+    ],
+    "grounded_extension": ["easiest_route:stress:pro", "easiest_route:turns:pro", "..."],
+    "counts": { "accepted": 5, "rejected": 3, "undecided": 1, "attacks_succeeded": 3 }
+  },
+  "explanation": "**🌿 Easiest Route** *(Argumentation-Based Reasoning)*\n...",
+  "recommended_by_af": "Easiest Route",
+  "af_agrees_with_chosen": true
+}
+```
+
+### `/api/kb/refine` example
+
+```bash
+# Dry run (default) — inspect without changing
+curl -X POST http://localhost:8000/api/kb/refine \
+  -H "Content-Type: application/json" \
+  -d '{"dry_run": true}'
+
+# Apply refinement
+curl -X POST http://localhost:8000/api/kb/refine \
+  -H "Content-Type: application/json" \
+  -d '{"dry_run": false}'
+```
 
 ---
 
@@ -131,37 +211,64 @@ Open `http://localhost:5173` in your browser.
 
 ```
 Route Explanation System/
-├── app.py               Streamlit UI, map rendering, feedback loop
-├── knowledge_base.py    Road stress + turn difficulty rules
-├── router.py            Multi-objective OSMnx routing
-├── cbr.py               Case library, similarity retrieval, preference learning
-├── explainer.py         Template + Ollama explanation generation
+├── api.py                  FastAPI server — all endpoints
+├── knowledge_base.py       Road stress + turn difficulty scoring (loads from kb_params.json)
+├── router.py               Multi-objective OSMnx routing
+├── cbr.py                  Case library, similarity retrieval, preference learning
+├── explainer.py            Template + Ollama explanations (uses argumentation engine)
+├── kb_refinement.py        Adaptive KB rule refinement from CBR feedback
 ├── requirements.txt
-└── data/
-    ├── cases.json        Case library (auto-created on first run)
-    └── graph_bloomington.pkl   Cached OSM graph (auto-created on first run)
+│
+├── argumentation/          Argumentation framework package
+│   ├── __init__.py         Public API exports
+│   ├── framework.py        Argument, Attack, AF — Dung grounded semantics
+│   ├── generator.py        Route profiles + CBR cases → populated AF
+│   └── explainer.py        Argument trace → natural language + Ollama prompt
+│
+├── data/
+│   ├── kb_params.json      Parameterized KB rules (road stress, turn penalties, thresholds)
+│   ├── cases.json          CBR case library (auto-seeded, grows with feedback)
+│   └── graph_bloomington.pkl  Cached OSM road graph
+│
+└── frontend/               React + TypeScript + MapLibre GL UI
+    └── src/
+        └── App.tsx
 ```
-
----
-
-## Design decisions worth noting
-
-**Why Bloomington, Indiana?** Concrete, testable, and locally relevant. The professor suggested starting with specific scenarios and this gives the check-in something real to show.
-
-**Why templates as the default, not LLM?** Templates are deterministic and inspectable, which matters for a KBAI course project. The LLM layer is additive — it can generate richer text but the structured reasoning is already visible in the template output. This also means the system works completely offline.
-
-**Why not a learned model for routing?** That would be a different project. The point here is explainability through explicit knowledge, not accuracy through learning. The qualitative mapping rules are the knowledge acquisition component the professor asked about.
-
-**Human-subject evaluation:** The feedback loop (👍 / 👌 / 👎) isn't just for personalization. The plan is to ask class volunteers to rate explanations from both template and Ollama modes and compare them. This gives a real evaluation metric beyond "does it run."
 
 ---
 
 ## KBAI methods implemented
 
-| Method | Where |
-|---|---|
-| Knowledge representation | `knowledge_base.py` — explicit rules mapping quant → qualitative |
-| Means-ends analysis | `router.py` — decomposes journey into segments, identifies obstacles |
-| Case-Based Reasoning | `cbr.py` — retrieves + adapts past route cases |
-| Explanation generation | `explainer.py` — constraint satisfaction + comparative explanation |
-| Preference learning | `cbr.py` `get_preference_summary()` — learns from feedback over time |
+| Method | Where | Novel contribution |
+|---|---|---|
+| Knowledge representation | `knowledge_base.py`, `kb_params.json` | Parameterized, updatable rules |
+| Means-ends analysis | `router.py` | Weighted multi-objective decomposition |
+| Case-Based Reasoning | `cbr.py` | 20-case seeded library, preference learning |
+| Formal argumentation | `argumentation/` | **First application of Dung AF to route explanation** |
+| Adaptive KB refinement | `kb_refinement.py` | **First use of CBR feedback to update KB rules** |
+| Explanation generation | `explainer.py` | Argument-traced NL + Ollama grounded in AF |
+
+---
+
+## Research questions this system opens
+
+1. **RQ1 — Representation:** What argument scheme best formalizes route trade-offs and maps road features to argument strength?
+2. **RQ2 — Semantics:** Which Dung semantics (grounded, preferred, stable) produces the most accurate and interpretable route recommendations?
+3. **RQ3 — Learning:** How many feedback cases does the KB refinement loop need before converging to stable, calibrated parameters?
+4. **RQ4 — Explanation Quality:** Do argumentation-traced explanations increase user trust and comprehension compared to template and LLM explanations? *(Human-subject study target)*
+5. **RQ5 — Argument Composition:** Can segment-level arguments be composed into route-level structures without combinatorial explosion?
+6. **RQ6 — Preference Drift:** Does KB refinement track shifting user preferences, or does it lag behind?
+
+RQ4 is directly answerable with a class user study comparing the three explanation modes (`template`, `ollama`, `argumentation` via `/api/argue`).
+
+---
+
+## Design decisions
+
+**Why templates as default, not LLM?** Templates are deterministic and inspectable. The LLM layer is additive — it generates richer prose but the structured argumentation trace is already the primary artifact.
+
+**Why Dung grounded semantics?** Grounded semantics always yields a unique extension (no ambiguity) and is the most skeptically conservative — it only accepts arguments that are clearly undefeated. This maps well to the safety-oriented domain of route recommendation.
+
+**Why Bloomington, Indiana?** Concrete, testable, and locally relevant. The 20 landmarks cover campus, downtown, residential areas, parks, and commercial zones — enough geographic variety to generate meaningfully different routes.
+
+**Why separate `kb_params.json` from code?** Separating parameters from logic enables the KB refinement loop to update values without code changes, enables reproducibility (version-tracked), and makes the knowledge acquisition process transparent and inspectable.

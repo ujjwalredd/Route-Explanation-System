@@ -1,4 +1,5 @@
 import os
+import json
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -8,6 +9,13 @@ from fastapi.responses import StreamingResponse
 from router import get_nearest_nodes, generate_candidate_routes, load_or_fetch_graph
 from cbr import load_cases, get_preference_summary, retrieve_similar_cases, store_case
 from explainer import explain_route, stream_llm_explanation
+
+try:
+    from argumentation import build_argumentation_framework, generate_argument_explanation
+    from kb_refinement import analyze_and_refine
+    _ARG_AVAILABLE = True
+except ImportError:
+    _ARG_AVAILABLE = False
 
 app = FastAPI(title="Route AI API")
 
@@ -64,6 +72,13 @@ class ExplainRequest(BaseModel):
     chosen_route: dict
     all_routes: list
     use_llm: bool = False
+
+class ArgueRequest(BaseModel):
+    chosen_route: dict
+    all_routes: list
+
+class KBRefineRequest(BaseModel):
+    dry_run: bool = True
 
 @app.get("/api/landmarks")
 def get_landmarks():
@@ -123,6 +138,115 @@ def get_explanation(req: ExplainRequest):
 def submit_feedback(req: FeedbackRequest):
     new_case = store_case(req.origin_name, req.dest_name, req.chosen_route, req.feedback_score)
     return {"status": "success", "case": new_case}
+
+# ---------------------------------------------------------------------------
+# Argumentation endpoints (research / debug layer)
+# ---------------------------------------------------------------------------
+
+@app.post("/api/argue")
+def argue_routes(req: ArgueRequest):
+    """
+    Build and evaluate an Argumentation Framework for the given routes.
+
+    Returns the full argument trace (accepted/rejected/undecided arguments,
+    attack relations, grounded extension) plus a natural-language explanation
+    derived from that trace.
+
+    This endpoint exposes the argumentation reasoning layer for research
+    inspection, evaluation studies, and the professor demo.
+    """
+    if not _ARG_AVAILABLE:
+        raise HTTPException(status_code=503, detail="Argumentation module not available.")
+
+    # Retrieve CBR cases for every route
+    pref_map = {"Fastest Route": "fast", "Easiest Route": "low_stress", "Balanced Route": "balanced"}
+    cbr_per_route = {}
+    for route in req.all_routes:
+        profile = route.get("profile", {})
+        stats = route.get("stats", {})
+        pref = pref_map.get(route["name"], "balanced")
+        cbr_per_route[route["name"]] = retrieve_similar_cases(
+            {**profile,
+             "travel_time_min": stats.get("travel_time_min", 0),
+             "distance_km": stats.get("distance_km", 0)},
+            target_preference=pref,
+            top_k=3,
+        )
+
+    af = build_argumentation_framework(req.all_routes, cbr_per_route)
+    af.compute_grounded_extension()
+    pref_summary = get_preference_summary()
+    explanation = generate_argument_explanation(
+        af, req.chosen_route, req.all_routes, pref_summary=pref_summary
+    )
+    recommended = af.recommend()
+
+    return {
+        "argumentation_framework": af.to_dict(),
+        "explanation": explanation,
+        "chosen_route_name": req.chosen_route.get("name"),
+        "recommended_by_af": recommended,
+        "af_agrees_with_chosen": recommended == req.chosen_route.get("name"),
+    }
+
+
+@app.get("/api/kb/params")
+def get_kb_params():
+    """Return current knowledge base parameters from kb_params.json."""
+    params_path = os.path.join("data", "kb_params.json")
+    if not os.path.exists(params_path):
+        return {"status": "using_defaults", "params": None}
+    with open(params_path) as f:
+        return {"status": "loaded", "params": json.load(f)}
+
+
+@app.post("/api/kb/refine")
+def refine_kb(req: KBRefineRequest):
+    """
+    Analyse accumulated CBR cases and detect KB parameter miscalibration.
+
+    dry_run=true  (default): returns signals without modifying kb_params.json.
+    dry_run=false           : applies changes and increments KB version.
+
+    After a non-dry-run refinement, the in-memory KB is also reloaded so
+    the router and argument generator use updated values immediately.
+    """
+    if not _ARG_AVAILABLE:
+        raise HTTPException(status_code=503, detail="KB refinement module not available.")
+
+    result = analyze_and_refine(dry_run=req.dry_run)
+
+    # Reload in-memory KB if changes were applied
+    if result.applied:
+        try:
+            from knowledge_base import reload_kb_params
+            reload_kb_params()
+            from argumentation.generator import reload_params
+            reload_params()
+        except Exception:
+            pass  # non-critical — server restart also works
+
+    return {
+        "status": result.summary,
+        "dry_run": result.dry_run,
+        "applied": result.applied,
+        "cases_analyzed": result.cases_analyzed,
+        "kb_version_before": result.kb_version_before,
+        "kb_version_after": result.kb_version_after,
+        "signals": [
+            {
+                "parameter": s.parameter_path,
+                "current": s.current_value,
+                "proposed": s.proposed_value,
+                "confidence": s.confidence,
+                "direction": s.direction,
+                "evidence_count": s.evidence_count,
+                "rationale": s.rationale,
+            }
+            for s in result.signals
+        ],
+    }
+
 
 if __name__ == "__main__":
     import uvicorn

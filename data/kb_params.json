@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "last_refined": null,
+  "road_stress_scores": {
+    "motorway": 5.0,
+    "trunk": 4.5,
+    "primary": 3.5,
+    "secondary": 2.5,
+    "tertiary": 2.0,
+    "unclassified": 1.8,
+    "residential": 1.2,
+    "living_street": 0.8,
+    "service": 1.0,
+    "road": 2.0
+  },
+  "speed_modifiers": {
+    "high_speed_threshold_mph": 55,
+    "medium_speed_threshold_mph": 40,
+    "low_speed_threshold_mph": 25,
+    "high_speed_penalty": 0.6,
+    "medium_speed_penalty": 0.3,
+    "low_speed_bonus": -0.2
+  },
+  "lane_modifiers": {
+    "four_plus_lanes_penalty": 0.4,
+    "three_lanes_penalty": 0.2
+  },
+  "turn_difficulty_rules": [
+    {"min_angle": 0,   "max_angle": 15,  "label": "straight ahead",       "base_score": 0.0},
+    {"min_angle": 15,  "max_angle": 45,  "label": "gentle curve",          "base_score": 0.3},
+    {"min_angle": 45,  "max_angle": 90,  "label": "moderate turn",         "base_score": 1.0},
+    {"min_angle": 90,  "max_angle": 135, "label": "sharp turn",            "base_score": 2.0},
+    {"min_angle": 135, "max_angle": 180, "label": "very sharp / U-turn",   "base_score": 3.0}
+  ],
+  "turn_penalties": {
+    "no_signal_penalty": 0.5,
+    "left_turn_penalty": 0.3,
+    "multilane_threshold": 3,
+    "multilane_penalty": 0.3,
+    "penalty_applies_above_base_score": 1.0,
+    "max_turn_score": 3.0
+  },
+  "argument_thresholds": {
+    "stress_pro_ceiling": 2.0,
+    "turns_pro_max_difficult": 0,
+    "time_pro_min_gap": 0.15,
+    "cbr_pro_min_similarity": 0.55,
+    "cbr_pro_min_feedback": 4,
+    "cross_route_attack_gap": 0.20
+  },
+  "attack_weights": {
+    "cross_route_time": 1.0,
+    "cross_route_stress": 0.90,
+    "cross_route_turns": 0.85,
+    "self_stress_to_time": 0.75,
+    "self_turns_to_time": 0.65,
+    "cbr_con_to_pros": 0.60,
+    "cbr_pro_defends_cons": 0.55,
+    "cbr_pro_attacks_opponent_time": 0.70
+  },
+  "refinement": {
+    "min_cases_to_trigger": 5,
+    "learning_rate": 0.05,
+    "max_stress_adjustment": 0.40,
+    "max_turn_adjustment": 0.20,
+    "divergence_threshold": 0.40,
+    "recency_window_days": 90
+  }
+}
