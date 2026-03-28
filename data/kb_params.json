@@ -1,6 +1,14 @@
 {
   "version": 1,
   "last_refined": null,
+  "traffic_blend_weight": 0.3,
+  "time_of_day_modifiers": {
+    "morning_peak_hours": [7, 9],
+    "evening_peak_hours": [16, 19],
+    "morning_peak_multiplier": 1.4,
+    "evening_peak_multiplier": 1.5,
+    "off_peak_multiplier": 1.0
+  },
   "road_stress_scores": {
     "motorway": 5.0,
     "trunk": 4.5,

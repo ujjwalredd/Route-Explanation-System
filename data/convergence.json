@@ -1,0 +1,365 @@
+{
+  "rounds": 60,
+  "snapshots": [
+    {
+      "round": 1,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.3,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 2,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.3,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 3,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.3,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 4,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.3,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 5,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.3,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 6,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.3,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 7,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.3,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 8,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.3,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 9,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.3,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 10,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.3,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 11,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.328,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 12,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.328,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 13,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.328,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 14,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.328,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 15,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.328,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 16,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.358,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 17,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.358,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 18,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.358,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 19,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.358,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 20,
+      "stress_pro_ceiling": 2.0,
+      "left_turn_penalty": 0.358,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 21,
+      "stress_pro_ceiling": 1.992,
+      "left_turn_penalty": 0.394,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 22,
+      "stress_pro_ceiling": 1.992,
+      "left_turn_penalty": 0.394,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 23,
+      "stress_pro_ceiling": 1.992,
+      "left_turn_penalty": 0.394,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 24,
+      "stress_pro_ceiling": 1.992,
+      "left_turn_penalty": 0.394,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 25,
+      "stress_pro_ceiling": 1.992,
+      "left_turn_penalty": 0.394,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 26,
+      "stress_pro_ceiling": 1.978,
+      "left_turn_penalty": 0.428,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 27,
+      "stress_pro_ceiling": 1.978,
+      "left_turn_penalty": 0.428,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 28,
+      "stress_pro_ceiling": 1.978,
+      "left_turn_penalty": 0.428,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 29,
+      "stress_pro_ceiling": 1.978,
+      "left_turn_penalty": 0.428,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 30,
+      "stress_pro_ceiling": 1.978,
+      "left_turn_penalty": 0.428,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 31,
+      "stress_pro_ceiling": 1.959,
+      "left_turn_penalty": 0.472,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 32,
+      "stress_pro_ceiling": 1.959,
+      "left_turn_penalty": 0.472,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 33,
+      "stress_pro_ceiling": 1.959,
+      "left_turn_penalty": 0.472,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 34,
+      "stress_pro_ceiling": 1.959,
+      "left_turn_penalty": 0.472,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 35,
+      "stress_pro_ceiling": 1.959,
+      "left_turn_penalty": 0.472,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 36,
+      "stress_pro_ceiling": 1.945,
+      "left_turn_penalty": 0.515,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 37,
+      "stress_pro_ceiling": 1.945,
+      "left_turn_penalty": 0.515,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 38,
+      "stress_pro_ceiling": 1.945,
+      "left_turn_penalty": 0.515,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 39,
+      "stress_pro_ceiling": 1.945,
+      "left_turn_penalty": 0.515,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 40,
+      "stress_pro_ceiling": 1.945,
+      "left_turn_penalty": 0.515,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 41,
+      "stress_pro_ceiling": 1.935,
+      "left_turn_penalty": 0.552,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 42,
+      "stress_pro_ceiling": 1.935,
+      "left_turn_penalty": 0.552,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 43,
+      "stress_pro_ceiling": 1.935,
+      "left_turn_penalty": 0.552,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 44,
+      "stress_pro_ceiling": 1.935,
+      "left_turn_penalty": 0.552,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 45,
+      "stress_pro_ceiling": 1.935,
+      "left_turn_penalty": 0.552,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 46,
+      "stress_pro_ceiling": 1.926,
+      "left_turn_penalty": 0.592,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 47,
+      "stress_pro_ceiling": 1.926,
+      "left_turn_penalty": 0.592,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 48,
+      "stress_pro_ceiling": 1.926,
+      "left_turn_penalty": 0.592,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 49,
+      "stress_pro_ceiling": 1.926,
+      "left_turn_penalty": 0.592,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 50,
+      "stress_pro_ceiling": 1.926,
+      "left_turn_penalty": 0.592,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 51,
+      "stress_pro_ceiling": 1.917,
+      "left_turn_penalty": 0.625,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 52,
+      "stress_pro_ceiling": 1.917,
+      "left_turn_penalty": 0.625,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 53,
+      "stress_pro_ceiling": 1.917,
+      "left_turn_penalty": 0.625,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 54,
+      "stress_pro_ceiling": 1.917,
+      "left_turn_penalty": 0.625,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 55,
+      "stress_pro_ceiling": 1.917,
+      "left_turn_penalty": 0.625,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 56,
+      "stress_pro_ceiling": 1.909,
+      "left_turn_penalty": 0.666,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 57,
+      "stress_pro_ceiling": 1.909,
+      "left_turn_penalty": 0.666,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 58,
+      "stress_pro_ceiling": 1.909,
+      "left_turn_penalty": 0.666,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 59,
+      "stress_pro_ceiling": 1.909,
+      "left_turn_penalty": 0.666,
+      "self_stress_to_time": 0.75
+    },
+    {
+      "round": 60,
+      "stress_pro_ceiling": 1.909,
+      "left_turn_penalty": 0.666,
+      "self_stress_to_time": 0.75
+    }
+  ]
+}

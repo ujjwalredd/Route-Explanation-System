@@ -68,10 +68,10 @@ def get_nearest_nodes(G, origin_latlon, dest_latlon):
     return o, d
 
 
-def _edge_cost(G, u, v, data, weights):
+def _edge_cost(G, u, v, data, weights, hour=None):
     travel_time = data.get("travel_time", data.get("length", 100) / 8.0)
     length = data.get("length", 50)
-    scores = score_edge(data)
+    scores = score_edge(data, node_id=u, hour=hour)
     road_stress = scores["road_stress"]
 
     in_bearing = data.get("bearing", 0) or 0
@@ -100,9 +100,29 @@ def _edge_cost(G, u, v, data, weights):
     return max(cost, 1e-6)
 
 
-def _find_path(G, orig, dest, weights):
+def _find_path(G, orig, dest, weights, hour=None):
     def wfn(u, v, data):
-        return _edge_cost(G, u, v, data, weights)
+        return _edge_cost(G, u, v, data, weights, hour=hour)
+    try:
+        return nx.shortest_path(G, orig, dest, weight=wfn)
+    except (nx.NetworkXNoPath, nx.NodeNotFound):
+        return None
+
+
+def _find_diverse_path(G, orig, dest, weights, existing_paths, hour=None):
+    """
+    Find a path that penalises edges already used in existing_paths.
+    Used when weight perturbation fails to produce a geometrically distinct route.
+    """
+    used_edges = set()
+    for path in existing_paths:
+        for u, v in zip(path, path[1:]):
+            used_edges.add((u, v))
+
+    def wfn(u, v, data):
+        penalty = 4.0 if (u, v) in used_edges else 1.0
+        return _edge_cost(G, u, v, data, weights, hour=hour) * penalty
+
     try:
         return nx.shortest_path(G, orig, dest, weight=wfn)
     except (nx.NetworkXNoPath, nx.NodeNotFound):
@@ -114,11 +134,11 @@ def _path_key(path):
     return tuple(path[::5] + [path[-1]])
 
 
-def _select_edge_data(G, u, v, weights):
+def _select_edge_data(G, u, v, weights, hour=None):
     # Pick the edge between u and v that the cost function would favor
     best = None
     for key, data in G[u][v].items():
-        cost = _edge_cost(G, u, v, data, weights)
+        cost = _edge_cost(G, u, v, data, weights, hour=hour)
         if best is None or cost < best[0]:
             best = (cost, key, data)
     if best is None:
@@ -127,19 +147,19 @@ def _select_edge_data(G, u, v, weights):
     return key, dict(data)
 
 
-def _extract_edges(G, path, weights):
+def _extract_edges(G, path, weights, hour=None):
     edges = []
     for i in range(len(path) - 1):
         u, v = path[i], path[i + 1]
-        selected = _select_edge_data(G, u, v, weights)
+        selected = _select_edge_data(G, u, v, weights, hour=hour)
         if selected is None:
             continue
         _, raw = selected
-        enriched = {**raw, **score_edge(raw)}
+        enriched = {**raw, **score_edge(raw, node_id=u, hour=hour)}
 
         if i > 0:
             prev_u = path[i - 1]
-            prev_selected = _select_edge_data(G, prev_u, u, weights)
+            prev_selected = _select_edge_data(G, prev_u, u, weights, hour=hour)
             prev_raw = prev_selected[1] if prev_selected else {}
             in_bearing = prev_raw.get("bearing", 0) or 0
             out_bearing = raw.get("bearing", 0) or 0
@@ -173,28 +193,36 @@ def _route_stats(edges):
     }
 
 
-def generate_candidate_routes(G, orig_node, dest_node):
+def generate_candidate_routes(G, orig_node, dest_node, hour=None):
     routes = []
     seen = set()
+    collected_paths = []  # track raw paths for diversity penalty
 
     for cfg in ROUTE_CONFIGS:
-        path = _find_path(G, orig_node, dest_node, cfg["weights"])
+        path = _find_path(G, orig_node, dest_node, cfg["weights"], hour=hour)
         if path is None:
             continue
 
         key = _path_key(path)
         if key in seen:
-            # Perturb weights to force a different path for variety
+            # Try weight perturbation first
             w2 = {k: v * (1.15 if k != "time" else 0.85) for k, v in cfg["weights"].items()}
-            path2 = _find_path(G, orig_node, dest_node, w2)
+            path2 = _find_path(G, orig_node, dest_node, w2, hour=hour)
             if path2 and _path_key(path2) not in seen:
                 path = path2
                 key = _path_key(path)
             else:
-                continue  # no unique path found — skip rather than duplicate
+                # Fallback: edge-penalty diversification
+                path3 = _find_diverse_path(G, orig_node, dest_node, cfg["weights"], collected_paths, hour=hour)
+                if path3 and _path_key(path3) not in seen:
+                    path = path3
+                    key = _path_key(path)
+                else:
+                    continue  # no unique path found — skip rather than duplicate
 
         seen.add(key)
-        edges = _extract_edges(G, path, cfg["weights"])
+        collected_paths.append(path)
+        edges = _extract_edges(G, path, cfg["weights"], hour=hour)
         coords = _get_coords(G, path)
         stats = _route_stats(edges)
         profile = summarize_route_profile(edges)

@@ -284,6 +284,129 @@ def _analyze_thresholds(cases: List[dict], params: dict,
 
 
 # ---------------------------------------------------------------------------
+# Analyser 4: attack weight calibration
+# ---------------------------------------------------------------------------
+
+def _analyze_attack_weights(cases: List[dict], params: dict,
+                            cfg: dict) -> List[MiscalibrationSignal]:
+    """
+    Detects whether attack_weights.self_stress_to_time and
+    attack_weights.self_turns_to_time are miscalibrated based on observed
+    user feedback patterns.
+
+    Signal 1 — self_stress_to_time:
+      If "fast" users accept high-stress routes (high feedback), the weight is
+      too aggressive and should decrease. If they reject them, it is too lenient
+      and should increase.
+
+    Signal 2 — self_turns_to_time:
+      If easy-turn routes are rated substantially higher than hard-turn routes,
+      the weight underestimates the impact of turns and should increase.
+    """
+    signals: List[MiscalibrationSignal] = []
+    attack_weights = params.get("attack_weights", {})
+    lr = cfg["learning_rate"]
+    div_thresh = cfg["divergence_threshold"]
+
+    # ------------------------------------------------------------------
+    # Signal 1: self_stress_to_time
+    # ------------------------------------------------------------------
+    current_stress_w = attack_weights.get("self_stress_to_time", 0.75)
+
+    high_stress_high_rated = [
+        c for c in cases
+        if c.get("profile", {}).get("avg_road_stress", 0) > 2.5
+        and c.get("feedback_score", 0) >= 4
+        and c.get("user_preference") == "fast"
+    ]
+    high_stress_low_rated = [
+        c for c in cases
+        if c.get("profile", {}).get("avg_road_stress", 0) > 2.5
+        and c.get("feedback_score", 5) <= 2
+        and c.get("user_preference") == "fast"
+    ]
+
+    total_stress = len(high_stress_high_rated) + len(high_stress_low_rated)
+    if total_stress >= 3:
+        ratio = len(high_stress_high_rated) / max(1, total_stress)
+
+        proposed_stress_w = current_stress_w  # default: no change
+        direction_stress = None
+
+        if ratio > 0.6 and current_stress_w > 0.4:
+            # Users accept high stress when going fast → weight too aggressive → decrease
+            proposed_stress_w = round(max(0.3, current_stress_w - lr * (ratio - 0.5)), 3)
+            direction_stress = "decrease"
+        elif ratio < 0.3 and current_stress_w < 0.9:
+            # Users reject high stress → weight too lenient → increase
+            proposed_stress_w = round(min(0.95, current_stress_w + lr * (0.5 - ratio)), 3)
+            direction_stress = "increase"
+
+        if proposed_stress_w != current_stress_w and direction_stress is not None:
+            confidence = round(min(1.0, abs(ratio - 0.5) * (total_stress / 10.0)), 2)
+            signals.append(MiscalibrationSignal(
+                parameter_path="attack_weights.self_stress_to_time",
+                current_value=current_stress_w,
+                proposed_value=proposed_stress_w,
+                confidence=confidence,
+                evidence_count=total_stress,
+                direction=direction_stress,
+                rationale=(
+                    f"{total_stress} 'fast'-preference cases with high road stress: "
+                    f"{len(high_stress_high_rated)} high-rated, {len(high_stress_low_rated)} low-rated "
+                    f"(acceptance ratio {round(ratio, 3)}). "
+                    f"Weight {direction_stress}d from {current_stress_w} → {proposed_stress_w}."
+                ),
+            ))
+
+    # ------------------------------------------------------------------
+    # Signal 2: self_turns_to_time
+    # ------------------------------------------------------------------
+    current_turns_w = attack_weights.get("self_turns_to_time", 0.65)
+
+    easy_turn_high_rated = [
+        c for c in cases
+        if c.get("profile", {}).get("difficult_turns", 0) == 0
+        and c.get("feedback_score", 0) >= 4
+    ]
+    hard_turn_high_rated = [
+        c for c in cases
+        if c.get("profile", {}).get("difficult_turns", 0) > 0
+        and c.get("feedback_score", 0) >= 4
+    ]
+
+    if len(easy_turn_high_rated) >= 3 and len(hard_turn_high_rated) >= 3:
+        easy_scores = [c.get("feedback_score", 3) for c in easy_turn_high_rated]
+        hard_scores = [c.get("feedback_score", 3) for c in hard_turn_high_rated]
+        easy_avg = sum(easy_scores) / len(easy_scores)
+        hard_avg = sum(hard_scores) / len(hard_scores)
+        gap = easy_avg - hard_avg
+
+        if gap > div_thresh:
+            proposed_turns_w = round(min(0.90, current_turns_w + lr * gap), 3)
+            if proposed_turns_w != current_turns_w:
+                evidence = len(easy_turn_high_rated) + len(hard_turn_high_rated)
+                confidence = round(min(1.0, gap / 2.0 * (evidence / 10.0)), 2)
+                signals.append(MiscalibrationSignal(
+                    parameter_path="attack_weights.self_turns_to_time",
+                    current_value=current_turns_w,
+                    proposed_value=proposed_turns_w,
+                    confidence=confidence,
+                    evidence_count=evidence,
+                    direction="increase",
+                    rationale=(
+                        f"Highly-rated easy-turn routes averaged {round(easy_avg, 2)}/5 vs. "
+                        f"{round(hard_avg, 2)}/5 for hard-turn routes "
+                        f"({len(easy_turn_high_rated)} vs. {len(hard_turn_high_rated)} cases). "
+                        f"Gap {round(gap, 3)} > threshold {div_thresh} → increase "
+                        f"self_turns_to_time from {current_turns_w} → {proposed_turns_w}."
+                    ),
+                ))
+
+    return signals
+
+
+# ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
 
@@ -309,6 +432,7 @@ def detect_miscalibration(cases: Optional[List[dict]] = None) -> List[Miscalibra
     signals += _analyze_stress(windowed, params, cfg)
     signals += _analyze_turns(windowed, params, cfg)
     signals += _analyze_thresholds(windowed, params, cfg)
+    signals += _analyze_attack_weights(windowed, params, cfg)
 
     # Dedup by parameter_path (keep highest confidence)
     seen: dict = {}

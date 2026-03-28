@@ -11,6 +11,158 @@ from .framework import ArgumentationFramework
 _DIM_LABELS = {"time": "Time", "stress": "Stress", "turns": "Turns", "cbr": "Experience"}
 
 
+# ---------------------------------------------------------------------------
+# Structured explainability helpers
+# ---------------------------------------------------------------------------
+
+def generate_verdict(af: ArgumentationFramework, chosen_route: dict, all_routes: List[dict]) -> str:
+    """
+    One-sentence bottom-line explanation of why the chosen route was recommended.
+    Derived purely from accepted pro-arguments in the grounded extension.
+    """
+    trace = af.trace()
+    rn = chosen_route["name"]
+
+    winning_pros = sorted(
+        [a for a in trace["accepted"] if a["route"] == rn and a["polarity"] == "pro"],
+        key=lambda x: -x["strength"],
+    )
+
+    if not winning_pros:
+        return f"{rn} was recommended based on the overall balance of route properties."
+
+    # Top 1–2 dimensions
+    top = winning_pros[:2]
+    parts = []
+    for a in top:
+        dim = _DIM_LABELS.get(a["dimension"], a["dimension"].title())
+        # Extract a short phrase from the claim
+        claim = a["claim"]
+        # Keep only text before first parenthesis or comma for brevity
+        short = claim.split("(")[0].split(",")[0].strip().rstrip(".")
+        parts.append(f"{dim.lower()}: {short}")
+
+    if len(parts) == 1:
+        return f"{rn} was recommended because {parts[0]}."
+    return f"{rn} was recommended because {parts[0]}, and {parts[1]}."
+
+
+def generate_counterfactual(af: ArgumentationFramework, chosen_route: dict, all_routes: List[dict]) -> str:
+    """
+    Identifies the closest competitor and what dimension change would flip the recommendation.
+    Returns a human-readable sentence.
+    """
+    trace = af.trace()
+    rn = chosen_route["name"]
+
+    # For each alternative, count its rejected pro-args (they almost made it)
+    alt_scores: dict = {}
+    for a in trace["rejected"]:
+        if a["route"] != rn and a["polarity"] == "pro":
+            alt_scores.setdefault(a["route"], {"strength": 0.0, "dims": []})
+            alt_scores[a["route"]]["strength"] += a.get("strength", 0.0)
+            alt_scores[a["route"]]["dims"].append(a.get("dimension", ""))
+
+    if not alt_scores:
+        return "No alternative routes were competitive enough to consider switching."
+
+    # Pick competitor with highest rejected strength
+    runner_up_name = max(alt_scores, key=lambda k: alt_scores[k]["strength"])
+    runner_up_info = alt_scores[runner_up_name]
+
+    # Most common dimension that was rejected for runner-up
+    dims = runner_up_info["dims"]
+    dominant_dim = max(set(dims), key=dims.count) if dims else "time"
+    dim_label = _DIM_LABELS.get(dominant_dim, dominant_dim.title())
+
+    # Compare actual stats for the specific dimension
+    chosen_stats = chosen_route.get("stats", {})
+    chosen_profile = chosen_route.get("profile", {})
+    runner_up_route = next((r for r in all_routes if r["name"] == runner_up_name), None)
+
+    suffix = ""
+    if runner_up_route:
+        r_stats = runner_up_route.get("stats", {})
+        r_profile = runner_up_route.get("profile", {})
+        if dominant_dim == "time":
+            diff = round(r_stats.get("travel_time_min", 0) - chosen_stats.get("travel_time_min", 0), 1)
+            if diff < 0:
+                suffix = f" ({abs(diff)} min faster)"
+        elif dominant_dim == "stress":
+            diff = round(r_profile.get("avg_road_stress", 0) - chosen_profile.get("avg_road_stress", 0), 2)
+            if diff < 0:
+                suffix = f" (lower road stress)"
+        elif dominant_dim == "turns":
+            diff = r_profile.get("difficult_turns", 0) - chosen_profile.get("difficult_turns", 0)
+            if diff < 0:
+                suffix = f" ({abs(diff)} fewer difficult turns)"
+
+    return (
+        f"If {dim_label.lower()} were weighted more heavily, "
+        f"{runner_up_name} would be preferred instead{suffix}."
+    )
+
+
+def compute_decisiveness(af: ArgumentationFramework, chosen_route: dict, all_routes: List[dict]) -> float:
+    """
+    Returns a [0, 1] score representing how decisive the recommendation is.
+    1.0 = chosen route has all accepted pros, no competition.
+    0.0 = tied with a competitor.
+    """
+    trace = af.trace()
+    rn = chosen_route["name"]
+
+    def route_strength(name: str) -> float:
+        return sum(
+            a.get("strength", 0.0)
+            for a in trace["accepted"]
+            if a["route"] == name and a["polarity"] == "pro"
+        )
+
+    chosen_strength = route_strength(rn)
+    alt_strengths = [route_strength(r["name"]) for r in all_routes if r["name"] != rn]
+
+    if not alt_strengths:
+        return 1.0
+
+    best_alt = max(alt_strengths)
+    total = chosen_strength + best_alt
+    if total == 0:
+        return 0.5
+
+    # Margin: how much larger chosen is relative to total
+    margin = (chosen_strength - best_alt) / total
+    return round(max(0.0, min(1.0, 0.5 + margin)), 3)
+
+
+def get_dimension_winners(all_routes: List[dict]) -> dict:
+    """
+    For each key dimension (time, stress, turns), return which route name wins (lowest value).
+    Used to render comparison chips in the frontend.
+    """
+    winners: dict = {}
+
+    # Time winner (lowest travel_time_min)
+    try:
+        winners["time"] = min(all_routes, key=lambda r: r.get("stats", {}).get("travel_time_min", float("inf")))["name"]
+    except Exception:
+        pass
+
+    # Stress winner (lowest avg_road_stress)
+    try:
+        winners["stress"] = min(all_routes, key=lambda r: r.get("profile", {}).get("avg_road_stress", float("inf")))["name"]
+    except Exception:
+        pass
+
+    # Turns winner (fewest difficult_turns)
+    try:
+        winners["turns"] = min(all_routes, key=lambda r: r.get("profile", {}).get("difficult_turns", float("inf")))["name"]
+    except Exception:
+        pass
+
+    return winners
+
+
 def generate_argument_explanation(
     af: ArgumentationFramework,
     chosen_route: dict,
@@ -162,3 +314,91 @@ Arguments from alternatives that were DEFEATED:
 
 Write a 3-4 sentence conversational explanation for why {rn} was recommended. \
 Reference the specific accepted arguments naturally. Do not use bullet points or headers — plain prose only."""
+
+
+# ---------------------------------------------------------------------------
+# Faithfulness checking
+# ---------------------------------------------------------------------------
+
+import json
+import os
+
+
+def _load_stress_ceiling() -> float:
+    """Load stress_pro_ceiling from kb_params.json; fall back to 2.0 if missing."""
+    kb_path = os.path.join(os.path.dirname(__file__), "..", "data", "kb_params.json")
+    try:
+        with open(kb_path, "r") as fh:
+            params = json.load(fh)
+        return float(params.get("stress_pro_ceiling", 2.0))
+    except Exception:
+        return 2.0
+
+
+def check_faithfulness(af: ArgumentationFramework, routes: list) -> dict:
+    """
+    Verify that each accepted pro-argument is faithful to actual route statistics.
+
+    Parameters
+    ----------
+    af     : computed ArgumentationFramework (af.trace() must be available)
+    routes : list of route dicts, each containing at least
+             route['name'], route['stats'], and route['profile']
+
+    Returns
+    -------
+    {
+        "score":         float,   # fraction of checked arguments that are faithful
+        "total_checked": int,
+        "violations":    int,
+        "details":       [{"arg_id": str, "dimension": str, "faithful": bool}, ...]
+    }
+    """
+    trace = af.trace()
+    route_by_name = {r["name"]: r for r in routes}
+
+    # Pre-compute minimum travel time across all routes
+    min_time = min(
+        r["stats"]["travel_time_min"] for r in routes if "stats" in r
+    ) if routes else 0.0
+
+    stress_ceiling = _load_stress_ceiling()
+
+    details: list = []
+
+    for arg in trace.get("accepted", []):
+        if arg.get("polarity") != "pro" or arg.get("status", "IN") != "IN":
+            continue
+
+        route = route_by_name.get(arg.get("route", ""))
+        if route is None:
+            continue
+
+        dim = arg.get("dimension", "")
+        stats = route.get("stats", {})
+        profile = route.get("profile", {})
+
+        if dim == "time":
+            faithful = stats.get("travel_time_min", float("inf")) <= min_time * 1.1
+        elif dim == "stress":
+            faithful = profile.get("avg_road_stress", float("inf")) <= stress_ceiling + 0.5
+        elif dim == "turns":
+            faithful = profile.get("difficult_turns", float("inf")) <= 1
+        elif dim == "cbr":
+            faithful = True
+        else:
+            # Unknown dimension — skip faithfulness check
+            continue
+
+        details.append({"arg_id": arg["id"], "dimension": dim, "faithful": faithful})
+
+    total_checked = len(details)
+    violations = sum(1 for d in details if not d["faithful"])
+    score = (total_checked - violations) / total_checked if total_checked > 0 else 1.0
+
+    return {
+        "score": score,
+        "total_checked": total_checked,
+        "violations": violations,
+        "details": details,
+    }

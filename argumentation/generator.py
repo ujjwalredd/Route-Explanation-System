@@ -100,6 +100,22 @@ def _cbr_strength(cases: List[Tuple[float, dict]], preferred_type: str,
 
 
 # ---------------------------------------------------------------------------
+# Segment-level helpers
+# ---------------------------------------------------------------------------
+
+def _worst_segment(edges: list, dimension: str) -> dict | None:
+    """Return the edge with the worst value on the given dimension."""
+    if not edges:
+        return None
+    if dimension == "stress":
+        return max(edges, key=lambda e: e.get("road_stress", 0))
+    if dimension == "turns":
+        candidates = [e for e in edges if e.get("turn_difficulty", 0) > 0]
+        return max(candidates, key=lambda e: e.get("turn_difficulty", 0)) if candidates else None
+    return None
+
+
+# ---------------------------------------------------------------------------
 # Argument factory
 # ---------------------------------------------------------------------------
 
@@ -127,6 +143,7 @@ def _make_arguments(
     dom_road = prof.get("dominant_road_type", "mixed")
     stress_label = prof.get("stress_label", "")
     turn_summary = prof.get("turn_summary", "")
+    edges = route.get("edges", [])
 
     all_times = [r["stats"]["travel_time_min"] for r in all_routes]
     max_diff = max(r["profile"].get("difficult_turns", 0) for r in all_routes)
@@ -168,52 +185,77 @@ def _make_arguments(
 
     # ---- STRESS ----
     ceiling = thresholds["stress_pro_ceiling"]
+    worst_stress_seg = _worst_segment(edges, "stress")
     if s <= ceiling:
+        stress_pro_claim = (
+            f"{rn} uses {stress_label} roads (avg stress {s:.1f}/5, "
+            f"dominated by {dom_road}) — within the safe ceiling of {ceiling}/5."
+        )
+        if (worst_stress_seg is not None
+                and worst_stress_seg.get("road_stress", 0) > s + 0.3):
+            stress_pro_claim += (
+                f" (peak: {worst_stress_seg['highway_type']}"
+                f" at {worst_stress_seg['road_stress']:.1f}/5)"
+            )
         args.append(Argument(
             id=f"{slug}:stress:pro",
             route=rn, dimension="stress", polarity="pro",
-            claim=(
-                f"{rn} uses {stress_label} roads (avg stress {s:.1f}/5, "
-                f"dominated by {dom_road}) — within the safe ceiling of {ceiling}/5."
-            ),
+            claim=stress_pro_claim,
             strength=max(0.15, s_str),
             evidence=[f"avg_stress={s}", f"dominant={dom_road}",
                       f"ceiling={ceiling}"],
         ))
     else:
+        stress_con_claim = (
+            f"{rn} uses {stress_label} roads (avg stress {s:.1f}/5, "
+            f"dominated by {dom_road}) — exceeds the safe ceiling of {ceiling}/5."
+        )
+        if (worst_stress_seg is not None
+                and worst_stress_seg.get("road_stress", 0) > s + 0.3):
+            stress_con_claim += (
+                f" (peak: {worst_stress_seg['highway_type']}"
+                f" at {worst_stress_seg['road_stress']:.1f}/5)"
+            )
         args.append(Argument(
             id=f"{slug}:stress:con",
             route=rn, dimension="stress", polarity="con",
-            claim=(
-                f"{rn} uses {stress_label} roads (avg stress {s:.1f}/5, "
-                f"dominated by {dom_road}) — exceeds the safe ceiling of {ceiling}/5."
-            ),
+            claim=stress_con_claim,
             strength=round(max(0.15, 1.0 - s_str), 3),
             evidence=[f"avg_stress={s}", f"ceiling={ceiling}"],
         ))
 
     # ---- TURNS ----
     max_turns_pro = thresholds["turns_pro_max_difficult"]
+    worst_turn_seg = _worst_segment(edges, "turns")
     if diff_turns <= max_turns_pro:
+        turns_pro_claim = (
+            f"{rn} requires no difficult turns — {turn_summary or 'clean navigation'}."
+        )
+        if edges and worst_turn_seg is None:
+            turns_pro_claim = turns_pro_claim.rstrip(".") + f"; {len(edges)} segments, all gentle."
         args.append(Argument(
             id=f"{slug}:turns:pro",
             route=rn, dimension="turns", polarity="pro",
-            claim=(
-                f"{rn} requires no difficult turns — {turn_summary or 'clean navigation'}."
-            ),
+            claim=turns_pro_claim,
             strength=max(0.3, tr_str),
             evidence=[f"difficult_turns={diff_turns}",
                       f"moderate_turns={mod_turns}"],
         ))
     else:
+        turns_con_claim = (
+            f"{rn} requires {diff_turns} difficult turn{'s' if diff_turns != 1 else ''}"
+            + (f" and {mod_turns} moderate" if mod_turns else "")
+            + f" — {turn_summary}."
+        )
+        if worst_turn_seg is not None:
+            turns_con_claim = turns_con_claim.rstrip(".") + (
+                f": worst is a {worst_turn_seg['turn_label']}"
+                f" (difficulty {worst_turn_seg['turn_difficulty']:.1f})."
+            )
         args.append(Argument(
             id=f"{slug}:turns:con",
             route=rn, dimension="turns", polarity="con",
-            claim=(
-                f"{rn} requires {diff_turns} difficult turn{'s' if diff_turns != 1 else ''}"
-                + (f" and {mod_turns} moderate" if mod_turns else "")
-                + f" — {turn_summary}."
-            ),
+            claim=turns_con_claim,
             strength=round(max(0.15, 1.0 - tr_str), 3),
             evidence=[f"difficult_turns={diff_turns}",
                       f"moderate_turns={mod_turns}"],

@@ -14,6 +14,42 @@ export interface ExplainRequest {
   chosen_route: any;
   all_routes: any[];
   use_llm: boolean;
+  mode?: string;
+}
+
+export interface ArgueData {
+  argumentation_framework: {
+    arguments: Array<{
+      id: string;
+      route: string;
+      dimension: string;
+      polarity: string;
+      strength: number;
+      claim: string;
+      status: string;
+    }>;
+    attacks: Array<{
+      attacker_id: string;
+      target_id: string;
+      kind: string;
+      weight: number;
+      succeeds: boolean;
+    }>;
+    grounded_extension: string[];
+    counts: { accepted: number; rejected: number; undecided: number; attacks_succeeded: number };
+  };
+  explanation: string;
+  verdict: string | null;
+  counterfactual: string | null;
+  decisiveness: number | null;
+  dimension_winners: Record<string, string>;
+  recommended_by_af: string;
+  af_agrees_with_chosen: boolean;
+  faithfulness: { score: number; total_checked: number; violations: number };
+  semantics_comparison: {
+    all_semantics_agree: boolean;
+    recommendations: Record<string, string>;
+  };
 }
 
 export interface Landmark {

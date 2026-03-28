@@ -12,7 +12,7 @@ and target — a stronger target can resist a weaker attacker.
 
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Set
 
 
 @dataclass
@@ -202,6 +202,235 @@ class ArgumentationFramework:
                 for atk in self.attacks
                 if atk.attacker_id in self.arguments and atk.target_id in self.arguments
             ],
+        }
+
+    # ------------------------------------------------------------------
+    # Preferred extensions (maximal admissible sets)
+    # ------------------------------------------------------------------
+
+    def _is_conflict_free(self, arg_ids: Set[str]) -> bool:
+        """Return True if no argument in arg_ids attacks another argument in arg_ids
+        with sufficient strength."""
+        for atk in self.attacks:
+            if atk.attacker_id in arg_ids and atk.target_id in arg_ids:
+                attacker = self.arguments[atk.attacker_id]
+                target = self.arguments[atk.target_id]
+                if attacker.strength * atk.weight > target.strength * 0.5:
+                    return False
+        return True
+
+    def _defends(self, s: Set[str], arg_id: str) -> bool:
+        """Return True if set s defends arg_id: for every attacker b of arg_id,
+        some c in s attacks b with sufficient strength."""
+        for atk in self.attacks:
+            if atk.target_id != arg_id:
+                continue
+            b_id = atk.attacker_id
+            b = self.arguments.get(b_id)
+            if b is None:
+                continue
+            # Check if any c in s counter-attacks b sufficiently
+            defended = False
+            for counter_atk in self.attacks:
+                if counter_atk.attacker_id in s and counter_atk.target_id == b_id:
+                    c = self.arguments[counter_atk.attacker_id]
+                    if c.strength * counter_atk.weight > b.strength * 0.5:
+                        defended = True
+                        break
+            if not defended:
+                return False
+        return True
+
+    def _is_admissible(self, arg_ids: Set[str]) -> bool:
+        """Return True if arg_ids is conflict-free and defends all its members."""
+        if not self._is_conflict_free(arg_ids):
+            return False
+        for a_id in arg_ids:
+            if not self._defends(arg_ids, a_id):
+                return False
+        return True
+
+    def compute_preferred_extensions(self) -> list:
+        """
+        Compute all maximal admissible sets (preferred extensions).
+
+        Uses exhaustive enumeration for AFs with ≤20 arguments.
+        Falls back to returning the grounded extension as a single-element list
+        for larger AFs.
+
+        Returns a list of sets, each set containing argument ids.
+        """
+        all_ids = list(self.arguments.keys())
+        n = len(all_ids)
+
+        if n > 20:
+            # Fall back to grounded extension
+            self.compute_grounded_extension()
+            grounded = frozenset(
+                aid for aid, a in self.arguments.items() if a.status == "IN"
+            )
+            return [grounded]
+
+        # Enumerate all 2^n subsets and collect admissible ones
+        admissible_sets: List[Set[str]] = []
+        for mask in range(1 << n):
+            subset: Set[str] = set()
+            for i in range(n):
+                if mask & (1 << i):
+                    subset.add(all_ids[i])
+            if self._is_admissible(subset):
+                admissible_sets.append(subset)
+
+        # Keep only maximal admissible sets (no proper superset is also admissible)
+        preferred: List[Set[str]] = []
+        for s in admissible_sets:
+            if not any(s < other for other in admissible_sets):
+                preferred.append(frozenset(s))
+
+        # Deduplicate
+        seen = set()
+        result = []
+        for s in preferred:
+            if s not in seen:
+                seen.add(s)
+                result.append(s)
+
+        return result if result else [frozenset()]
+
+    # ------------------------------------------------------------------
+    # Stable extensions
+    # ------------------------------------------------------------------
+
+    def compute_stable_extensions(self) -> list:
+        """
+        Compute all stable extensions.
+
+        S is stable if it is conflict-free AND every argument outside S is
+        attacked by some argument in S with sufficient strength.
+
+        Uses exhaustive enumeration for AFs with ≤20 arguments.
+        Returns an empty list for larger AFs.
+
+        Returns a list of frozensets of argument ids.
+        """
+        all_ids = list(self.arguments.keys())
+        n = len(all_ids)
+
+        if n > 20:
+            return []
+
+        stable: List[frozenset] = []
+        for mask in range(1 << n):
+            subset: Set[str] = set()
+            for i in range(n):
+                if mask & (1 << i):
+                    subset.add(all_ids[i])
+
+            if not self._is_conflict_free(subset):
+                continue
+
+            # Every argument outside S must be attacked from S with sufficient strength
+            outside = set(all_ids) - subset
+            all_attacked = True
+            for out_id in outside:
+                attacked = False
+                for atk in self.attacks:
+                    if atk.attacker_id in subset and atk.target_id == out_id:
+                        attacker = self.arguments[atk.attacker_id]
+                        target = self.arguments[out_id]
+                        if attacker.strength * atk.weight > target.strength * 0.5:
+                            attacked = True
+                            break
+                if not attacked:
+                    all_attacked = False
+                    break
+
+            if all_attacked:
+                stable.append(frozenset(subset))
+
+        return stable
+
+    # ------------------------------------------------------------------
+    # Compare semantics
+    # ------------------------------------------------------------------
+
+    def _rec_from_set(self, in_set: Set[str]) -> Optional[str]:
+        """Pick the route with the highest total pro-argument strength
+        from the given set of accepted argument ids."""
+        scores: Dict[str, float] = {}
+        for aid in in_set:
+            a = self.arguments.get(aid)
+            if a and a.polarity == "pro":
+                scores[a.route] = scores.get(a.route, 0.0) + a.strength
+        return max(scores, key=scores.get) if scores else None
+
+    def compare_semantics(self) -> dict:
+        """
+        Run grounded, preferred, and stable semantics and return a summary dict.
+
+        Returns:
+        {
+            "grounded": {"extension": [...], "recommendation": str|None},
+            "preferred": {"extensions": [[...], ...], "recommendations": [...], "count": int},
+            "stable":    {"extensions": [[...], ...], "recommendations": [...], "count": int},
+            "all_semantics_agree": bool,
+            "recommendations": {
+                "grounded": str|None,
+                "preferred": str|None,
+                "stable": str|None,
+            }
+        }
+        """
+        # Grounded
+        self.compute_grounded_extension()
+        grounded_set = frozenset(
+            aid for aid, a in self.arguments.items() if a.status == "IN"
+        )
+        grounded_rec = self._rec_from_set(grounded_set)
+
+        # Preferred
+        preferred_exts = self.compute_preferred_extensions()
+        preferred_recs = [self._rec_from_set(ext) for ext in preferred_exts]
+        preferred_rec = preferred_recs[0] if preferred_recs else None
+        # Consensus preferred recommendation (all agree)
+        if preferred_recs and len(set(preferred_recs)) == 1:
+            preferred_rec = preferred_recs[0]
+        else:
+            preferred_rec = None
+
+        # Stable
+        stable_exts = self.compute_stable_extensions()
+        stable_recs = [self._rec_from_set(ext) for ext in stable_exts]
+        stable_rec = stable_recs[0] if stable_recs else None
+        if stable_recs and len(set(stable_recs)) == 1:
+            stable_rec = stable_recs[0]
+        else:
+            stable_rec = None if not stable_recs else stable_recs[0]
+
+        all_recs = {grounded_rec, preferred_rec, stable_rec}
+        all_semantics_agree = len(all_recs) == 1
+
+        return {
+            "grounded": {
+                "extension": sorted(grounded_set),
+                "recommendation": grounded_rec,
+            },
+            "preferred": {
+                "extensions": [sorted(ext) for ext in preferred_exts],
+                "recommendations": preferred_recs,
+                "count": len(preferred_exts),
+            },
+            "stable": {
+                "extensions": [sorted(ext) for ext in stable_exts],
+                "recommendations": stable_recs,
+                "count": len(stable_exts),
+            },
+            "all_semantics_agree": all_semantics_agree,
+            "recommendations": {
+                "grounded": grounded_rec,
+                "preferred": preferred_rec,
+                "stable": stable_rec,
+            },
         }
 
     def to_dict(self) -> dict:

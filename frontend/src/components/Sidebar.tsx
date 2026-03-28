@@ -12,10 +12,12 @@ interface SidebarProps {
   onSearch: () => void;
   isLoading: boolean;
   summary: any;
+  departureHour: string;
+  setDepartureHour: (val: string) => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  landmarks, originName, destName, setOriginName, setDestName, onSearch, isLoading, summary
+  landmarks, originName, destName, setOriginName, setDestName, onSearch, isLoading, summary, departureHour, setDepartureHour
 }) => {
   const SidebarContent = (
     <>
@@ -54,6 +56,22 @@ export const Sidebar: React.FC<SidebarProps> = ({
               {landmarks.map(l => (
                 <option key={l.name} value={l.name} className="font-medium text-slate-700 pb-2">{l.name}</option>
               ))}
+            </select>
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-widest px-1">
+              Departure time (optional)
+            </label>
+            <select
+              className="w-full px-4 py-3 bg-slate-50 border-2 border-slate-100 rounded-2xl appearance-none focus:outline-none focus:border-indigo-400 focus:bg-white transition-all font-semibold text-slate-700 cursor-pointer shadow-sm hover:border-slate-300 text-sm"
+              value={departureHour}
+              onChange={e => setDepartureHour(e.target.value)}
+            >
+              <option value="">Any time</option>
+              <option value="8">Morning peak (7–9 am)</option>
+              <option value="17">Evening peak (4–7 pm)</option>
+              <option value="12">Off-peak</option>
             </select>
           </div>
 

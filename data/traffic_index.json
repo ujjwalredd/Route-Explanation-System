@@ -1,0 +1,5539 @@
+{
+  "180609607": {
+    "traffic_index": 0.7223,
+    "aadt": 1008,
+    "crossroad": "West of Smith",
+    "loc_id": "v453",
+    "year": 2024
+  },
+  "180593736": {
+    "traffic_index": 0.6412,
+    "aadt": 463,
+    "crossroad": "From N. Glenwood Ave. to N. Lexington Dr.",
+    "loc_id": "u464",
+    "year": 2024
+  },
+  "180587695": {
+    "traffic_index": 0.5846,
+    "aadt": 269,
+    "crossroad": "From N. Concord Rd. to N. Glenwood Ave. E.",
+    "loc_id": "u4546",
+    "year": 2024
+  },
+  "180629066": {
+    "traffic_index": 0.5956,
+    "aadt": 299,
+    "crossroad": "North of Morningside Dr.",
+    "loc_id": "u4545",
+    "year": 2024
+  },
+  "4704741932": {
+    "traffic_index": 0.5815,
+    "aadt": 261,
+    "crossroad": "From N. Concord Rd. to N. Glenwood Ave.",
+    "loc_id": "u4541",
+    "year": 2010
+  },
+  "1710829644": {
+    "traffic_index": 0.6731,
+    "aadt": 629,
+    "crossroad": "From S. Kingston Dr. to N. Glenwood Ave. W.",
+    "loc_id": "u4531",
+    "year": 2024
+  },
+  "180595524": {
+    "traffic_index": 0.8152,
+    "aadt": 2454,
+    "crossroad": "South of Lonview Dr.",
+    "loc_id": "u4530",
+    "year": 2024
+  },
+  "180589650": {
+    "traffic_index": 0.5921,
+    "aadt": 289,
+    "crossroad": "MCMILLAN AND heath",
+    "loc_id": "u4122",
+    "year": 2024
+  },
+  "8046316524": {
+    "traffic_index": 0.8959,
+    "aadt": 5317,
+    "crossroad": "STATE ROAD 45 46 BYPASS AND 10TH",
+    "loc_id": "t4630",
+    "year": 2024
+  },
+  "180626471": {
+    "traffic_index": 0.5647,
+    "aadt": 222,
+    "crossroad": "North of 3rd St.",
+    "loc_id": "t455",
+    "year": 2024
+  },
+  "180595521": {
+    "traffic_index": 0.8393,
+    "aadt": 3092,
+    "crossroad": "West of Kingston",
+    "loc_id": "t4530",
+    "year": 2024
+  },
+  "180609372": {
+    "traffic_index": 0.7306,
+    "aadt": 1091,
+    "crossroad": "South of 5th St.",
+    "loc_id": "t452",
+    "year": 2024
+  },
+  "180601461": {
+    "traffic_index": 0.6996,
+    "aadt": 811,
+    "crossroad": "From S. Churchill Ct. to S. Atlee Ct.",
+    "loc_id": "t429",
+    "year": 2024
+  },
+  "180593541": {
+    "traffic_index": 0.9609,
+    "aadt": 9911,
+    "crossroad": "Bet. S. Swain Ave. and S. Mitchell St.",
+    "loc_id": "r4532",
+    "year": 2013
+  },
+  "180607329": {
+    "traffic_index": 0.898,
+    "aadt": 5427,
+    "crossroad": "W. of Rose",
+    "loc_id": "s4543",
+    "year": 2010
+  },
+  "180585147": {
+    "traffic_index": 0.6298,
+    "aadt": 415,
+    "crossroad": "Bet. E. Thornton Rd. and E. Arden Dr.",
+    "loc_id": "s4238",
+    "year": 2024
+  },
+  "180585215": {
+    "traffic_index": 0.5613,
+    "aadt": 215,
+    "crossroad": "Bet. S. Wilton Dr. and S. Windsor Dr.",
+    "loc_id": "s4212",
+    "year": 2024
+  },
+  "180608242": {
+    "traffic_index": 0.5953,
+    "aadt": 298,
+    "crossroad": "Bet. S. Oxford Dr. and S. Wilton Dr.",
+    "loc_id": "s4211",
+    "year": 2024
+  },
+  "821102247": {
+    "traffic_index": 0.5564,
+    "aadt": 205,
+    "crossroad": "North of Pine Meadows Dr.",
+    "loc_id": "rcl283",
+    "year": 2024
+  },
+  "180588726": {
+    "traffic_index": 0.7678,
+    "aadt": 1559,
+    "crossroad": "From S. Zona Ct. to S. Cutter Ct.",
+    "loc_id": "rcl271",
+    "year": 2019
+  },
+  "180588716": {
+    "traffic_index": 0.8001,
+    "aadt": 2125,
+    "crossroad": "Rockport AND BOULDER",
+    "loc_id": "rcl256",
+    "year": 2024
+  },
+  "1718099803": {
+    "traffic_index": 0.7575,
+    "aadt": 1412,
+    "crossroad": "From W. Adams Hill Cir. To S. Star View Ln.",
+    "loc_id": "rcl1579",
+    "year": 2024
+  },
+  "1663914207": {
+    "traffic_index": 0.804,
+    "aadt": 2205,
+    "crossroad": "ridgemont AND THORNTON",
+    "loc_id": "r4237",
+    "year": 2024
+  },
+  "1188760555": {
+    "traffic_index": 0.7257,
+    "aadt": 1041,
+    "crossroad": "From S. Sunflower Dr. to W. Adams Hill Cir.",
+    "loc_id": "rcl1104",
+    "year": 2024
+  },
+  "180575524": {
+    "traffic_index": 0.9622,
+    "aadt": 10032,
+    "crossroad": "Bet. Faculty and Hawthorne",
+    "loc_id": "r4560",
+    "year": 2024
+  },
+  "1107935039": {
+    "traffic_index": 0.5107,
+    "aadt": 132,
+    "crossroad": "From E. Thornton Dr. to E. Thornton Dr.",
+    "loc_id": "r4246",
+    "year": 2024
+  },
+  "180585166": {
+    "traffic_index": 0.5233,
+    "aadt": 149,
+    "crossroad": "From E. Miller Dr. to E. Thornton Dr.",
+    "loc_id": "r4248",
+    "year": 2008
+  },
+  "180615223": {
+    "traffic_index": 0.9814,
+    "aadt": 12056,
+    "crossroad": "From S. Olive St. to S. Highland Ave.",
+    "loc_id": "r4211",
+    "year": 2024
+  },
+  "180591142": {
+    "traffic_index": 0.9809,
+    "aadt": 12008,
+    "crossroad": "East of Carlisle",
+    "loc_id": "r4210",
+    "year": 2024
+  },
+  "1913172983": {
+    "traffic_index": 0.7279,
+    "aadt": 1064,
+    "crossroad": "Bet. E. Kenwood Pl. and E. Lakewood Dr.",
+    "loc_id": "q5119",
+    "year": 2024
+  },
+  "180595866": {
+    "traffic_index": 0.7473,
+    "aadt": 1281,
+    "crossroad": "Bet. E. Clover Ln. and E. Kenwood Pl.",
+    "loc_id": "q5116",
+    "year": 2024
+  },
+  "180595862": {
+    "traffic_index": 0.5375,
+    "aadt": 171,
+    "crossroad": "RAMBLE AND dunn",
+    "loc_id": "q5113",
+    "year": 2024
+  },
+  "877329979": {
+    "traffic_index": 0.8516,
+    "aadt": 3481,
+    "crossroad": "From E. 9th St. to E. 10th St.",
+    "loc_id": "q4645",
+    "year": 2024
+  },
+  "180629323": {
+    "traffic_index": 0.609,
+    "aadt": 340,
+    "crossroad": "WALNUT AND college",
+    "loc_id": "q4596",
+    "year": 2024
+  },
+  "10605070695": {
+    "traffic_index": 0.8704,
+    "aadt": 4164,
+    "crossroad": "4th AND 3rd",
+    "loc_id": "q4520",
+    "year": 2024
+  },
+  "11335185909": {
+    "traffic_index": 0.8501,
+    "aadt": 3429,
+    "crossroad": "walnut AND WASHINGTON",
+    "loc_id": "q4578",
+    "year": 2024
+  },
+  "180606997": {
+    "traffic_index": 0.8376,
+    "aadt": 3042,
+    "crossroad": "From S. Grant St. to N. Dunn St.",
+    "loc_id": "q4575",
+    "year": 2024
+  },
+  "1251299839": {
+    "traffic_index": 0.9222,
+    "aadt": 6843,
+    "crossroad": "S. of 6th St.",
+    "loc_id": "q4522",
+    "year": 2013
+  },
+  "180624757": {
+    "traffic_index": 0.901,
+    "aadt": 5586,
+    "crossroad": "6th AND 7TH",
+    "loc_id": "q4523",
+    "year": 2024
+  },
+  "3386005693": {
+    "traffic_index": 0.8997,
+    "aadt": 5518,
+    "crossroad": "Bet. E. Burks Dr. and E. Allendale Dr.",
+    "loc_id": "q387",
+    "year": 2024
+  },
+  "7396813222": {
+    "traffic_index": 0.7091,
+    "aadt": 888,
+    "crossroad": "S. of W. Gourley Pike",
+    "loc_id": "q4836",
+    "year": 2007
+  },
+  "180638571": {
+    "traffic_index": 0.9387,
+    "aadt": 8012,
+    "crossroad": "South of Gourley Pike",
+    "loc_id": "p4920",
+    "year": 2024
+  },
+  "12165047889": {
+    "traffic_index": 0.8134,
+    "aadt": 2413,
+    "crossroad": "West of Kinser Pike",
+    "loc_id": "p492",
+    "year": 2024
+  },
+  "180590715": {
+    "traffic_index": 0.9516,
+    "aadt": 9063,
+    "crossroad": "North of Gourley Pike",
+    "loc_id": "p4919",
+    "year": 2024
+  },
+  "3801494118": {
+    "traffic_index": 0.9668,
+    "aadt": 10486,
+    "crossroad": "From N. Monroe St. to N. Willis Dr.",
+    "loc_id": "p489",
+    "year": 2024
+  },
+  "180589001": {
+    "traffic_index": 0.8788,
+    "aadt": 4515,
+    "crossroad": "MAPLE AND BLAIR",
+    "loc_id": "p479",
+    "year": 2024
+  },
+  "180589004": {
+    "traffic_index": 0.8593,
+    "aadt": 3747,
+    "crossroad": "Bet. Orris Dr. and Blair Ave.",
+    "loc_id": "p477",
+    "year": 2024
+  },
+  "180598133": {
+    "traffic_index": 0.6741,
+    "aadt": 635,
+    "crossroad": "",
+    "loc_id": "p4666",
+    "year": 2024
+  },
+  "902197955": {
+    "traffic_index": 0.7218,
+    "aadt": 1003,
+    "crossroad": "Hedge Apple AND Acuff",
+    "loc_id": "o504",
+    "year": 2024
+  },
+  "180622299": {
+    "traffic_index": 0.7134,
+    "aadt": 926,
+    "crossroad": "",
+    "loc_id": "v457",
+    "year": 2023
+  },
+  "180640952": {
+    "traffic_index": 0.7845,
+    "aadt": 1829,
+    "crossroad": "East of Saratoga",
+    "loc_id": "v456",
+    "year": 2023
+  },
+  "1657113480": {
+    "traffic_index": 0.95,
+    "aadt": 8928,
+    "crossroad": "Bet. Grandview and Morningside",
+    "loc_id": "v4526",
+    "year": 2006
+  },
+  "180622302": {
+    "traffic_index": 0.5293,
+    "aadt": 158,
+    "crossroad": "",
+    "loc_id": "v4525",
+    "year": 2023
+  },
+  "180621832": {
+    "traffic_index": 0.8893,
+    "aadt": 4993,
+    "crossroad": "South of 10th St.",
+    "loc_id": "s4622",
+    "year": 2023
+  },
+  "180617275": {
+    "traffic_index": 0.96,
+    "aadt": 9827,
+    "crossroad": "Jefferson to Hilltop",
+    "loc_id": "s4617",
+    "year": 2023
+  },
+  "180610213": {
+    "traffic_index": 0.9431,
+    "aadt": 8357,
+    "crossroad": "From N. Sunrise Dr. to N. Union St.",
+    "loc_id": "s4615",
+    "year": 2023
+  },
+  "180608728": {
+    "traffic_index": 0.8716,
+    "aadt": 4214,
+    "crossroad": "South of 7th St.",
+    "loc_id": "s4523",
+    "year": 2023
+  },
+  "180608732": {
+    "traffic_index": 0.8562,
+    "aadt": 3637,
+    "crossroad": "From E. 4th St. to E. 5th St.",
+    "loc_id": "s4522",
+    "year": 2023
+  },
+  "180623753": {
+    "traffic_index": 0.9022,
+    "aadt": 5647,
+    "crossroad": "South of 1st St.",
+    "loc_id": "s4421",
+    "year": 2023
+  },
+  "180605818": {
+    "traffic_index": 0.5766,
+    "aadt": 249,
+    "crossroad": "CLIFTON AND high",
+    "loc_id": "s4445",
+    "year": 2023
+  },
+  "180614009": {
+    "traffic_index": 0.9028,
+    "aadt": 5684,
+    "crossroad": "Bet. 1st St. and 2nd St.",
+    "loc_id": "s4422",
+    "year": 2023
+  },
+  "1209836007": {
+    "traffic_index": 0.5345,
+    "aadt": 166,
+    "crossroad": "From S. High St. to S. Monclair Ave.",
+    "loc_id": "s4123",
+    "year": 2023
+  },
+  "180623725": {
+    "traffic_index": 0.6513,
+    "aadt": 510,
+    "crossroad": "GREENBRIAR AND HIGH",
+    "loc_id": "s4122",
+    "year": 2023
+  },
+  "180623089": {
+    "traffic_index": 0.8663,
+    "aadt": 4004,
+    "crossroad": "WIMBLETON AND Meadow",
+    "loc_id": "s4119",
+    "year": 2023
+  },
+  "180612943": {
+    "traffic_index": 0.8661,
+    "aadt": 3997,
+    "crossroad": "",
+    "loc_id": "s4118",
+    "year": 2023
+  },
+  "180589018": {
+    "traffic_index": 0.8765,
+    "aadt": 4418,
+    "crossroad": "ALEXANDER AND ADAMS",
+    "loc_id": "rcl459",
+    "year": 2023
+  },
+  "4707740351": {
+    "traffic_index": 0.634,
+    "aadt": 432,
+    "crossroad": "North of 3rd St.",
+    "loc_id": "rcl1726",
+    "year": 2023
+  },
+  "180627496": {
+    "traffic_index": 0.9238,
+    "aadt": 6947,
+    "crossroad": "CRESCENT AND STATE ROAD 37",
+    "loc_id": "rcl1696",
+    "year": 2023
+  },
+  "12902170318": {
+    "traffic_index": 0.8858,
+    "aadt": 4829,
+    "crossroad": "From N. Crescent Rd. to N. Lismore Dr.",
+    "loc_id": "rcl1577",
+    "year": 2023
+  },
+  "1884775381": {
+    "traffic_index": 0.949,
+    "aadt": 8841,
+    "crossroad": "From N. Jordan Ave. to N. Campbell St.",
+    "loc_id": "r4655",
+    "year": 2023
+  },
+  "11004633089": {
+    "traffic_index": 0.9588,
+    "aadt": 9717,
+    "crossroad": "From N. Fee Ln. to N. Jordan Ave.",
+    "loc_id": "r4654",
+    "year": 2023
+  },
+  "180617258": {
+    "traffic_index": 0.9599,
+    "aadt": 9816,
+    "crossroad": "WALNUT GROVE AND fee",
+    "loc_id": "r4653",
+    "year": 2023
+  },
+  "180617248": {
+    "traffic_index": 0.9643,
+    "aadt": 10236,
+    "crossroad": "From N. Forrest Ave. to N. Walnut Grove Ave.",
+    "loc_id": "r4652",
+    "year": 2023
+  },
+  "180617245": {
+    "traffic_index": 0.9656,
+    "aadt": 10371,
+    "crossroad": "West of Forrest",
+    "loc_id": "r4651",
+    "year": 2023
+  },
+  "180587724": {
+    "traffic_index": 0.8368,
+    "aadt": 3019,
+    "crossroad": "2nd AND UNIVERSITY",
+    "loc_id": "r4476",
+    "year": 2023
+  },
+  "180594432": {
+    "traffic_index": 0.7255,
+    "aadt": 1039,
+    "crossroad": "stull AND park",
+    "loc_id": "r4435",
+    "year": 2023
+  },
+  "180641634": {
+    "traffic_index": 0.6432,
+    "aadt": 472,
+    "crossroad": "N. of W. Gourley Pike",
+    "loc_id": "q492",
+    "year": 2023
+  },
+  "180605592": {
+    "traffic_index": 0.8679,
+    "aadt": 4066,
+    "crossroad": "GRANT AND DUNN",
+    "loc_id": "q4699",
+    "year": 2023
+  },
+  "180605596": {
+    "traffic_index": 0.8739,
+    "aadt": 4308,
+    "crossroad": "7th AND 8TH",
+    "loc_id": "q4637",
+    "year": 2023
+  },
+  "180622094": {
+    "traffic_index": 0.7615,
+    "aadt": 1467,
+    "crossroad": "WYLIE AND DODDS",
+    "loc_id": "q4452",
+    "year": 2023
+  },
+  "180633007": {
+    "traffic_index": 0.9998,
+    "aadt": 14384,
+    "crossroad": "From E. Burks Dr. to W. Pinewood Dr.",
+    "loc_id": "q3930",
+    "year": 2023
+  },
+  "180589211": {
+    "traffic_index": 0.9867,
+    "aadt": 12684,
+    "crossroad": "North of Rhorer Rd.",
+    "loc_id": "q382",
+    "year": 2023
+  },
+  "1913172976": {
+    "traffic_index": 0.6859,
+    "aadt": 711,
+    "crossroad": "W. of N. Old SR 37",
+    "loc_id": "p513",
+    "year": 2023
+  },
+  "1919577851": {
+    "traffic_index": 0.6869,
+    "aadt": 718,
+    "crossroad": "N. of Clubhouse Dr.",
+    "loc_id": "p512",
+    "year": 2023
+  },
+  "180634076": {
+    "traffic_index": 0.8633,
+    "aadt": 3891,
+    "crossroad": "Old Railroad Crossing",
+    "loc_id": "p4634",
+    "year": 2006
+  },
+  "180596381": {
+    "traffic_index": 0.7038,
+    "aadt": 844,
+    "crossroad": "From W. Allen St. to W. Dixie St.",
+    "loc_id": "p4344",
+    "year": 2010
+  },
+  "180590048": {
+    "traffic_index": 0.637,
+    "aadt": 445,
+    "crossroad": "From S. Brown Ave. to S. Ford Ave.",
+    "loc_id": "p406",
+    "year": 2023
+  },
+  "180627831": {
+    "traffic_index": 0.9225,
+    "aadt": 6859,
+    "crossroad": "From W. 20th St. to W. 17th St.",
+    "loc_id": "o489",
+    "year": 2023
+  },
+  "3801494110": {
+    "traffic_index": 0.9247,
+    "aadt": 7008,
+    "crossroad": "ARLINGTON AND LINDBERGH",
+    "loc_id": "o483",
+    "year": 2023
+  },
+  "180575804": {
+    "traffic_index": 0.9232,
+    "aadt": 6910,
+    "crossroad": "20TH AND HICKORY",
+    "loc_id": "o4810",
+    "year": 2023
+  },
+  "180595594": {
+    "traffic_index": 0.8561,
+    "aadt": 3631,
+    "crossroad": "12TH AND ORRIS",
+    "loc_id": "o4726",
+    "year": 2023
+  },
+  "3804325248": {
+    "traffic_index": 0.8267,
+    "aadt": 2742,
+    "crossroad": "South of 17th St.",
+    "loc_id": "o472",
+    "year": 2023
+  },
+  "180618224": {
+    "traffic_index": 0.6828,
+    "aadt": 690,
+    "crossroad": "From W. 13th St. to W. Illinois Ct.",
+    "loc_id": "o4738",
+    "year": 2021
+  },
+  "180587735": {
+    "traffic_index": 0.7488,
+    "aadt": 1299,
+    "crossroad": "West of Sheridan",
+    "loc_id": "r4428",
+    "year": 2022
+  },
+  "180587743": {
+    "traffic_index": 0.5835,
+    "aadt": 266,
+    "crossroad": "Bet. Maxwell and Sheridan",
+    "loc_id": "r4329",
+    "year": 1999
+  },
+  "180591069": {
+    "traffic_index": 0.7217,
+    "aadt": 1002,
+    "crossroad": "ESSEX AND ESSEX",
+    "loc_id": "r3958",
+    "year": 2022
+  },
+  "180643273": {
+    "traffic_index": 0.7293,
+    "aadt": 1078,
+    "crossroad": "Dunn AND indiana",
+    "loc_id": "q4760",
+    "year": 2022
+  },
+  "180609447": {
+    "traffic_index": 0.7224,
+    "aadt": 1009,
+    "crossroad": "",
+    "loc_id": "q4758",
+    "year": 2022
+  },
+  "180643271": {
+    "traffic_index": 0.7283,
+    "aadt": 1068,
+    "crossroad": "WASHINGTON AND LINCOLN",
+    "loc_id": "q4757",
+    "year": 2022
+  },
+  "180645057": {
+    "traffic_index": 1.0,
+    "aadt": 15441,
+    "crossroad": "From S. Maple St. to S. Rogers St.",
+    "loc_id": "p4453",
+    "year": 2017
+  },
+  "12419969980": {
+    "traffic_index": 0.6096,
+    "aadt": 342,
+    "crossroad": "",
+    "loc_id": "p4417",
+    "year": 2022
+  },
+  "180653695": {
+    "traffic_index": 0.6272,
+    "aadt": 405,
+    "crossroad": "Bet. Rogers St. and Fairview",
+    "loc_id": "p4325",
+    "year": 2022
+  },
+  "11036532493": {
+    "traffic_index": 0.9954,
+    "aadt": 13794,
+    "crossroad": "From S. Rockport Rd. to S. Banta Ave.",
+    "loc_id": "p4026",
+    "year": 2022
+  },
+  "1718051498": {
+    "traffic_index": 0.5628,
+    "aadt": 218,
+    "crossroad": "East of Woodlawn",
+    "loc_id": "rcl830",
+    "year": 2021
+  },
+  "1107935006": {
+    "traffic_index": 0.6217,
+    "aadt": 384,
+    "crossroad": "North of Hillside Dr.",
+    "loc_id": "rcl829",
+    "year": 2021
+  },
+  "180575539": {
+    "traffic_index": 0.4602,
+    "aadt": 81,
+    "crossroad": "Bet. Maxwell St. and Southdowns",
+    "loc_id": "r4315",
+    "year": 2021
+  },
+  "180634629": {
+    "traffic_index": 0.883,
+    "aadt": 4700,
+    "crossroad": "South of Atwater Ave.",
+    "loc_id": "q455",
+    "year": 2008
+  },
+  "180590044": {
+    "traffic_index": 0.5823,
+    "aadt": 263,
+    "crossroad": "From S. Banta Ave. to S. Ford Ave.",
+    "loc_id": "p4014",
+    "year": 2021
+  },
+  "180585608": {
+    "traffic_index": 0.6161,
+    "aadt": 364,
+    "crossroad": "From N. Illinois St. to N. Summit St.",
+    "loc_id": "o4733",
+    "year": 2021
+  },
+  "180594289": {
+    "traffic_index": 0.8648,
+    "aadt": 3950,
+    "crossroad": "14th AND 16th",
+    "loc_id": "o4724",
+    "year": 2021
+  },
+  "180623371": {
+    "traffic_index": 0.5632,
+    "aadt": 219,
+    "crossroad": "From N. Illinois St. to N. Hancock Dr.",
+    "loc_id": "o4720",
+    "year": 2012
+  },
+  "180638567": {
+    "traffic_index": 0.9369,
+    "aadt": 7874,
+    "crossroad": "From W. Brookdale Dr. to W. Amaryllis Dr.",
+    "loc_id": "rcl435",
+    "year": 2020
+  },
+  "2572255056": {
+    "traffic_index": 0.7088,
+    "aadt": 886,
+    "crossroad": "",
+    "loc_id": "rcl1560",
+    "year": 2020
+  },
+  "180627271": {
+    "traffic_index": 0.8732,
+    "aadt": 4278,
+    "crossroad": "From S. Larkspur Ln. to S. Strong Dr.",
+    "loc_id": "rcl1499",
+    "year": 2020
+  },
+  "180643265": {
+    "traffic_index": 0.9804,
+    "aadt": 11946,
+    "crossroad": "South of 14th St.",
+    "loc_id": "q473",
+    "year": 2013
+  },
+  "180598509": {
+    "traffic_index": 0.8544,
+    "aadt": 3575,
+    "crossroad": "From W. Winding Way to W. Clubhouse Dr.",
+    "loc_id": "p515",
+    "year": 2020
+  },
+  "6498992907": {
+    "traffic_index": 0.8339,
+    "aadt": 2936,
+    "crossroad": "From N. Rogers St. to N. Morton St.",
+    "loc_id": "p4712",
+    "year": 2020
+  },
+  "180619108": {
+    "traffic_index": 0.8112,
+    "aadt": 2362,
+    "crossroad": "From N. Rogers St. to N. Madison St.",
+    "loc_id": "p4635",
+    "year": 2020
+  },
+  "180602736": {
+    "traffic_index": 0.9523,
+    "aadt": 9130,
+    "crossroad": "Bet. 6th St. and 7th St.",
+    "loc_id": "p45147",
+    "year": 2020
+  },
+  "2657957701": {
+    "traffic_index": 0.9214,
+    "aadt": 6792,
+    "crossroad": "Bet. Dixie and Allen",
+    "loc_id": "p4324",
+    "year": 2020
+  },
+  "180625906": {
+    "traffic_index": 0.9238,
+    "aadt": 6947,
+    "crossroad": "S. of Rockport Rd.",
+    "loc_id": "p4111",
+    "year": 2020
+  },
+  "3804028714": {
+    "traffic_index": 0.7712,
+    "aadt": 1610,
+    "crossroad": "From N. Kinser Pike to W. Rosewood Dr.",
+    "loc_id": "o521",
+    "year": 2020
+  },
+  "180596811": {
+    "traffic_index": 0.5522,
+    "aadt": 197,
+    "crossroad": "From W. Winding Way to W. Parkview Ct.",
+    "loc_id": "o5116",
+    "year": 2020
+  },
+  "180592177": {
+    "traffic_index": 0.5749,
+    "aadt": 245,
+    "crossroad": "From W. 12th St. to W. 14th St.",
+    "loc_id": "o479",
+    "year": 2020
+  },
+  "180612569": {
+    "traffic_index": 0.8951,
+    "aadt": 5280,
+    "crossroad": "From E. Bennington Blvd. to E. Stonegate Dr.",
+    "loc_id": "v443",
+    "year": 2019
+  },
+  "4725907600": {
+    "traffic_index": 0.8729,
+    "aadt": 4265,
+    "crossroad": "West of Curve",
+    "loc_id": "v408",
+    "year": 2019
+  },
+  "4571324862": {
+    "traffic_index": 0.8803,
+    "aadt": 4579,
+    "crossroad": "From S. Forrester St. to S. Snoody Rd.",
+    "loc_id": "u407",
+    "year": 2019
+  },
+  "180648235": {
+    "traffic_index": 0.9511,
+    "aadt": 9026,
+    "crossroad": "E. of The Stands Dr.",
+    "loc_id": "t406",
+    "year": 2019
+  },
+  "2400339318": {
+    "traffic_index": 0.9959,
+    "aadt": 13861,
+    "crossroad": "W. of Pinehurst",
+    "loc_id": "rcl688",
+    "year": 2019
+  },
+  "7385401429": {
+    "traffic_index": 0.7402,
+    "aadt": 1197,
+    "crossroad": "From S. Adams St. to S. Sunflower Dr.",
+    "loc_id": "rcl1212",
+    "year": 2019
+  },
+  "180576073": {
+    "traffic_index": 0.6553,
+    "aadt": 530,
+    "crossroad": "",
+    "loc_id": "rcl1125",
+    "year": 2019
+  },
+  "180623797": {
+    "traffic_index": 0.8591,
+    "aadt": 3738,
+    "crossroad": "S. of W. Winding Way",
+    "loc_id": "p503",
+    "year": 2019
+  },
+  "180623231": {
+    "traffic_index": 0.9806,
+    "aadt": 11966,
+    "crossroad": "Between Fairview and Maple",
+    "loc_id": "p45186",
+    "year": 2019
+  },
+  "180609983": {
+    "traffic_index": 0.6513,
+    "aadt": 510,
+    "crossroad": "From S. Brown Ave. to S. Ford Ave.",
+    "loc_id": "p4137",
+    "year": 2019
+  },
+  "180638681": {
+    "traffic_index": 0.9827,
+    "aadt": 12212,
+    "crossroad": "Bet. Temperance and Depot",
+    "loc_id": "ccl2697",
+    "year": 2004
+  },
+  "736012859": {
+    "traffic_index": 0.8692,
+    "aadt": 4117,
+    "crossroad": "West of W. Maple Grove Rd.",
+    "loc_id": "n5110",
+    "year": 2014
+  },
+  "5054147854": {
+    "traffic_index": 0.9743,
+    "aadt": 11271,
+    "crossroad": "LEONARD SPRINGS ROAD S OF SR45",
+    "loc_id": "l4011",
+    "year": 2019
+  },
+  "180616108": {
+    "traffic_index": 0.8385,
+    "aadt": 3070,
+    "crossroad": "From W. Heatherwood Ln. to W. Woodhaven Dr.",
+    "loc_id": "l383",
+    "year": 2019
+  },
+  "9421844834": {
+    "traffic_index": 0.9043,
+    "aadt": 5766,
+    "crossroad": "Bet. Olcott and Smith Rd.",
+    "loc_id": "rcl768",
+    "year": 2018
+  },
+  "8385823289": {
+    "traffic_index": 0.8924,
+    "aadt": 5142,
+    "crossroad": "From E. Lorelei Way to E. Moores Pike",
+    "loc_id": "rcl1495",
+    "year": 2018
+  },
+  "180591151": {
+    "traffic_index": 0.6819,
+    "aadt": 684,
+    "crossroad": "From E. Miller Dr. to E. Thornton Dr.",
+    "loc_id": "r4251",
+    "year": 2018
+  },
+  "180604244": {
+    "traffic_index": 0.8208,
+    "aadt": 2590,
+    "crossroad": "From E. 1st St. to E. 2nd St.",
+    "loc_id": "q4454",
+    "year": 2018
+  },
+  "180587921": {
+    "traffic_index": 0.9931,
+    "aadt": 13487,
+    "crossroad": "Bet. E. Wylie St. and E. 1st St.",
+    "loc_id": "q4447",
+    "year": 2000
+  },
+  "180629327": {
+    "traffic_index": 0.978,
+    "aadt": 11671,
+    "crossroad": "From W. 1st St. to W. 2nd St.",
+    "loc_id": "q4443",
+    "year": 2018
+  },
+  "180591051": {
+    "traffic_index": 0.6126,
+    "aadt": 352,
+    "crossroad": "East of Grant",
+    "loc_id": "q436",
+    "year": 2018
+  },
+  "180622100": {
+    "traffic_index": 0.8004,
+    "aadt": 2131,
+    "crossroad": "South of Dodds",
+    "loc_id": "q4352",
+    "year": 2018
+  },
+  "180591644": {
+    "traffic_index": 0.957,
+    "aadt": 9547,
+    "crossroad": "NORTH AND MILLER",
+    "loc_id": "q4116",
+    "year": 2018
+  },
+  "8853454158": {
+    "traffic_index": 0.6244,
+    "aadt": 394,
+    "crossroad": "From S. Morton St. to S. Walnut St.",
+    "loc_id": "p4335",
+    "year": 2018
+  },
+  "180608238": {
+    "traffic_index": 0.855,
+    "aadt": 3595,
+    "crossroad": "From W. 8th St. to W. Gray St.",
+    "loc_id": "o4660",
+    "year": 2018
+  },
+  "180587384": {
+    "traffic_index": 0.8891,
+    "aadt": 4982,
+    "crossroad": "S. of N. Crescent Rd.",
+    "loc_id": "o4655",
+    "year": 2018
+  },
+  "180599307": {
+    "traffic_index": 0.6222,
+    "aadt": 386,
+    "crossroad": "From S. Sussex Dr. to S. Chelsey Ct.",
+    "loc_id": "s4219",
+    "year": 2017
+  },
+  "180623732": {
+    "traffic_index": 0.5877,
+    "aadt": 277,
+    "crossroad": "S. of Sussex Dr.",
+    "loc_id": "s4131",
+    "year": 2017
+  },
+  "180622606": {
+    "traffic_index": 0.6632,
+    "aadt": 572,
+    "crossroad": "W. of Woodbluff Ct.",
+    "loc_id": "s4041",
+    "year": 2017
+  },
+  "180611067": {
+    "traffic_index": 0.6354,
+    "aadt": 438,
+    "crossroad": "From E. Goldin Dr. to S. Claybridge Dr.",
+    "loc_id": "rcl909",
+    "year": 2017
+  },
+  "180595985": {
+    "traffic_index": 0.7517,
+    "aadt": 1336,
+    "crossroad": "N. of Bell Trace Dr.",
+    "loc_id": "rcl887",
+    "year": 2017
+  },
+  "1842137924": {
+    "traffic_index": 0.6668,
+    "aadt": 592,
+    "crossroad": "From S. Claybridge Dr. to S. Sare Rd.",
+    "loc_id": "rcl543",
+    "year": 2017
+  },
+  "180624600": {
+    "traffic_index": 0.6414,
+    "aadt": 464,
+    "crossroad": "W. of Claybridge",
+    "loc_id": "rcl541",
+    "year": 2017
+  },
+  "1727995297": {
+    "traffic_index": 0.6471,
+    "aadt": 490,
+    "crossroad": "From E. Railway Circle to E. Melville Circle",
+    "loc_id": "rcl1449",
+    "year": 2017
+  },
+  "180575538": {
+    "traffic_index": 0.7869,
+    "aadt": 1872,
+    "crossroad": "From S. Manor Rd. to S. Hawthorne Dr.",
+    "loc_id": "r4432",
+    "year": 1992
+  },
+  "180613277": {
+    "traffic_index": 0.6359,
+    "aadt": 440,
+    "crossroad": "BALLANTINE",
+    "loc_id": "r4342",
+    "year": 2017
+  },
+  "180603139": {
+    "traffic_index": 0.6288,
+    "aadt": 411,
+    "crossroad": "BALLANTINE",
+    "loc_id": "r4335",
+    "year": 2017
+  },
+  "1919577818": {
+    "traffic_index": 1.0,
+    "aadt": 15319,
+    "crossroad": "South of Blue Ridge",
+    "loc_id": "q5016",
+    "year": 2017
+  },
+  "12518757609": {
+    "traffic_index": 0.9616,
+    "aadt": 9975,
+    "crossroad": "From W. 17th St. to W. Vaughn Clipp Way",
+    "loc_id": "q4845",
+    "year": 2017
+  },
+  "180609446": {
+    "traffic_index": 0.9628,
+    "aadt": 10091,
+    "crossroad": "From N. Lincoln St. to N. Grant St.",
+    "loc_id": "q4667",
+    "year": 2017
+  },
+  "180606981": {
+    "traffic_index": 0.95,
+    "aadt": 8926,
+    "crossroad": "From S. Lincoln St. to S. Grant St.",
+    "loc_id": "q425",
+    "year": 2017
+  },
+  "180598300": {
+    "traffic_index": 0.9858,
+    "aadt": 12576,
+    "crossroad": "From S. Fairview St. to S. Jackson St.",
+    "loc_id": "p45156",
+    "year": 2017
+  },
+  "180609232": {
+    "traffic_index": 1.0,
+    "aadt": 14413,
+    "crossroad": "Bet. W. Hillside Dr. and W. Wilson St.",
+    "loc_id": "p431",
+    "year": 2017
+  },
+  "180599244": {
+    "traffic_index": 0.7189,
+    "aadt": 976,
+    "crossroad": "From N. Hopewell St. to W. Vernal Pike",
+    "loc_id": "o4627",
+    "year": 2017
+  },
+  "180654066": {
+    "traffic_index": 0.8173,
+    "aadt": 2505,
+    "crossroad": "South of Bloomfield Rd.",
+    "loc_id": "o449",
+    "year": 2017
+  },
+  "180596445": {
+    "traffic_index": 0.8771,
+    "aadt": 4441,
+    "crossroad": "From S. Christopher Ln. to S. Ransom Ln.",
+    "loc_id": "o4310",
+    "year": 2017
+  },
+  "180625753": {
+    "traffic_index": 0.6111,
+    "aadt": 347,
+    "crossroad": "South of Kristen",
+    "loc_id": "u414",
+    "year": 2016
+  },
+  "180629245": {
+    "traffic_index": 0.6354,
+    "aadt": 438,
+    "crossroad": "300' S. of Olcott Boulevarde",
+    "loc_id": "u403",
+    "year": 2016
+  },
+  "180580048": {
+    "traffic_index": 0.9388,
+    "aadt": 8022,
+    "crossroad": "N. of Longview",
+    "loc_id": "t4529",
+    "year": 2016
+  },
+  "180609369": {
+    "traffic_index": 0.7299,
+    "aadt": 1084,
+    "crossroad": "North of 5th St.",
+    "loc_id": "t451",
+    "year": 2016
+  },
+  "180588111": {
+    "traffic_index": 0.8594,
+    "aadt": 3750,
+    "crossroad": "North of 2nd St.",
+    "loc_id": "t446",
+    "year": 2016
+  },
+  "180603080": {
+    "traffic_index": 0.7697,
+    "aadt": 1587,
+    "crossroad": "From E. Rechter Rd. to E. Covenanter Ct.",
+    "loc_id": "t4333",
+    "year": 2016
+  },
+  "180621647": {
+    "traffic_index": 0.8583,
+    "aadt": 3710,
+    "crossroad": "N. of 17th St.",
+    "loc_id": "s486",
+    "year": 2016
+  },
+  "180615547": {
+    "traffic_index": 0.7048,
+    "aadt": 852,
+    "crossroad": "From E. 3rd St. to E. 4th St.",
+    "loc_id": "s4526",
+    "year": 2016
+  },
+  "180623741": {
+    "traffic_index": 1.0,
+    "aadt": 17779,
+    "crossroad": "From S. Union St. to S. High St.",
+    "loc_id": "s4555",
+    "year": 1997
+  },
+  "180607303": {
+    "traffic_index": 0.8677,
+    "aadt": 4059,
+    "crossroad": "Bet. Arbutus and Rose",
+    "loc_id": "s4455",
+    "year": 2016
+  },
+  "180616950": {
+    "traffic_index": 0.627,
+    "aadt": 404,
+    "crossroad": "West of Brookstone",
+    "loc_id": "rcl279",
+    "year": 2016
+  },
+  "180595658": {
+    "traffic_index": 0.8062,
+    "aadt": 2253,
+    "crossroad": "FEE AND FISHER",
+    "loc_id": "r4810",
+    "year": 2016
+  },
+  "5954171615": {
+    "traffic_index": 0.9521,
+    "aadt": 9112,
+    "crossroad": "N. of IU Library Parking Lot",
+    "loc_id": "r4623",
+    "year": 2016
+  },
+  "1210099801": {
+    "traffic_index": 1.0,
+    "aadt": 19781,
+    "crossroad": "W. of Hawthorne",
+    "loc_id": "r4524",
+    "year": 2005
+  },
+  "3625776691": {
+    "traffic_index": 0.9132,
+    "aadt": 6274,
+    "crossroad": "From E. Atwater Ave. to E. 3rd St.",
+    "loc_id": "r4541",
+    "year": 2016
+  },
+  "180596521": {
+    "traffic_index": 0.9692,
+    "aadt": 10733,
+    "crossroad": "Bet. Allendale and Abby",
+    "loc_id": "r407",
+    "year": 2016
+  },
+  "7396813229": {
+    "traffic_index": 0.961,
+    "aadt": 9922,
+    "crossroad": "19TH AND OLD STATE ROAD 37",
+    "loc_id": "q4829",
+    "year": 2016
+  },
+  "180609432": {
+    "traffic_index": 0.637,
+    "aadt": 445,
+    "crossroad": "Bet. Lincoln St. and Grant St.",
+    "loc_id": "q4690",
+    "year": 2016
+  },
+  "180609442": {
+    "traffic_index": 0.748,
+    "aadt": 1289,
+    "crossroad": "ALICE AND 9th",
+    "loc_id": "q4632",
+    "year": 2016
+  },
+  "180609445": {
+    "traffic_index": 0.749,
+    "aadt": 1302,
+    "crossroad": "From E. 9th St. to E. 10th St.",
+    "loc_id": "q4631",
+    "year": 2016
+  },
+  "180587911": {
+    "traffic_index": 0.6246,
+    "aadt": 395,
+    "crossroad": "From S. Walnut St. to S. Washington St.",
+    "loc_id": "q45100",
+    "year": 2016
+  },
+  "180603510": {
+    "traffic_index": 0.8764,
+    "aadt": 4411,
+    "crossroad": "S. of 1st St.",
+    "loc_id": "q4471",
+    "year": 2016
+  },
+  "180647349": {
+    "traffic_index": 0.862,
+    "aadt": 3843,
+    "crossroad": "From E. 1st St. to E. University St.",
+    "loc_id": "q4470",
+    "year": 2016
+  },
+  "9963426026": {
+    "traffic_index": 0.9964,
+    "aadt": 13931,
+    "crossroad": "From S. Walnut St. Pike to S. Henderson St.",
+    "loc_id": "q4020",
+    "year": 2016
+  },
+  "180627322": {
+    "traffic_index": 0.7347,
+    "aadt": 1135,
+    "crossroad": "E. of Old Railroad",
+    "loc_id": "p4651",
+    "year": 2016
+  },
+  "180605387": {
+    "traffic_index": 0.7399,
+    "aadt": 1193,
+    "crossroad": "East of Fairview",
+    "loc_id": "p4637",
+    "year": 2016
+  },
+  "180585372": {
+    "traffic_index": 0.9844,
+    "aadt": 12411,
+    "crossroad": "Between Waldron and Maple",
+    "loc_id": "p45213",
+    "year": 2016
+  },
+  "12420024334": {
+    "traffic_index": 0.709,
+    "aadt": 887,
+    "crossroad": "From S. Jackson St. to S. Rogers St.",
+    "loc_id": "p45168",
+    "year": 2016
+  },
+  "180623229": {
+    "traffic_index": 0.9273,
+    "aadt": 7185,
+    "crossroad": "Bet. Madison St. and Rogers St.",
+    "loc_id": "p45154",
+    "year": 2016
+  },
+  "180619106": {
+    "traffic_index": 0.9916,
+    "aadt": 13304,
+    "crossroad": "Bet. Roger St. and Jackson",
+    "loc_id": "p45155",
+    "year": 2004
+  },
+  "180617837": {
+    "traffic_index": 0.8683,
+    "aadt": 4084,
+    "crossroad": "Old Railroad Crossing",
+    "loc_id": "q4584",
+    "year": 2010
+  },
+  "180617841": {
+    "traffic_index": 0.9816,
+    "aadt": 12089,
+    "crossroad": "From W. 4th St. to W. Kirkwood Ave.",
+    "loc_id": "p45135",
+    "year": 2016
+  },
+  "180629443": {
+    "traffic_index": 0.9804,
+    "aadt": 11943,
+    "crossroad": "From W. 3rd St. to W. 4th St.",
+    "loc_id": "p45134",
+    "year": 2016
+  },
+  "180598304": {
+    "traffic_index": 0.7013,
+    "aadt": 824,
+    "crossroad": "From S. Jackson St. to S. Rogers St.",
+    "loc_id": "p45131",
+    "year": 2016
+  },
+  "180602753": {
+    "traffic_index": 0.622,
+    "aadt": 385,
+    "crossroad": "East of Oak",
+    "loc_id": "o4548",
+    "year": 2016
+  },
+  "180633382": {
+    "traffic_index": 0.9167,
+    "aadt": 6489,
+    "crossroad": "From S. Fenbrook Ln. to S. Olcott Blvd.",
+    "loc_id": "u4233",
+    "year": 2015
+  },
+  "180629181": {
+    "traffic_index": 0.9321,
+    "aadt": 7524,
+    "crossroad": "South of Lonview Dr.",
+    "loc_id": "t4527",
+    "year": 2015
+  },
+  "180588143": {
+    "traffic_index": 0.7262,
+    "aadt": 1046,
+    "crossroad": "W. of Rechter/Woodbine",
+    "loc_id": "t4332",
+    "year": 2015
+  },
+  "678443319": {
+    "traffic_index": 0.9451,
+    "aadt": 8523,
+    "crossroad": "From S. High St. to S. The Stands Dr.",
+    "loc_id": "t405",
+    "year": 2015
+  },
+  "180612667": {
+    "traffic_index": 0.8471,
+    "aadt": 3331,
+    "crossroad": "From S. Swain Ave. to S. Mitchell St.",
+    "loc_id": "s4451",
+    "year": 2015
+  },
+  "180593557": {
+    "traffic_index": 0.6265,
+    "aadt": 402,
+    "crossroad": "W. of Eastside Dr.",
+    "loc_id": "s4441",
+    "year": 2012
+  },
+  "180593794": {
+    "traffic_index": 0.4222,
+    "aadt": 56,
+    "crossroad": "From E. 2nd St. to E. Hunter Ave.",
+    "loc_id": "s4424",
+    "year": 2015
+  },
+  "1663947399": {
+    "traffic_index": 0.6922,
+    "aadt": 755,
+    "crossroad": "From E. Southdowns Dr. to E. Maxwell Ln.",
+    "loc_id": "s432",
+    "year": 2015
+  },
+  "1671414982": {
+    "traffic_index": 0.8504,
+    "aadt": 3441,
+    "crossroad": "South of Meadowbrook Ct.",
+    "loc_id": "s4039",
+    "year": 2015
+  },
+  "4736920110": {
+    "traffic_index": 0.793,
+    "aadt": 1985,
+    "crossroad": "From E. Autumn Dr. to E. Coppertree Dr.",
+    "loc_id": "s4017",
+    "year": 2015
+  },
+  "180615477": {
+    "traffic_index": 0.924,
+    "aadt": 6959,
+    "crossroad": "From S. Clarizz Blvd. to S. Fenbrook Ln.",
+    "loc_id": "rcl478",
+    "year": 2015
+  },
+  "4644261816": {
+    "traffic_index": 0.8013,
+    "aadt": 2150,
+    "crossroad": "From E. Winslow Rd. to E. Winslow Farm Rd.",
+    "loc_id": "rcl474",
+    "year": 2015
+  },
+  "4543924673": {
+    "traffic_index": 0.7676,
+    "aadt": 1556,
+    "crossroad": "West of Morton St.",
+    "loc_id": "rcl2",
+    "year": 2015
+  },
+  "1727995512": {
+    "traffic_index": 0.9932,
+    "aadt": 13506,
+    "crossroad": "From S. McCartney Ln. to E. Cathcart St.",
+    "loc_id": "rcl1561",
+    "year": 2015
+  },
+  "180575526": {
+    "traffic_index": 0.7038,
+    "aadt": 844,
+    "crossroad": "S. of Atwater Ave.",
+    "loc_id": "r4578",
+    "year": 2015
+  },
+  "678443352": {
+    "traffic_index": 0.9607,
+    "aadt": 9892,
+    "crossroad": "From S. Highland Ave. to S. Allendale Dr.",
+    "loc_id": "r408",
+    "year": 2015
+  },
+  "180602390": {
+    "traffic_index": 0.8817,
+    "aadt": 4641,
+    "crossroad": "South of Bethal Ln.",
+    "loc_id": "r543",
+    "year": 2003
+  },
+  "180613681": {
+    "traffic_index": 0.9049,
+    "aadt": 5798,
+    "crossroad": "From N. College Ave. to N. Walnut St.",
+    "loc_id": "q4662",
+    "year": 2015
+  },
+  "180588456": {
+    "traffic_index": 0.76,
+    "aadt": 1447,
+    "crossroad": "North of Smith Ave.",
+    "loc_id": "q4538",
+    "year": 2015
+  },
+  "180588458": {
+    "traffic_index": 0.7565,
+    "aadt": 1399,
+    "crossroad": "N. of 2nd St.",
+    "loc_id": "q4467",
+    "year": 2015
+  },
+  "180591495": {
+    "traffic_index": 0.9761,
+    "aadt": 11465,
+    "crossroad": "From S. Henderson St. to S. Park Ave.",
+    "loc_id": "q428",
+    "year": 2015
+  },
+  "180656781": {
+    "traffic_index": 0.9442,
+    "aadt": 8450,
+    "crossroad": "From S. Walnut St. Pk. to S. Nimit Dr.",
+    "loc_id": "r378",
+    "year": 2008
+  },
+  "180635486": {
+    "traffic_index": 0.6892,
+    "aadt": 734,
+    "crossroad": "Waldron - East",
+    "loc_id": "p4639",
+    "year": 2015
+  },
+  "13676184568": {
+    "traffic_index": 0.9519,
+    "aadt": 9091,
+    "crossroad": "1100' N. of Allen St.",
+    "loc_id": "rcl675",
+    "year": 2004
+  },
+  "180595588": {
+    "traffic_index": 0.5538,
+    "aadt": 200,
+    "crossroad": "North of W. Cottage Grove Ave.",
+    "loc_id": "o4622",
+    "year": 2015
+  },
+  "180595592": {
+    "traffic_index": 0.4918,
+    "aadt": 110,
+    "crossroad": "E. of Monroe St.",
+    "loc_id": "o4611",
+    "year": 2015
+  },
+  "180621661": {
+    "traffic_index": 0.7955,
+    "aadt": 2033,
+    "crossroad": "From S. Smith Rd. to E. Saratoga Dr.",
+    "loc_id": "v455",
+    "year": 2014
+  },
+  "180633106": {
+    "traffic_index": 0.7724,
+    "aadt": 1629,
+    "crossroad": "South of E. 3rd St.",
+    "loc_id": "rcl871",
+    "year": 2010
+  },
+  "180633109": {
+    "traffic_index": 0.6939,
+    "aadt": 768,
+    "crossroad": "South of Morningside Dr.",
+    "loc_id": "v4518",
+    "year": 2014
+  },
+  "180589707": {
+    "traffic_index": 0.8703,
+    "aadt": 4161,
+    "crossroad": "West of S.R. 446",
+    "loc_id": "v421",
+    "year": 2014
+  },
+  "180623125": {
+    "traffic_index": 0.9724,
+    "aadt": 11063,
+    "crossroad": "From S. Renwick Blvd. to S. Sare Rd.",
+    "loc_id": "t4221",
+    "year": 2014
+  },
+  "9210815944": {
+    "traffic_index": 0.9386,
+    "aadt": 8002,
+    "crossroad": "W. of Woodruff Lane",
+    "loc_id": "t4220",
+    "year": 2014
+  },
+  "1727972531": {
+    "traffic_index": 0.6739,
+    "aadt": 634,
+    "crossroad": "S. of Montclair Ct.",
+    "loc_id": "t421",
+    "year": 2014
+  },
+  "180601184": {
+    "traffic_index": 0.9603,
+    "aadt": 9851,
+    "crossroad": "From N. Campbell St. to N. Sunrise Dr.",
+    "loc_id": "s4614",
+    "year": 2014
+  },
+  "180604540": {
+    "traffic_index": 0.874,
+    "aadt": 4311,
+    "crossroad": "SARE ROAD NORTH OF RHORER RD/JUST NORTH OF SCHOOL",
+    "loc_id": "rcl618",
+    "year": 2002
+  },
+  "180603719": {
+    "traffic_index": 0.7428,
+    "aadt": 1227,
+    "crossroad": "From W. Sudbury Dr. to W. Bloomfield Rd.",
+    "loc_id": "rcl949",
+    "year": 2014
+  },
+  "1717347159": {
+    "traffic_index": 0.6691,
+    "aadt": 605,
+    "crossroad": "From E. Treadwell Ln. to N. Hinkle Rd.",
+    "loc_id": "rcl833",
+    "year": 2014
+  },
+  "180603715": {
+    "traffic_index": 1.0,
+    "aadt": 20147,
+    "crossroad": "Between S. Weimer Rd. and Allen St.",
+    "loc_id": "rcl452",
+    "year": 2014
+  },
+  "12899615419": {
+    "traffic_index": 1.0,
+    "aadt": 16914,
+    "crossroad": "S. of Covenanter",
+    "loc_id": "rcl38",
+    "year": 2014
+  },
+  "1913172998": {
+    "traffic_index": 0.935,
+    "aadt": 7737,
+    "crossroad": "From N. Old S.R. 37 to W. Bayles Rd.",
+    "loc_id": "rcl1423",
+    "year": 2014
+  },
+  "390706730": {
+    "traffic_index": 0.9216,
+    "aadt": 6802,
+    "crossroad": "From S. Two Creeks Ln. to S. Sare Rd.",
+    "loc_id": "r371",
+    "year": 2014
+  },
+  "180593158": {
+    "traffic_index": 0.7596,
+    "aadt": 1441,
+    "crossroad": "S. of Saville",
+    "loc_id": "q4921",
+    "year": 2014
+  },
+  "180607652": {
+    "traffic_index": 0.8346,
+    "aadt": 2956,
+    "crossroad": "From E. 14th St. to E. 15th St.",
+    "loc_id": "q4728",
+    "year": 2014
+  },
+  "180625446": {
+    "traffic_index": 0.9817,
+    "aadt": 12098,
+    "crossroad": "From S. Madison St. to S. Morton St.",
+    "loc_id": "rcl915",
+    "year": 2009
+  },
+  "180590907": {
+    "traffic_index": 1.0,
+    "aadt": 18644,
+    "crossroad": "From W. Country Club Dr. to S. Walnut St. Pike",
+    "loc_id": "q405",
+    "year": 2009
+  },
+  "13676184566": {
+    "traffic_index": 0.9541,
+    "aadt": 9289,
+    "crossroad": "From S. Rogers St. to S. Walnut St.",
+    "loc_id": "rcl1494",
+    "year": 2009
+  },
+  "390706723": {
+    "traffic_index": 0.9263,
+    "aadt": 7117,
+    "crossroad": "South of Schact Rd.",
+    "loc_id": "r331",
+    "year": 2002
+  },
+  "180607578": {
+    "traffic_index": 0.6447,
+    "aadt": 479,
+    "crossroad": "From S. Davisson St. to S. Buckner St.",
+    "loc_id": "p457",
+    "year": 2014
+  },
+  "180598323": {
+    "traffic_index": 0.646,
+    "aadt": 485,
+    "crossroad": "From S. Fairview St. to S. Rogers St.",
+    "loc_id": "p4558",
+    "year": 2014
+  },
+  "180607581": {
+    "traffic_index": 0.5749,
+    "aadt": 245,
+    "crossroad": "West of Euclid",
+    "loc_id": "p452",
+    "year": 2014
+  },
+  "180632193": {
+    "traffic_index": 0.6584,
+    "aadt": 546,
+    "crossroad": "From S. Fairview St. to S. Jackson St.",
+    "loc_id": "p45114",
+    "year": 2014
+  },
+  "180645035": {
+    "traffic_index": 0.98,
+    "aadt": 11895,
+    "crossroad": "West of Rogers",
+    "loc_id": "p4348",
+    "year": 2008
+  },
+  "902197925": {
+    "traffic_index": 0.724,
+    "aadt": 1025,
+    "crossroad": "West of S.R. 37",
+    "loc_id": "n535",
+    "year": 2014
+  },
+  "180594708": {
+    "traffic_index": 1.0,
+    "aadt": 20166,
+    "crossroad": "West of Allen St.",
+    "loc_id": "n432",
+    "year": 2014
+  },
+  "180603711": {
+    "traffic_index": 0.5226,
+    "aadt": 148,
+    "crossroad": "From W. Lakecrest Dr. to W. Bloomfield Rd.",
+    "loc_id": "n4311",
+    "year": 2014
+  },
+  "1688976110": {
+    "traffic_index": 1.0,
+    "aadt": 20173,
+    "crossroad": "From S. Stone Dr. to S. Weimer Rd.",
+    "loc_id": "m4243",
+    "year": 2014
+  },
+  "180634339": {
+    "traffic_index": 0.7762,
+    "aadt": 1689,
+    "crossroad": "West of Curry Pike",
+    "loc_id": "l4319",
+    "year": 2014
+  },
+  "4731449094": {
+    "traffic_index": 0.8191,
+    "aadt": 2548,
+    "crossroad": "500' W. of Louden Rd.",
+    "loc_id": "ccl571",
+    "year": 2006
+  },
+  "180636193": {
+    "traffic_index": 0.7759,
+    "aadt": 1684,
+    "crossroad": "South of S.R. 45",
+    "loc_id": "ccl1485",
+    "year": 2004
+  },
+  "8983457789": {
+    "traffic_index": 0.9083,
+    "aadt": 5987,
+    "crossroad": "Bet. Ratliff Rd. and Woodyard Rd.",
+    "loc_id": "ccl1109",
+    "year": 2002
+  },
+  "180585419": {
+    "traffic_index": 0.9091,
+    "aadt": 6033,
+    "crossroad": "From S. Olcott Blvd. to E. Regents Cir.",
+    "loc_id": "u4234",
+    "year": 2013
+  },
+  "180593781": {
+    "traffic_index": 1.0,
+    "aadt": 15071,
+    "crossroad": "West of Rose",
+    "loc_id": "s4550",
+    "year": 2013
+  },
+  "180614831": {
+    "traffic_index": 0.8836,
+    "aadt": 4727,
+    "crossroad": "South of Moore's Pike",
+    "loc_id": "s4249",
+    "year": 2013
+  },
+  "180623761": {
+    "traffic_index": 0.88,
+    "aadt": 4566,
+    "crossroad": "From E. Hillside Dr. to E. Viva Dr.",
+    "loc_id": "s4247",
+    "year": 2013
+  },
+  "180609006": {
+    "traffic_index": 0.747,
+    "aadt": 1277,
+    "crossroad": "Bet. Bayberry and Azalea",
+    "loc_id": "rcl66",
+    "year": 2013
+  },
+  "4547527578": {
+    "traffic_index": 0.9371,
+    "aadt": 7892,
+    "crossroad": "South of Rogers Rd.",
+    "loc_id": "rcl621",
+    "year": 2013
+  },
+  "180596862": {
+    "traffic_index": 0.9081,
+    "aadt": 5979,
+    "crossroad": "From E. Sherwood Hills Dr. to E. Winslow Rd.",
+    "loc_id": "rcl470",
+    "year": 2013
+  },
+  "11375632711": {
+    "traffic_index": 0.9222,
+    "aadt": 6844,
+    "crossroad": "S. of Linglebach Ln.",
+    "loc_id": "r4724",
+    "year": 2013
+  },
+  "1210099932": {
+    "traffic_index": 0.9869,
+    "aadt": 12708,
+    "crossroad": "North of Jones Ave.",
+    "loc_id": "r4549",
+    "year": 1998
+  },
+  "180587717": {
+    "traffic_index": 0.9773,
+    "aadt": 11593,
+    "crossroad": "Between Jordan and Mitchell",
+    "loc_id": "r4533",
+    "year": 2000
+  },
+  "180612658": {
+    "traffic_index": 0.97,
+    "aadt": 10813,
+    "crossroad": "From N. Swain Ave. to N. Mitchell St.",
+    "loc_id": "r4531",
+    "year": 2013
+  },
+  "1717400665": {
+    "traffic_index": 0.9725,
+    "aadt": 11079,
+    "crossroad": "East of Henderson St.",
+    "loc_id": "r4014",
+    "year": 2013
+  },
+  "180587202": {
+    "traffic_index": 0.9486,
+    "aadt": 8811,
+    "crossroad": "From N. Lincoln St. to N. Grant St.",
+    "loc_id": "q487",
+    "year": 2013
+  },
+  "180590706": {
+    "traffic_index": 0.9481,
+    "aadt": 8772,
+    "crossroad": "S. of Bypass",
+    "loc_id": "q4842",
+    "year": 2009
+  },
+  "180613580": {
+    "traffic_index": 0.936,
+    "aadt": 7810,
+    "crossroad": "From E. 17th St. to E. 19th St.",
+    "loc_id": "q4828",
+    "year": 2013
+  },
+  "2706588889": {
+    "traffic_index": 0.9209,
+    "aadt": 6756,
+    "crossroad": "Bet. E. 17th St. and E. 18th St.",
+    "loc_id": "q4819",
+    "year": 2013
+  },
+  "180621487": {
+    "traffic_index": 0.8726,
+    "aadt": 4256,
+    "crossroad": "Bet. N. Dunn St. and N. Indiana Ave.",
+    "loc_id": "q4763",
+    "year": 2013
+  },
+  "180627302": {
+    "traffic_index": 0.987,
+    "aadt": 12723,
+    "crossroad": "Bet. 8th St. and 9th St.",
+    "loc_id": "q469",
+    "year": 2013
+  },
+  "10605113473": {
+    "traffic_index": 0.9716,
+    "aadt": 10985,
+    "crossroad": "Bet. N. Dunn St. and N. Indiana Ave.",
+    "loc_id": "q4670",
+    "year": 2013
+  },
+  "180627307": {
+    "traffic_index": 0.9861,
+    "aadt": 12622,
+    "crossroad": "North of 8th St.",
+    "loc_id": "q464",
+    "year": 2013
+  },
+  "180624743": {
+    "traffic_index": 0.7978,
+    "aadt": 2079,
+    "crossroad": "Bet. E. 6th Street and E. 7th St.",
+    "loc_id": "q4556",
+    "year": 2013
+  },
+  "11328261080": {
+    "traffic_index": 1.0,
+    "aadt": 17691,
+    "crossroad": "North of Davis",
+    "loc_id": "q4349",
+    "year": 2013
+  },
+  "180631303": {
+    "traffic_index": 0.9717,
+    "aadt": 10988,
+    "crossroad": "E. of Fee Lane",
+    "loc_id": "s481",
+    "year": 2013
+  },
+  "180615755": {
+    "traffic_index": 0.8532,
+    "aadt": 3533,
+    "crossroad": "E. of Dunn St.",
+    "loc_id": "q4325",
+    "year": 2013
+  },
+  "180622107": {
+    "traffic_index": 0.9335,
+    "aadt": 7622,
+    "crossroad": "Bet. S. Walnut St. and S. Washington St.",
+    "loc_id": "q423",
+    "year": 2013
+  },
+  "180588009": {
+    "traffic_index": 0.9815,
+    "aadt": 12069,
+    "crossroad": "From S. Walnut St. to S. Walnut St. Pk.",
+    "loc_id": "q4019",
+    "year": 2013
+  },
+  "180585757": {
+    "traffic_index": 0.4687,
+    "aadt": 88,
+    "crossroad": "South of Howe",
+    "loc_id": "p4527",
+    "year": 2013
+  },
+  "180637293": {
+    "traffic_index": 0.804,
+    "aadt": 2205,
+    "crossroad": "South of 2nd",
+    "loc_id": "p4497",
+    "year": 2013
+  },
+  "180585755": {
+    "traffic_index": 1.0,
+    "aadt": 15166,
+    "crossroad": "West of Maple",
+    "loc_id": "p4457",
+    "year": 2013
+  },
+  "180585752": {
+    "traffic_index": 0.9644,
+    "aadt": 10248,
+    "crossroad": "From S. Maple St. to S. Rogers St.",
+    "loc_id": "p4452",
+    "year": 2013
+  },
+  "180645026": {
+    "traffic_index": 0.8614,
+    "aadt": 3820,
+    "crossroad": "Bet. Walker and Fairview",
+    "loc_id": "p4479",
+    "year": 1998
+  },
+  "180608432": {
+    "traffic_index": 0.6421,
+    "aadt": 467,
+    "crossroad": "From W. Dodds St. to W. Wylie St.",
+    "loc_id": "p4440",
+    "year": 2013
+  },
+  "180630072": {
+    "traffic_index": 0.6724,
+    "aadt": 625,
+    "crossroad": "From W. Dixie St. to W. Dodds St.",
+    "loc_id": "p4439",
+    "year": 2013
+  },
+  "10696405490": {
+    "traffic_index": 0.968,
+    "aadt": 10610,
+    "crossroad": "West of Morton St.",
+    "loc_id": "p4423",
+    "year": 2013
+  },
+  "180628090": {
+    "traffic_index": 0.9647,
+    "aadt": 10282,
+    "crossroad": "From W. Fleener Ave. to W. Stapleton Ave.",
+    "loc_id": "l409",
+    "year": 2013
+  },
+  "180634061": {
+    "traffic_index": 0.7092,
+    "aadt": 889,
+    "crossroad": "From E. Providence Ct. to E. Cambridge Dr.",
+    "loc_id": "v463",
+    "year": 2012
+  },
+  "180611338": {
+    "traffic_index": 0.9685,
+    "aadt": 10655,
+    "crossroad": "From S. Woodruff Ln. to S. Andrew Circle",
+    "loc_id": "u4235",
+    "year": 2012
+  },
+  "1016336935": {
+    "traffic_index": 0.7524,
+    "aadt": 1345,
+    "crossroad": "West of Sare Rd.",
+    "loc_id": "t4114",
+    "year": 2012
+  },
+  "180593145": {
+    "traffic_index": 0.9462,
+    "aadt": 8610,
+    "crossroad": "W. of Tapps Turn",
+    "loc_id": "t4050",
+    "year": 2012
+  },
+  "180592285": {
+    "traffic_index": 0.7709,
+    "aadt": 1606,
+    "crossroad": "From E. Hemlock Cir. to E. Roundhill Ln.",
+    "loc_id": "t4029",
+    "year": 2012
+  },
+  "10605113448": {
+    "traffic_index": 0.7909,
+    "aadt": 1945,
+    "crossroad": "West of Bryan",
+    "loc_id": "s465",
+    "year": 2012
+  },
+  "180605631": {
+    "traffic_index": 0.8372,
+    "aadt": 3031,
+    "crossroad": "West of Union St.",
+    "loc_id": "s464",
+    "year": 2012
+  },
+  "180627705": {
+    "traffic_index": 0.9033,
+    "aadt": 5709,
+    "crossroad": "From E. 10th St. to E. Law Ln.",
+    "loc_id": "s4621",
+    "year": 2012
+  },
+  "180605638": {
+    "traffic_index": 0.7965,
+    "aadt": 2052,
+    "crossroad": "From N. Bryan Ave. to N. Jefferson St.",
+    "loc_id": "s466",
+    "year": 2011
+  },
+  "180593751": {
+    "traffic_index": 0.8834,
+    "aadt": 4720,
+    "crossroad": "From S. Rose Ave. to S. Rose Ave.",
+    "loc_id": "s4456",
+    "year": 2012
+  },
+  "180603897": {
+    "traffic_index": 0.612,
+    "aadt": 350,
+    "crossroad": "From S. Eastside Dr. to S. Rose Ave.",
+    "loc_id": "s4442",
+    "year": 2012
+  },
+  "180608490": {
+    "traffic_index": 0.6773,
+    "aadt": 655,
+    "crossroad": "North of Marilyn",
+    "loc_id": "s4328",
+    "year": 2012
+  },
+  "180607684": {
+    "traffic_index": 0.8027,
+    "aadt": 2177,
+    "crossroad": "From S. Rolling Oak Dr. to S. Southern Oaks Dr.",
+    "loc_id": "s3930",
+    "year": 2012
+  },
+  "180646741": {
+    "traffic_index": 0.6161,
+    "aadt": 364,
+    "crossroad": "From E. Caray Ct. to E. Sandberg Ct.",
+    "loc_id": "rcl923",
+    "year": 2012
+  },
+  "180646671": {
+    "traffic_index": 0.544,
+    "aadt": 182,
+    "crossroad": "From S. Claybridge Dr. to S. Southern Oaks Dr.",
+    "loc_id": "rcl733",
+    "year": 2012
+  },
+  "1922807306": {
+    "traffic_index": 0.513,
+    "aadt": 135,
+    "crossroad": "From Deadend to E. Oakmont Dr.",
+    "loc_id": "rcl732",
+    "year": 2012
+  },
+  "180617078": {
+    "traffic_index": 0.7692,
+    "aadt": 1580,
+    "crossroad": "W. of Jacob",
+    "loc_id": "rcl711",
+    "year": 2012
+  },
+  "1842137983": {
+    "traffic_index": 0.7866,
+    "aadt": 1867,
+    "crossroad": "From S. Cedarwood Cir. to S. Southern Oaks Ct.",
+    "loc_id": "rcl617",
+    "year": 2012
+  },
+  "180616889": {
+    "traffic_index": 0.7335,
+    "aadt": 1122,
+    "crossroad": "From E. Kensington Park Dr. to E. Daniel St.",
+    "loc_id": "rcl368",
+    "year": 2012
+  },
+  "180590472": {
+    "traffic_index": 0.9733,
+    "aadt": 11161,
+    "crossroad": "South of Orchard Lane",
+    "loc_id": "q3519",
+    "year": 2008
+  },
+  "2400339308": {
+    "traffic_index": 0.5766,
+    "aadt": 249,
+    "crossroad": "From W. Petal Ct. to W. Countryside Ln.",
+    "loc_id": "rcl1211",
+    "year": 2012
+  },
+  "180632578": {
+    "traffic_index": 0.7766,
+    "aadt": 1696,
+    "crossroad": "From E. SR 45 46 Bypass to N. Browncliff Ln.",
+    "loc_id": "r496",
+    "year": 2012
+  },
+  "7460795290": {
+    "traffic_index": 0.7645,
+    "aadt": 1511,
+    "crossroad": "South of 13th St.",
+    "loc_id": "r4743",
+    "year": 2012
+  },
+  "180621502": {
+    "traffic_index": 0.8503,
+    "aadt": 3436,
+    "crossroad": "From N. Walnut Grove Ave. to N. Fee Ln.",
+    "loc_id": "r4713",
+    "year": 2012
+  },
+  "180612670": {
+    "traffic_index": 0.4788,
+    "aadt": 97,
+    "crossroad": "From S. Swain Ave. to S. Mitchell St.",
+    "loc_id": "r4427",
+    "year": 2012
+  },
+  "180587002": {
+    "traffic_index": 0.7183,
+    "aadt": 970,
+    "crossroad": "From S. Pepper Chase to S. Pepperridge Dr.",
+    "loc_id": "r385",
+    "year": 2012
+  },
+  "180591007": {
+    "traffic_index": 0.7099,
+    "aadt": 895,
+    "crossroad": "From S. Preston Ct. to S. Christa Ct.",
+    "loc_id": "r3819",
+    "year": 2012
+  },
+  "1919577805": {
+    "traffic_index": 0.6812,
+    "aadt": 680,
+    "crossroad": "From E. Lakewood Dr. to N. Old S.R. 37",
+    "loc_id": "q5226",
+    "year": 2012
+  },
+  "180639812": {
+    "traffic_index": 0.4889,
+    "aadt": 107,
+    "crossroad": "From E. Vernon Ave. to E. Saville Ave.",
+    "loc_id": "q4924",
+    "year": 2012
+  },
+  "11215124311": {
+    "traffic_index": 0.6114,
+    "aadt": 348,
+    "crossroad": "From N. Dunn St. to N. Indiana Ave.",
+    "loc_id": "q4693",
+    "year": 2012
+  },
+  "10605113466": {
+    "traffic_index": 0.8401,
+    "aadt": 3115,
+    "crossroad": "From E. 8th St. to E. 9th St.",
+    "loc_id": "q4639",
+    "year": 2012
+  },
+  "180602717": {
+    "traffic_index": 1.0,
+    "aadt": 16259,
+    "crossroad": "Bet. 6th St. and 7th St.",
+    "loc_id": "q4557",
+    "year": 1997
+  },
+  "180588452": {
+    "traffic_index": 0.8985,
+    "aadt": 5451,
+    "crossroad": "From E. 3rd St. to E. 4th St.",
+    "loc_id": "q4527",
+    "year": 2012
+  },
+  "6573722871": {
+    "traffic_index": 0.8814,
+    "aadt": 4627,
+    "crossroad": "North of 6th St.",
+    "loc_id": "q4524",
+    "year": 2012
+  },
+  "180607012": {
+    "traffic_index": 0.9051,
+    "aadt": 5808,
+    "crossroad": "From S. Lincoln St. to S. Grant St.",
+    "loc_id": "q447",
+    "year": 2012
+  },
+  "180604251": {
+    "traffic_index": 0.7942,
+    "aadt": 2008,
+    "crossroad": "North of Dodds St.",
+    "loc_id": "q4460",
+    "year": 2012
+  },
+  "180604240": {
+    "traffic_index": 0.8508,
+    "aadt": 3452,
+    "crossroad": "From E. 2nd St. to E. Smith Ave.",
+    "loc_id": "q4456",
+    "year": 2012
+  },
+  "180588496": {
+    "traffic_index": 0.5674,
+    "aadt": 228,
+    "crossroad": "From E. Driscoll Dr. to E. Grimes Ln.",
+    "loc_id": "q4383",
+    "year": 2012
+  },
+  "180627313": {
+    "traffic_index": 0.8381,
+    "aadt": 3056,
+    "crossroad": "From W. 8th St. to W. 9th St.",
+    "loc_id": "p4629",
+    "year": 2012
+  },
+  "180613686": {
+    "traffic_index": 0.8156,
+    "aadt": 2465,
+    "crossroad": "East of Morton St.",
+    "loc_id": "p4655",
+    "year": 1999
+  },
+  "180602725": {
+    "traffic_index": 0.8205,
+    "aadt": 2583,
+    "crossroad": "Old Railroad Crossing",
+    "loc_id": "p45140",
+    "year": 2006
+  },
+  "180615716": {
+    "traffic_index": 0.7915,
+    "aadt": 1956,
+    "crossroad": "From S. Madison St. to S. Morton St.",
+    "loc_id": "p4415",
+    "year": 2012
+  },
+  "180589027": {
+    "traffic_index": 0.691,
+    "aadt": 747,
+    "crossroad": "From W. 11th St. to W. 12th St.",
+    "loc_id": "o4747",
+    "year": 2012
+  },
+  "180585612": {
+    "traffic_index": 0.629,
+    "aadt": 412,
+    "crossroad": "From W. 12th St. to W. 13th St.",
+    "loc_id": "o4742",
+    "year": 2012
+  },
+  "180645883": {
+    "traffic_index": 0.5917,
+    "aadt": 288,
+    "crossroad": "From N. Illinois St. to N. Summit St.",
+    "loc_id": "o4741",
+    "year": 2012
+  },
+  "180613674": {
+    "traffic_index": 0.8585,
+    "aadt": 3716,
+    "crossroad": "From W. Vernal Pike to W. 10th St.",
+    "loc_id": "o4624",
+    "year": 2012
+  },
+  "605057238": {
+    "traffic_index": 0.8832,
+    "aadt": 4709,
+    "crossroad": "From W. Woodyard Rd. to N. Packinghouse Rd.",
+    "loc_id": "n487",
+    "year": 2012
+  },
+  "1689038992": {
+    "traffic_index": 0.7455,
+    "aadt": 1259,
+    "crossroad": "From N. Pioneer Ln. to W. Griffith Ct.",
+    "loc_id": "n481",
+    "year": 2012
+  },
+  "3631762147": {
+    "traffic_index": 0.8364,
+    "aadt": 3009,
+    "crossroad": "From S. Basswood Dr. to W. 3rd St.",
+    "loc_id": "n4522",
+    "year": 2012
+  },
+  "180632041": {
+    "traffic_index": 1.0,
+    "aadt": 20145,
+    "crossroad": "Westbound Bet. S. Johnson Ave. and W. Benham Ln.",
+    "loc_id": "n4519",
+    "year": 2012
+  },
+  "180628239": {
+    "traffic_index": 0.6267,
+    "aadt": 403,
+    "crossroad": "From N. Lexington Dr. to N. Concord Rd.",
+    "loc_id": "u4547",
+    "year": 2010
+  },
+  "180594960": {
+    "traffic_index": 0.6349,
+    "aadt": 436,
+    "crossroad": "North of 3rd St.",
+    "loc_id": "u4539",
+    "year": 2011
+  },
+  "180645368": {
+    "traffic_index": 0.6445,
+    "aadt": 478,
+    "crossroad": "North of Covenanter",
+    "loc_id": "t4328",
+    "year": 2011
+  },
+  "180594160": {
+    "traffic_index": 0.5762,
+    "aadt": 248,
+    "crossroad": "North of Pickwick Place",
+    "loc_id": "t4313",
+    "year": 2011
+  },
+  "663656046": {
+    "traffic_index": 0.5953,
+    "aadt": 298,
+    "crossroad": "From E. Moores Pike to S. Pickwick Place",
+    "loc_id": "t4227",
+    "year": 2011
+  },
+  "663656041": {
+    "traffic_index": 0.9891,
+    "aadt": 12990,
+    "crossroad": "From S. Valley Forge Rd. to S. Winfield Rd.",
+    "loc_id": "t4222",
+    "year": 2011
+  },
+  "180629164": {
+    "traffic_index": 1.0,
+    "aadt": 20280,
+    "crossroad": "From S. Roosevelt St. to S. Clark St.",
+    "loc_id": "s4559",
+    "year": 2011
+  },
+  "180594691": {
+    "traffic_index": 0.8557,
+    "aadt": 3619,
+    "crossroad": "From S. Sheridan Dr. to S. Mitchell St.",
+    "loc_id": "s4432",
+    "year": 2011
+  },
+  "180596847": {
+    "traffic_index": 0.8109,
+    "aadt": 2356,
+    "crossroad": "North of Maxwell",
+    "loc_id": "s4429",
+    "year": 2011
+  },
+  "180652839": {
+    "traffic_index": 0.7,
+    "aadt": 814,
+    "crossroad": "From E. Circle Dr. to S. Nancy St.",
+    "loc_id": "s4311",
+    "year": 2011
+  },
+  "180623763": {
+    "traffic_index": 0.6458,
+    "aadt": 484,
+    "crossroad": "From S. High St. to S. Sussex Dr.",
+    "loc_id": "s4218",
+    "year": 2011
+  },
+  "180608258": {
+    "traffic_index": 0.6684,
+    "aadt": 601,
+    "crossroad": "From S. High St. to S. Williams Ct.",
+    "loc_id": "s4214",
+    "year": 2011
+  },
+  "180623771": {
+    "traffic_index": 0.6819,
+    "aadt": 684,
+    "crossroad": "From S. High St. to S. Childs Ct.",
+    "loc_id": "s4040",
+    "year": 2011
+  },
+  "180585766": {
+    "traffic_index": 0.9282,
+    "aadt": 7244,
+    "crossroad": "North of 2nd St.",
+    "loc_id": "rcl881",
+    "year": 2011
+  },
+  "180649990": {
+    "traffic_index": 0.6475,
+    "aadt": 492,
+    "crossroad": "From S. Summerwood Ct. to E. Erin Ct.",
+    "loc_id": "rcl68",
+    "year": 2011
+  },
+  "1131246526": {
+    "traffic_index": 0.9517,
+    "aadt": 9075,
+    "crossroad": "From W. Allen St. to W. 2nd St.",
+    "loc_id": "rcl657",
+    "year": 2011
+  },
+  "180584936": {
+    "traffic_index": 0.6733,
+    "aadt": 630,
+    "crossroad": "From E. Pierson Ct. to E. Cedarwood Dr.",
+    "loc_id": "rcl253",
+    "year": 2011
+  },
+  "326372020": {
+    "traffic_index": 0.8851,
+    "aadt": 4796,
+    "crossroad": "From S. Stella Dr. to S. Fenbrooke Ln.",
+    "loc_id": "rcl1498",
+    "year": 2011
+  },
+  "180614365": {
+    "traffic_index": 0.7941,
+    "aadt": 2006,
+    "crossroad": "From W. Arch Haven Ave. to S. Patterson Dr.",
+    "loc_id": "rcl1446",
+    "year": 2011
+  },
+  "180629302": {
+    "traffic_index": 0.903,
+    "aadt": 5690,
+    "crossroad": "North of 9th St.",
+    "loc_id": "r468",
+    "year": 2011
+  },
+  "180587732": {
+    "traffic_index": 0.8258,
+    "aadt": 2718,
+    "crossroad": "North of 1st St.",
+    "loc_id": "r4410",
+    "year": 2011
+  },
+  "180606548": {
+    "traffic_index": 0.6578,
+    "aadt": 543,
+    "crossroad": "From S. Woodlawn Ave. to S. Manor Rd.",
+    "loc_id": "r4339",
+    "year": 2011
+  },
+  "180622796": {
+    "traffic_index": 0.8252,
+    "aadt": 2703,
+    "crossroad": "From E. Sheridan Dr. to E. Maxwell Ln.",
+    "loc_id": "r431",
+    "year": 2011
+  },
+  "180603053": {
+    "traffic_index": 0.8184,
+    "aadt": 2532,
+    "crossroad": "From E. Winlsow Farm Dr. to E. Short St.",
+    "loc_id": "r4043",
+    "year": 2011
+  },
+  "180607078": {
+    "traffic_index": 0.6816,
+    "aadt": 682,
+    "crossroad": "From E. Commons Dr. to E. Regency Dr.",
+    "loc_id": "r3936",
+    "year": 2011
+  },
+  "180625769": {
+    "traffic_index": 0.7341,
+    "aadt": 1129,
+    "crossroad": "South of E. Allendale Dr.",
+    "loc_id": "r3838",
+    "year": 2008
+  },
+  "180634154": {
+    "traffic_index": 0.6997,
+    "aadt": 812,
+    "crossroad": "South of Elliston",
+    "loc_id": "r3836",
+    "year": 2011
+  },
+  "1915365489": {
+    "traffic_index": 0.9564,
+    "aadt": 9492,
+    "crossroad": "North of Blue Ridge",
+    "loc_id": "q519",
+    "year": 2011
+  },
+  "1919577816": {
+    "traffic_index": 0.7204,
+    "aadt": 990,
+    "crossroad": "From N. Walnut St. to N. Blue Slopes Dr.",
+    "loc_id": "q514",
+    "year": 2011
+  },
+  "180631280": {
+    "traffic_index": 0.9953,
+    "aadt": 13780,
+    "crossroad": "From N. Fess Ave. to N. Woodlawn Ave.",
+    "loc_id": "q483",
+    "year": 2011
+  },
+  "180594247": {
+    "traffic_index": 0.9603,
+    "aadt": 9856,
+    "crossroad": "From E. 14th St. to E. 15th St.",
+    "loc_id": "q478",
+    "year": 2011
+  },
+  "180598467": {
+    "traffic_index": 0.9232,
+    "aadt": 6907,
+    "crossroad": "Between Park and Woodlawn",
+    "loc_id": "r4640",
+    "year": 2005
+  },
+  "180598475": {
+    "traffic_index": 0.9782,
+    "aadt": 11701,
+    "crossroad": "From N. Fess Ave. to N. Park Ave.",
+    "loc_id": "q4673",
+    "year": 2011
+  },
+  "180592161": {
+    "traffic_index": 0.9551,
+    "aadt": 9379,
+    "crossroad": "From N. Grant St. to N. Prow Ave.",
+    "loc_id": "q4668",
+    "year": 2011
+  },
+  "180617227": {
+    "traffic_index": 0.9604,
+    "aadt": 9868,
+    "crossroad": "From N. Walnut St. to N. Washington St.",
+    "loc_id": "q4664",
+    "year": 2011
+  },
+  "180604225": {
+    "traffic_index": 0.8343,
+    "aadt": 2948,
+    "crossroad": "E. 4th St. to E. Kirkwood Ave.",
+    "loc_id": "q4548",
+    "year": 2011
+  },
+  "180604231": {
+    "traffic_index": 1.0,
+    "aadt": 17527,
+    "crossroad": "From S. Washington St. to S. Lincoln St.",
+    "loc_id": "q4516",
+    "year": 2011
+  },
+  "877248481": {
+    "traffic_index": 0.9665,
+    "aadt": 10456,
+    "crossroad": "DUNN AND INDIANA",
+    "loc_id": "q4513",
+    "year": 2011
+  },
+  "180594680": {
+    "traffic_index": 0.8157,
+    "aadt": 2468,
+    "crossroad": "From S. Wylie St. to S. Fairview St.",
+    "loc_id": "q4480",
+    "year": 2011
+  },
+  "180594054": {
+    "traffic_index": 0.5732,
+    "aadt": 241,
+    "crossroad": "South of Grimes",
+    "loc_id": "q4374",
+    "year": 2011
+  },
+  "180588492": {
+    "traffic_index": 0.8558,
+    "aadt": 3622,
+    "crossroad": "West of Palmer",
+    "loc_id": "q4326",
+    "year": 2011
+  },
+  "180606972": {
+    "traffic_index": 0.5332,
+    "aadt": 164,
+    "crossroad": "South of 8th St.",
+    "loc_id": "q4319",
+    "year": 2011
+  },
+  "180587969": {
+    "traffic_index": 0.6053,
+    "aadt": 328,
+    "crossroad": "From S. Walnut St. to Deadend",
+    "loc_id": "q4212",
+    "year": 2011
+  },
+  "180630448": {
+    "traffic_index": 0.9373,
+    "aadt": 7907,
+    "crossroad": "From E. Graham Dr. to E. Wylie Farm Rd.",
+    "loc_id": "q4012",
+    "year": 2011
+  },
+  "180643792": {
+    "traffic_index": 0.9512,
+    "aadt": 9033,
+    "crossroad": "From W. 15th St. to W. 17th St.",
+    "loc_id": "p4762",
+    "year": 2011
+  },
+  "180598311": {
+    "traffic_index": 0.7563,
+    "aadt": 1396,
+    "crossroad": "From W. 3rd St. to W. 3rd St.",
+    "loc_id": "p45115",
+    "year": 2011
+  },
+  "180607743": {
+    "traffic_index": 0.5963,
+    "aadt": 301,
+    "crossroad": "From W. 3rd St. to W. 4th St.",
+    "loc_id": "p45174",
+    "year": 2011
+  },
+  "180617853": {
+    "traffic_index": 0.602,
+    "aadt": 318,
+    "crossroad": "From S. Waldron St. to S. Maple St.",
+    "loc_id": "p45177",
+    "year": 2011
+  },
+  "180617848": {
+    "traffic_index": 0.6857,
+    "aadt": 710,
+    "crossroad": "From S. Fairview St. to S. Jackson St.",
+    "loc_id": "p45175",
+    "year": 2011
+  },
+  "1109146285": {
+    "traffic_index": 0.7456,
+    "aadt": 1260,
+    "crossroad": "From S. Maple St. to S. Fairview St.",
+    "loc_id": "p45112",
+    "year": 2011
+  },
+  "180632198": {
+    "traffic_index": 0.7441,
+    "aadt": 1242,
+    "crossroad": "From S. Euclid Ave. to S. Maple St.",
+    "loc_id": "p45111",
+    "year": 2011
+  },
+  "180649514": {
+    "traffic_index": 0.4909,
+    "aadt": 109,
+    "crossroad": "From Deadend to W. Allen St.",
+    "loc_id": "p4327",
+    "year": 2011
+  },
+  "180649560": {
+    "traffic_index": 0.9773,
+    "aadt": 11602,
+    "crossroad": "North of Cherokee Dr.",
+    "loc_id": "p4223",
+    "year": 2011
+  },
+  "2019027414": {
+    "traffic_index": 0.8796,
+    "aadt": 4551,
+    "crossroad": "ROCKPORT RD BET. GUY AVE/COUNTRYSIDE LN",
+    "loc_id": "p4128",
+    "year": 2011
+  },
+  "180588691": {
+    "traffic_index": 0.4799,
+    "aadt": 98,
+    "crossroad": "From W. Graham Dr. to W. Coolidge Dr.",
+    "loc_id": "p4059",
+    "year": 2011
+  },
+  "180649549": {
+    "traffic_index": 0.6481,
+    "aadt": 495,
+    "crossroad": "From W. Country Club Dr. to W. Watson St.",
+    "loc_id": "p4053",
+    "year": 2011
+  },
+  "180589032": {
+    "traffic_index": 0.8668,
+    "aadt": 4025,
+    "crossroad": "From N. Oolitic Dr. to N. Lindbergh Dr.",
+    "loc_id": "o465",
+    "year": 2011
+  },
+  "180588832": {
+    "traffic_index": 0.6684,
+    "aadt": 601,
+    "crossroad": "From N. Spring St. to N. Hay St.",
+    "loc_id": "o4629",
+    "year": 2011
+  },
+  "3803010032": {
+    "traffic_index": 1.0,
+    "aadt": 16147,
+    "crossroad": "From S. Patterson Dr. to W. Kirkwood Ave.",
+    "loc_id": "o459",
+    "year": 2011
+  },
+  "8313001905": {
+    "traffic_index": 0.9898,
+    "aadt": 13073,
+    "crossroad": "W. of Weimer Rd.",
+    "loc_id": "n404",
+    "year": 2011
+  },
+  "7385401424": {
+    "traffic_index": 0.7366,
+    "aadt": 1156,
+    "crossroad": "North of Tapp Rd.",
+    "loc_id": "n401",
+    "year": 2011
+  },
+  "3497069545": {
+    "traffic_index": 0.8869,
+    "aadt": 4880,
+    "crossroad": "275' W. of SR 37",
+    "loc_id": "m377",
+    "year": 2006
+  },
+  "180594318": {
+    "traffic_index": 0.9803,
+    "aadt": 11937,
+    "crossroad": "North of Industrial Boulevarde",
+    "loc_id": "l413",
+    "year": 2011
+  },
+  "663656051": {
+    "traffic_index": 0.7974,
+    "aadt": 2071,
+    "crossroad": "S. of Cathcart",
+    "loc_id": "rcl1470",
+    "year": 2011
+  },
+  "180615293": {
+    "traffic_index": 0.9189,
+    "aadt": 6626,
+    "crossroad": "N. of 3rd St.",
+    "loc_id": "v4539",
+    "year": 2010
+  },
+  "180621665": {
+    "traffic_index": 0.9482,
+    "aadt": 8778,
+    "crossroad": "S. of Morningside",
+    "loc_id": "v4527",
+    "year": 2010
+  },
+  "180638004": {
+    "traffic_index": 0.5219,
+    "aadt": 147,
+    "crossroad": "From S. Meadowbrook Dr. to S. Ravencrest Ave.",
+    "loc_id": "u449",
+    "year": 2010
+  },
+  "180595144": {
+    "traffic_index": 0.4899,
+    "aadt": 108,
+    "crossroad": "From S. Reisner Rd. to E. Cameron Ave.",
+    "loc_id": "u446",
+    "year": 2010
+  },
+  "180638028": {
+    "traffic_index": 0.5745,
+    "aadt": 244,
+    "crossroad": "From E. Brownridge Rd. to E. Brownridge Rd.",
+    "loc_id": "u444",
+    "year": 2010
+  },
+  "180642231": {
+    "traffic_index": 0.5642,
+    "aadt": 221,
+    "crossroad": "From E. Brighton Ave. to E. Brownridge Rd.",
+    "loc_id": "u443",
+    "year": 2010
+  },
+  "180620704": {
+    "traffic_index": 0.5485,
+    "aadt": 190,
+    "crossroad": "From E. Adair Ln. to E. Brownridge Rd.",
+    "loc_id": "u4421",
+    "year": 2010
+  },
+  "1107934939": {
+    "traffic_index": 0.9333,
+    "aadt": 7606,
+    "crossroad": "From E. Buick Cadillac Blvd. to E. 3rd St.",
+    "loc_id": "u4428",
+    "year": 2009
+  },
+  "4705371597": {
+    "traffic_index": 0.7821,
+    "aadt": 1788,
+    "crossroad": "From E. 3rd St. to E. Longview Dr.",
+    "loc_id": "t4524",
+    "year": 2010
+  },
+  "2742445448": {
+    "traffic_index": 1.0,
+    "aadt": 21384,
+    "crossroad": "North of Covenanter",
+    "loc_id": "t4352",
+    "year": 2010
+  },
+  "180614116": {
+    "traffic_index": 0.6265,
+    "aadt": 402,
+    "crossroad": "South of Covenanter",
+    "loc_id": "t4322",
+    "year": 2010
+  },
+  "2505401113": {
+    "traffic_index": 0.9849,
+    "aadt": 12474,
+    "crossroad": "South of Moore's Pike",
+    "loc_id": "t426",
+    "year": 2010
+  },
+  "180625995": {
+    "traffic_index": 0.5357,
+    "aadt": 168,
+    "crossroad": "North of Moores Pike",
+    "loc_id": "t4224",
+    "year": 2010
+  },
+  "180577801": {
+    "traffic_index": 0.7378,
+    "aadt": 1170,
+    "crossroad": "From S. Pickwick Pl. to S. Nota Dr.",
+    "loc_id": "s4341",
+    "year": 2010
+  },
+  "180603073": {
+    "traffic_index": 0.7433,
+    "aadt": 1233,
+    "crossroad": "W. of S. Pickwick Place",
+    "loc_id": "s4340",
+    "year": 2010
+  },
+  "2024933364": {
+    "traffic_index": 0.5175,
+    "aadt": 141,
+    "crossroad": "From E. Clay Dr. to E. Canada Dr.",
+    "loc_id": "rcl907",
+    "year": 2010
+  },
+  "654314452": {
+    "traffic_index": 0.9033,
+    "aadt": 5708,
+    "crossroad": "From N. Curry Pike to N. Gates Dr.",
+    "loc_id": "rcl715",
+    "year": 2010
+  },
+  "677481204": {
+    "traffic_index": 0.898,
+    "aadt": 5424,
+    "crossroad": "From W. Jacob Dr. to W. Runkle Way",
+    "loc_id": "rcl774",
+    "year": 2010
+  },
+  "4678659572": {
+    "traffic_index": 0.901,
+    "aadt": 5583,
+    "crossroad": "North of S.R. 48",
+    "loc_id": "rcl717",
+    "year": 2010
+  },
+  "913528872": {
+    "traffic_index": 0.8206,
+    "aadt": 2586,
+    "crossroad": "North of Tapp Rd.",
+    "loc_id": "rcl689",
+    "year": 2010
+  },
+  "180588761": {
+    "traffic_index": 0.6828,
+    "aadt": 690,
+    "crossroad": "West of Bent Tree",
+    "loc_id": "rcl65",
+    "year": 2010
+  },
+  "4592113729": {
+    "traffic_index": 0.5728,
+    "aadt": 240,
+    "crossroad": "North of Bent Tree",
+    "loc_id": "rcl52",
+    "year": 2010
+  },
+  "4599121783": {
+    "traffic_index": 0.6788,
+    "aadt": 664,
+    "crossroad": "From E. Hickory Stick Ct. to S. Bent Tree Dr.",
+    "loc_id": "rcl47",
+    "year": 2010
+  },
+  "1925338670": {
+    "traffic_index": 0.7265,
+    "aadt": 1049,
+    "crossroad": "West of Park Ridge",
+    "loc_id": "rcl432",
+    "year": 2010
+  },
+  "180647358": {
+    "traffic_index": 0.9434,
+    "aadt": 8380,
+    "crossroad": "From S. Dunn St. to S. Henderson St.",
+    "loc_id": "rcl1503",
+    "year": 2010
+  },
+  "5457589709": {
+    "traffic_index": 0.9792,
+    "aadt": 11808,
+    "crossroad": "From W. Constitution Ave. to Corp. Line",
+    "loc_id": "rcl1398",
+    "year": 2010
+  },
+  "180605611": {
+    "traffic_index": 0.9029,
+    "aadt": 5688,
+    "crossroad": "From E. 7th St. to E. 8th St.",
+    "loc_id": "r466",
+    "year": 2010
+  },
+  "180627043": {
+    "traffic_index": 0.9965,
+    "aadt": 13934,
+    "crossroad": "From S. Woodlawn Ave. to S. Faculty Ave.",
+    "loc_id": "r4523",
+    "year": 2010
+  },
+  "180648801": {
+    "traffic_index": 0.8455,
+    "aadt": 3282,
+    "crossroad": "From S. Woodlawn Ave. to S. Hawthorne Dr.",
+    "loc_id": "r4415",
+    "year": 2010
+  },
+  "180653816": {
+    "traffic_index": 0.8361,
+    "aadt": 2999,
+    "crossroad": "From S. Ballentine Rd. to S. Highland Ave.",
+    "loc_id": "r4413",
+    "year": 2010
+  },
+  "180615772": {
+    "traffic_index": 0.8553,
+    "aadt": 3605,
+    "crossroad": "From E. Grimes Ln. to S. Weatherstone Ln.",
+    "loc_id": "r433",
+    "year": 2010
+  },
+  "180645706": {
+    "traffic_index": 0.9868,
+    "aadt": 12702,
+    "crossroad": "From S. Henderson St. to S. Piccadilly St.",
+    "loc_id": "r4011",
+    "year": 2010
+  },
+  "180603542": {
+    "traffic_index": 1.0,
+    "aadt": 16145,
+    "crossroad": "South of Blue Ridge",
+    "loc_id": "q5014",
+    "year": 2010
+  },
+  "180585093": {
+    "traffic_index": 0.7745,
+    "aadt": 1662,
+    "crossroad": "From N. Grant St. to N. Dunn St.",
+    "loc_id": "q4852",
+    "year": 2010
+  },
+  "180585089": {
+    "traffic_index": 0.75,
+    "aadt": 1314,
+    "crossroad": "From N. Lincoln St. to N. Grant St.",
+    "loc_id": "q4851",
+    "year": 2010
+  },
+  "180585081": {
+    "traffic_index": 0.7806,
+    "aadt": 1762,
+    "crossroad": "From N. Washington St. to N. Lincoln St.",
+    "loc_id": "q4849",
+    "year": 2010
+  },
+  "180611751": {
+    "traffic_index": 0.7344,
+    "aadt": 1132,
+    "crossroad": "From E. 18th St. to E. 19th St.",
+    "loc_id": "q4826",
+    "year": 2010
+  },
+  "180624492": {
+    "traffic_index": 0.9302,
+    "aadt": 7390,
+    "crossroad": "From E. 19th St. to E. 20th St.",
+    "loc_id": "q4821",
+    "year": 2010
+  },
+  "10605113461": {
+    "traffic_index": 0.9384,
+    "aadt": 7993,
+    "crossroad": "North of 18th St.",
+    "loc_id": "q4820",
+    "year": 2010
+  },
+  "180605588": {
+    "traffic_index": 0.873,
+    "aadt": 4271,
+    "crossroad": "Bet. Lincoln St. and Grant St.",
+    "loc_id": "q46100",
+    "year": 1999
+  },
+  "180647411": {
+    "traffic_index": 0.8541,
+    "aadt": 3563,
+    "crossroad": "From S. Henderson St. to S. Fess Ave.",
+    "loc_id": "q4416",
+    "year": 2010
+  },
+  "180587979": {
+    "traffic_index": 0.8927,
+    "aadt": 5159,
+    "crossroad": "From S. Walnut St. to S. Henderson St.",
+    "loc_id": "q4213",
+    "year": 2010
+  },
+  "180620633": {
+    "traffic_index": 1.0,
+    "aadt": 16192,
+    "crossroad": "South of Country Club Dr.",
+    "loc_id": "q406",
+    "year": 2010
+  },
+  "12254632694": {
+    "traffic_index": 0.6775,
+    "aadt": 656,
+    "crossroad": "From N. Monroe St. to W. Gourley Pike",
+    "loc_id": "p497",
+    "year": 2010
+  },
+  "180588170": {
+    "traffic_index": 0.7453,
+    "aadt": 1257,
+    "crossroad": "From W. Westfield Rd. to W. Ridge Rd.",
+    "loc_id": "p4813",
+    "year": 2010
+  },
+  "180605222": {
+    "traffic_index": 0.8679,
+    "aadt": 4066,
+    "crossroad": "From E. 13th St. to E. 14th St.",
+    "loc_id": "p4740",
+    "year": 2010
+  },
+  "180609473": {
+    "traffic_index": 0.7105,
+    "aadt": 900,
+    "crossroad": "Waldron - West",
+    "loc_id": "p4640",
+    "year": 2010
+  },
+  "180629446": {
+    "traffic_index": 0.9588,
+    "aadt": 9710,
+    "crossroad": "From W. Prospect St. to W. 3rd St.",
+    "loc_id": "rcl466",
+    "year": 2008
+  },
+  "180629450": {
+    "traffic_index": 0.9944,
+    "aadt": 13655,
+    "crossroad": "From S. Jackson St. to S. Rogers St.",
+    "loc_id": "p4561",
+    "year": 2010
+  },
+  "2657957699": {
+    "traffic_index": 0.9427,
+    "aadt": 8324,
+    "crossroad": "S. of Allen St.",
+    "loc_id": "p4323",
+    "year": 2010
+  },
+  "180626695": {
+    "traffic_index": 0.9809,
+    "aadt": 12002,
+    "crossroad": "From S. Banta Ave. to S. Milton Dr.",
+    "loc_id": "p4022",
+    "year": 2010
+  },
+  "180603970": {
+    "traffic_index": 0.8475,
+    "aadt": 3344,
+    "crossroad": "From N. Kinser Pike to W. Clubhouse Dr.",
+    "loc_id": "o529",
+    "year": 2010
+  },
+  "180632557": {
+    "traffic_index": 0.6942,
+    "aadt": 770,
+    "crossroad": "West of Oak St.",
+    "loc_id": "o4652",
+    "year": 2010
+  },
+  "180585379": {
+    "traffic_index": 0.6973,
+    "aadt": 793,
+    "crossroad": "Oak St - East",
+    "loc_id": "o4651",
+    "year": 2010
+  },
+  "180596449": {
+    "traffic_index": 0.862,
+    "aadt": 3844,
+    "crossroad": "From S. Timothy Ct. to S. Peachtree Ln.",
+    "loc_id": "o438",
+    "year": 2010
+  },
+  "11036532497": {
+    "traffic_index": 0.8424,
+    "aadt": 3186,
+    "crossroad": "ROCKPORT ROAD N OF TAPP",
+    "loc_id": "o403",
+    "year": 2010
+  },
+  "11036532488": {
+    "traffic_index": 0.978,
+    "aadt": 11680,
+    "crossroad": "From S. Pinehurst Dr. to S. Rockport Rd.",
+    "loc_id": "o401",
+    "year": 2010
+  },
+  "180585310": {
+    "traffic_index": 0.7362,
+    "aadt": 1152,
+    "crossroad": "South of W. 2nd St.",
+    "loc_id": "n412",
+    "year": 2010
+  },
+  "13146261309": {
+    "traffic_index": 1.0,
+    "aadt": 14600,
+    "crossroad": "W. of Adams St.",
+    "loc_id": "n403",
+    "year": 2010
+  },
+  "913528924": {
+    "traffic_index": 0.7949,
+    "aadt": 2021,
+    "crossroad": "S. of Tapp Rd.",
+    "loc_id": "n372",
+    "year": 2010
+  },
+  "180632070": {
+    "traffic_index": 0.9879,
+    "aadt": 12834,
+    "crossroad": "W. of S.R. 37",
+    "loc_id": "l4529",
+    "year": 2010
+  },
+  "180632084": {
+    "traffic_index": 0.9931,
+    "aadt": 13487,
+    "crossroad": "South of S.R. 48",
+    "loc_id": "l4414",
+    "year": 2005
+  },
+  "180628102": {
+    "traffic_index": 0.9317,
+    "aadt": 7490,
+    "crossroad": "From W. Barge Ln. to W. Fairington Dr.",
+    "loc_id": "l406",
+    "year": 2010
+  },
+  "180616554": {
+    "traffic_index": 0.9254,
+    "aadt": 7056,
+    "crossroad": "From S. Leonard Springs Rd. to S. Rayle Place",
+    "loc_id": "l4020",
+    "year": 2010
+  },
+  "7424417440": {
+    "traffic_index": 1.0,
+    "aadt": 21192,
+    "crossroad": "West of College Mall Rd.",
+    "loc_id": "t4518",
+    "year": 2009
+  },
+  "3526800515": {
+    "traffic_index": 0.8375,
+    "aadt": 3041,
+    "crossroad": "From E. Covenanter Dr. to E. Buick Cadillac Blvd.",
+    "loc_id": "t4358",
+    "year": 2009
+  },
+  "3526800528": {
+    "traffic_index": 0.9448,
+    "aadt": 8497,
+    "crossroad": "From S. College Mall Rd. to S. Auto Mall Rd.",
+    "loc_id": "t4336",
+    "year": 2009
+  },
+  "180642211": {
+    "traffic_index": 0.5953,
+    "aadt": 298,
+    "crossroad": "From E. Rock Creek Ct. to S. Hawksmoore Dr.",
+    "loc_id": "t417",
+    "year": 2009
+  },
+  "180631384": {
+    "traffic_index": 0.5925,
+    "aadt": 290,
+    "crossroad": "From S. Belhaven Ct. to E. Rock Creek Ct.",
+    "loc_id": "t416",
+    "year": 2009
+  },
+  "180631238": {
+    "traffic_index": 0.6123,
+    "aadt": 351,
+    "crossroad": "From S. Montclair Ave. to S. Fairmont St.",
+    "loc_id": "t414",
+    "year": 2009
+  },
+  "180613176": {
+    "traffic_index": 0.5405,
+    "aadt": 176,
+    "crossroad": "From E. Edgehill Ct. to E. Montclair Ct.",
+    "loc_id": "t412",
+    "year": 2009
+  },
+  "4679789805": {
+    "traffic_index": 0.8791,
+    "aadt": 4528,
+    "crossroad": "From S. Sare Rd. to S. Forrester St.",
+    "loc_id": "t409",
+    "year": 2009
+  },
+  "4706105965": {
+    "traffic_index": 0.9142,
+    "aadt": 6337,
+    "crossroad": "W. of Sare Rd.",
+    "loc_id": "t408",
+    "year": 2009
+  },
+  "1717414896": {
+    "traffic_index": 0.9237,
+    "aadt": 6938,
+    "crossroad": "From S. Spicewood Ln. to S. Sare Rd.",
+    "loc_id": "t407",
+    "year": 2009
+  },
+  "4571324844": {
+    "traffic_index": 0.9632,
+    "aadt": 10132,
+    "crossroad": "SARE ROAD JUST NORTH OF ROGERS RD",
+    "loc_id": "t4043",
+    "year": 2009
+  },
+  "10605113447": {
+    "traffic_index": 1.0,
+    "aadt": 15431,
+    "crossroad": "From N. Union St. to N. Union St.",
+    "loc_id": "s4554",
+    "year": 2009
+  },
+  "180623743": {
+    "traffic_index": 0.9311,
+    "aadt": 7450,
+    "crossroad": "From E. 2nd St. to E. Hunter Ave.",
+    "loc_id": "s4423",
+    "year": 2009
+  },
+  "1663947408": {
+    "traffic_index": 0.727,
+    "aadt": 1054,
+    "crossroad": "From E. Ruby Ln. to E. Southdowns Dr.",
+    "loc_id": "s435",
+    "year": 2009
+  },
+  "180615371": {
+    "traffic_index": 0.486,
+    "aadt": 104,
+    "crossroad": "From S. Montclair Ave. to E. Queens Way",
+    "loc_id": "s4266",
+    "year": 2009
+  },
+  "180608267": {
+    "traffic_index": 0.6252,
+    "aadt": 397,
+    "crossroad": "From S. Greenfield Ct. to S. Sycamore Ct.",
+    "loc_id": "s4216",
+    "year": 2009
+  },
+  "180587931": {
+    "traffic_index": 0.9604,
+    "aadt": 9860,
+    "crossroad": "From S. Walnut St. to W. Dodds St.",
+    "loc_id": "rcl487",
+    "year": 2009
+  },
+  "180613416": {
+    "traffic_index": 0.8345,
+    "aadt": 2955,
+    "crossroad": "From S. Gentry St. to S. College Ave.",
+    "loc_id": "rcl471",
+    "year": 2009
+  },
+  "4727949242": {
+    "traffic_index": 0.5584,
+    "aadt": 209,
+    "crossroad": "W. of Springhouse",
+    "loc_id": "rcl1464",
+    "year": 2009
+  },
+  "1727972562": {
+    "traffic_index": 0.7003,
+    "aadt": 816,
+    "crossroad": "N. of Seminary Dr.",
+    "loc_id": "rcl1463",
+    "year": 2009
+  },
+  "1727972564": {
+    "traffic_index": 0.5723,
+    "aadt": 239,
+    "crossroad": "S. of Nora Hill Dr.",
+    "loc_id": "rcl1453",
+    "year": 2009
+  },
+  "1727995346": {
+    "traffic_index": 0.6099,
+    "aadt": 343,
+    "crossroad": "S. of Nora Hill Dr.",
+    "loc_id": "rcl1452",
+    "year": 2009
+  },
+  "1727995678": {
+    "traffic_index": 0.4064,
+    "aadt": 48,
+    "crossroad": "From S. Hawksmoore Dr. to E. Rock Creek Dr.",
+    "loc_id": "rcl1448",
+    "year": 2009
+  },
+  "605068138": {
+    "traffic_index": 0.9042,
+    "aadt": 5761,
+    "crossroad": "From N. Prow Rd. to Corpline",
+    "loc_id": "o507",
+    "year": 2009
+  },
+  "1842137976": {
+    "traffic_index": 0.5091,
+    "aadt": 130,
+    "crossroad": "From E. S.R. 46 to N. Getty's Creek Rd. 1.5 mi. North of 46",
+    "loc_id": "rcl1309",
+    "year": 2009
+  },
+  "180621505": {
+    "traffic_index": 0.9581,
+    "aadt": 9647,
+    "crossroad": "From E. Law Ln. to E. 13th St.",
+    "loc_id": "r4726",
+    "year": 2009
+  },
+  "180614521": {
+    "traffic_index": 0.8885,
+    "aadt": 4953,
+    "crossroad": "West of Jordan Ave.",
+    "loc_id": "r4718",
+    "year": 2009
+  },
+  "12690165025": {
+    "traffic_index": 0.9466,
+    "aadt": 8644,
+    "crossroad": "From E. 10th St. to E. 11th St.",
+    "loc_id": "r4618",
+    "year": 2009
+  },
+  "180594449": {
+    "traffic_index": 0.6981,
+    "aadt": 799,
+    "crossroad": "South of Atwater Ave.",
+    "loc_id": "r4569",
+    "year": 2009
+  },
+  "180594454": {
+    "traffic_index": 0.8565,
+    "aadt": 3648,
+    "crossroad": "From S. Fess Ave. to S. Park Ave.",
+    "loc_id": "r441",
+    "year": 2009
+  },
+  "180593566": {
+    "traffic_index": 0.6425,
+    "aadt": 469,
+    "crossroad": "From S. Jordan Ave. to S. Mitchell St.",
+    "loc_id": "r4345",
+    "year": 2009
+  },
+  "180627465": {
+    "traffic_index": 0.9752,
+    "aadt": 11369,
+    "crossroad": "From N. College Ave. to N. Walnut St.",
+    "loc_id": "q4810",
+    "year": 2009
+  },
+  "10605113482": {
+    "traffic_index": 0.8656,
+    "aadt": 3980,
+    "crossroad": "From E. 15th St. to E. 17th St.",
+    "loc_id": "q4742",
+    "year": 2009
+  },
+  "180644285": {
+    "traffic_index": 0.8497,
+    "aadt": 3418,
+    "crossroad": "From E. 16th St. to E. 17th St.",
+    "loc_id": "q4725",
+    "year": 2009
+  },
+  "180605580": {
+    "traffic_index": 1.0,
+    "aadt": 15298,
+    "crossroad": "From E. 7th St. to E. 8th St.",
+    "loc_id": "q468",
+    "year": 2009
+  },
+  "180626348": {
+    "traffic_index": 0.7235,
+    "aadt": 1020,
+    "crossroad": "From E. Hunter Ave. to E. Atwater Ave.",
+    "loc_id": "q459",
+    "year": 2009
+  },
+  "180587904": {
+    "traffic_index": 0.882,
+    "aadt": 4655,
+    "crossroad": "From S. Walnut St. to S. Washington St.",
+    "loc_id": "q4586",
+    "year": 2009
+  },
+  "180617797": {
+    "traffic_index": 1.0,
+    "aadt": 15609,
+    "crossroad": "From W. 4th St. to W. Kirkwood Ave.",
+    "loc_id": "q4564",
+    "year": 2009
+  },
+  "180588464": {
+    "traffic_index": 1.0,
+    "aadt": 19174,
+    "crossroad": "W. of Dunn",
+    "loc_id": "q4539",
+    "year": 2005
+  },
+  "180626411": {
+    "traffic_index": 0.6475,
+    "aadt": 492,
+    "crossroad": "N. of University St.",
+    "loc_id": "q4483",
+    "year": 2009
+  },
+  "180614039": {
+    "traffic_index": 0.8716,
+    "aadt": 4214,
+    "crossroad": "W. of Park",
+    "loc_id": "q4410",
+    "year": 2009
+  },
+  "5571903092": {
+    "traffic_index": 0.9127,
+    "aadt": 6246,
+    "crossroad": "From E. Hillside Dr. to E. Brenda Ln.",
+    "loc_id": "q4253",
+    "year": 2009
+  },
+  "180588005": {
+    "traffic_index": 0.8546,
+    "aadt": 3582,
+    "crossroad": "From E. Winslow Rd. to S. Walnut St.",
+    "loc_id": "q408",
+    "year": 2009
+  },
+  "180608737": {
+    "traffic_index": 0.9043,
+    "aadt": 5763,
+    "crossroad": "North of Skyline Dr.",
+    "loc_id": "p5014",
+    "year": 2009
+  },
+  "4729717276": {
+    "traffic_index": 0.9652,
+    "aadt": 10329,
+    "crossroad": "From N. Maple St. to N. Jackson St.",
+    "loc_id": "p487",
+    "year": 2009
+  },
+  "180618194": {
+    "traffic_index": 0.9372,
+    "aadt": 7902,
+    "crossroad": "From N. Rogers St. to W. 14th St.",
+    "loc_id": "p4765",
+    "year": 2009
+  },
+  "180589066": {
+    "traffic_index": 0.8717,
+    "aadt": 4218,
+    "crossroad": "From N. Fairview St. to N. Rogers St.",
+    "loc_id": "p4668",
+    "year": 2009
+  },
+  "6498992908": {
+    "traffic_index": 0.9471,
+    "aadt": 8681,
+    "crossroad": "From W. 10th St. to W. 11th St.",
+    "loc_id": "p4626",
+    "year": 2009
+  },
+  "180628955": {
+    "traffic_index": 0.7378,
+    "aadt": 1170,
+    "crossroad": "From S. Walker St. to S. Davisson St.",
+    "loc_id": "p456",
+    "year": 2009
+  },
+  "180637279": {
+    "traffic_index": 0.8826,
+    "aadt": 4681,
+    "crossroad": "From W. Smith Ave. to W. 3rd St.",
+    "loc_id": "p454",
+    "year": 2009
+  },
+  "180632203": {
+    "traffic_index": 0.7615,
+    "aadt": 1468,
+    "crossroad": "From S. Buckner St. to S. Euclid Ave.",
+    "loc_id": "p45110",
+    "year": 2009
+  },
+  "180615724": {
+    "traffic_index": 0.5967,
+    "aadt": 302,
+    "crossroad": "From W. 1st St. to S. Fairview St.",
+    "loc_id": "p4438",
+    "year": 2009
+  },
+  "180629487": {
+    "traffic_index": 0.9238,
+    "aadt": 6948,
+    "crossroad": "From W. Coolidge Dr. to W. Joy St.",
+    "loc_id": "p416",
+    "year": 2009
+  },
+  "180607293": {
+    "traffic_index": 0.9066,
+    "aadt": 5890,
+    "crossroad": "S. of San Juan Dr.",
+    "loc_id": "p3811",
+    "year": 2002
+  },
+  "12900819497": {
+    "traffic_index": 0.8444,
+    "aadt": 3248,
+    "crossroad": "South of 16th St.",
+    "loc_id": "o4723",
+    "year": 2009
+  },
+  "180585760": {
+    "traffic_index": 1.0,
+    "aadt": 16395,
+    "crossroad": "From S. Patterson Dr. to S. Walker St.",
+    "loc_id": "o4410",
+    "year": 2009
+  },
+  "180595552": {
+    "traffic_index": 0.8762,
+    "aadt": 4404,
+    "crossroad": "From S. Adams St. to S. Larkspur Ln.",
+    "loc_id": "o4319",
+    "year": 2009
+  },
+  "4679166880": {
+    "traffic_index": 0.8525,
+    "aadt": 3508,
+    "crossroad": "From S. Beechtree Ln. to S. Timothy Ct.",
+    "loc_id": "n4325",
+    "year": 2009
+  },
+  "180630086": {
+    "traffic_index": 0.8651,
+    "aadt": 3959,
+    "crossroad": "Between SR 48 and Majestic Woods",
+    "loc_id": "i454",
+    "year": 2005
+  },
+  "180632096": {
+    "traffic_index": 0.6225,
+    "aadt": 387,
+    "crossroad": "From W. Middle Ct. to W. Highland Ct.",
+    "loc_id": "l4421",
+    "year": 2009
+  },
+  "5054147849": {
+    "traffic_index": 0.9593,
+    "aadt": 9756,
+    "crossroad": "South of Industrial Boulevarde",
+    "loc_id": "l412",
+    "year": 2009
+  },
+  "180594770": {
+    "traffic_index": 0.952,
+    "aadt": 9100,
+    "crossroad": "West of Smith Rd.",
+    "loc_id": "u4613",
+    "year": 2008
+  },
+  "180622198": {
+    "traffic_index": 0.9555,
+    "aadt": 9415,
+    "crossroad": "East of Woodcrest",
+    "loc_id": "t448",
+    "year": 2008
+  },
+  "12900806435": {
+    "traffic_index": 1.0,
+    "aadt": 17471,
+    "crossroad": "Bet. E. 2nd St. and E. Drive to College Mall",
+    "loc_id": "t4429",
+    "year": 2008
+  },
+  "180604549": {
+    "traffic_index": 0.8215,
+    "aadt": 2609,
+    "crossroad": "100' W. of Harrell Rd.",
+    "loc_id": "s373",
+    "year": 2002
+  },
+  "180611142": {
+    "traffic_index": 1.0,
+    "aadt": 21334,
+    "crossroad": "Bet. S. Clark St. and S. Hillsdale Dr.",
+    "loc_id": "s4560",
+    "year": 2008
+  },
+  "180614012": {
+    "traffic_index": 0.9651,
+    "aadt": 10321,
+    "crossroad": "West of Woodcrest",
+    "loc_id": "s4461",
+    "year": 2008
+  },
+  "180605779": {
+    "traffic_index": 0.9802,
+    "aadt": 11926,
+    "crossroad": "Between Nancy and High",
+    "loc_id": "s424",
+    "year": 2008
+  },
+  "180636652": {
+    "traffic_index": 0.612,
+    "aadt": 350,
+    "crossroad": "From E. Wilton Ct. to E. Windsor Dr.",
+    "loc_id": "s4229",
+    "year": 2008
+  },
+  "1741076022": {
+    "traffic_index": 0.544,
+    "aadt": 182,
+    "crossroad": "From S. Oxford Dr. to S. Wilton Dr.",
+    "loc_id": "s4222",
+    "year": 2008
+  },
+  "1741076028": {
+    "traffic_index": 0.5239,
+    "aadt": 150,
+    "crossroad": "From S. Wilton Dr. to E. Arden Dr.",
+    "loc_id": "s4224",
+    "year": 2008
+  },
+  "180607207": {
+    "traffic_index": 0.6244,
+    "aadt": 394,
+    "crossroad": "Bet. S. Windsor Dr. and S. High St.",
+    "loc_id": "s4213",
+    "year": 2008
+  },
+  "654314467": {
+    "traffic_index": 0.9903,
+    "aadt": 13135,
+    "crossroad": "Northbound",
+    "loc_id": "rcl722",
+    "year": 2008
+  },
+  "2024933365": {
+    "traffic_index": 0.9148,
+    "aadt": 6373,
+    "crossroad": "SARE RD. S. OF E. CANADA DR.",
+    "loc_id": "rcl619",
+    "year": 2008
+  },
+  "3045942369": {
+    "traffic_index": 0.9787,
+    "aadt": 11752,
+    "crossroad": "Westbound Bet. S. Kimble Dr. and S. Opportunity Ln.",
+    "loc_id": "rcl1508",
+    "year": 2008
+  },
+  "3045942364": {
+    "traffic_index": 0.7723,
+    "aadt": 1627,
+    "crossroad": "South of W. 3rd St.",
+    "loc_id": "n4424",
+    "year": 2003
+  },
+  "180584797": {
+    "traffic_index": 1.0,
+    "aadt": 18569,
+    "crossroad": "W. of Bunger Rd.",
+    "loc_id": "j385",
+    "year": 2002
+  },
+  "180585220": {
+    "traffic_index": 0.705,
+    "aadt": 854,
+    "crossroad": "Bet. Hillside and Thornton",
+    "loc_id": "r4253",
+    "year": 1998
+  },
+  "180618561": {
+    "traffic_index": 0.7522,
+    "aadt": 1343,
+    "crossroad": "East of S. Bainbridge Dr.",
+    "loc_id": "r3957",
+    "year": 2008
+  },
+  "180603562": {
+    "traffic_index": 0.6211,
+    "aadt": 382,
+    "crossroad": "From N. Fritz Dr. to N. Barbara Dr.",
+    "loc_id": "q507",
+    "year": 2008
+  },
+  "1919577783": {
+    "traffic_index": 0.7836,
+    "aadt": 1814,
+    "crossroad": "N. of Tammarrack",
+    "loc_id": "q5017",
+    "year": 2008
+  },
+  "180617124": {
+    "traffic_index": 0.3928,
+    "aadt": 42,
+    "crossroad": "From E. Saville Ave. to E. Glendora Dr.",
+    "loc_id": "q4927",
+    "year": 2008
+  },
+  "180613683": {
+    "traffic_index": 0.9689,
+    "aadt": 10703,
+    "crossroad": "Bet. W. 10th St. and W. 11th St.",
+    "loc_id": "q461",
+    "year": 2008
+  },
+  "180602721": {
+    "traffic_index": 0.9929,
+    "aadt": 13462,
+    "crossroad": "Bet. W. 6th St. and W. 7th St.",
+    "loc_id": "q4566",
+    "year": 2008
+  },
+  "11539219353": {
+    "traffic_index": 0.9936,
+    "aadt": 13556,
+    "crossroad": "Bet. W. Smith Ave. and W. 3rd St.",
+    "loc_id": "q4562",
+    "year": 2008
+  },
+  "180587900": {
+    "traffic_index": 1.0,
+    "aadt": 15744,
+    "crossroad": "Bet. E. Kirkwood Ave. and E. 6th St.",
+    "loc_id": "q4558",
+    "year": 2008
+  },
+  "180622079": {
+    "traffic_index": 0.8324,
+    "aadt": 2894,
+    "crossroad": "N. of Kirkwood",
+    "loc_id": "q4552",
+    "year": 2008
+  },
+  "6708931346": {
+    "traffic_index": 0.7914,
+    "aadt": 1954,
+    "crossroad": "W. of E. Atwater Ave.",
+    "loc_id": "q4532",
+    "year": 2008
+  },
+  "180587907": {
+    "traffic_index": 1.0,
+    "aadt": 15916,
+    "crossroad": "Bet. 2nd St. and 3rd St.",
+    "loc_id": "q4561",
+    "year": 2004
+  },
+  "11539219336": {
+    "traffic_index": 1.0,
+    "aadt": 17067,
+    "crossroad": "Bet. Walnut St. and Washington St.",
+    "loc_id": "q4517",
+    "year": 2008
+  },
+  "11122701618": {
+    "traffic_index": 1.0,
+    "aadt": 18482,
+    "crossroad": "From Lincoln St. to Grant St.",
+    "loc_id": "q4515",
+    "year": 2008
+  },
+  "180585736": {
+    "traffic_index": 0.9933,
+    "aadt": 13518,
+    "crossroad": "Bet. E. 2nd St. and E. Smith Ave.",
+    "loc_id": "q4445",
+    "year": 2008
+  },
+  "180591055": {
+    "traffic_index": 0.9084,
+    "aadt": 5996,
+    "crossroad": "North of E. Allen St.",
+    "loc_id": "q4390",
+    "year": 2008
+  },
+  "180642436": {
+    "traffic_index": 0.9101,
+    "aadt": 6095,
+    "crossroad": "Southbound Just South of E. Allen St.",
+    "loc_id": "q4389",
+    "year": 2008
+  },
+  "180587959": {
+    "traffic_index": 1.0,
+    "aadt": 27052,
+    "crossroad": "Bet. E. Wilson St. and S. Monon Dr.",
+    "loc_id": "q4345",
+    "year": 2008
+  },
+  "180653777": {
+    "traffic_index": 0.9368,
+    "aadt": 7866,
+    "crossroad": "Bet. E. South Dr. and E. Summit View Pl.",
+    "loc_id": "q4117",
+    "year": 2008
+  },
+  "180586763": {
+    "traffic_index": 1.0,
+    "aadt": 20414,
+    "crossroad": "Bet. S. Walnut St. Pk. and E. South Dr.",
+    "loc_id": "q404",
+    "year": 2008
+  },
+  "180602750": {
+    "traffic_index": 0.6726,
+    "aadt": 626,
+    "crossroad": "East of Elm",
+    "loc_id": "p45217",
+    "year": 2008
+  },
+  "12419969979": {
+    "traffic_index": 0.9434,
+    "aadt": 8380,
+    "crossroad": "From W. 1st St. to W. 2nd St.",
+    "loc_id": "p4449",
+    "year": 2008
+  },
+  "180629463": {
+    "traffic_index": 0.9688,
+    "aadt": 10695,
+    "crossroad": "From W. Wilson St. to W. Driscoll Dr.",
+    "loc_id": "p432",
+    "year": 2008
+  },
+  "180646941": {
+    "traffic_index": 0.5732,
+    "aadt": 241,
+    "crossroad": "From S. Rogers St. to S. Madison St.",
+    "loc_id": "p4225",
+    "year": 2008
+  },
+  "180587403": {
+    "traffic_index": 0.9302,
+    "aadt": 7390,
+    "crossroad": "East of N. Lemon Lane",
+    "loc_id": "o473",
+    "year": 2008
+  },
+  "180643887": {
+    "traffic_index": 0.7284,
+    "aadt": 1069,
+    "crossroad": "W. of Pine",
+    "loc_id": "o4653",
+    "year": 2008
+  },
+  "180595584": {
+    "traffic_index": 0.5522,
+    "aadt": 197,
+    "crossroad": "South of W. Cottage Grove Ave.",
+    "loc_id": "o4621",
+    "year": 2008
+  },
+  "180585594": {
+    "traffic_index": 0.4973,
+    "aadt": 116,
+    "crossroad": "North of W. Cottage Grove Ave.",
+    "loc_id": "o4620",
+    "year": 2008
+  },
+  "180585591": {
+    "traffic_index": 0.431,
+    "aadt": 61,
+    "crossroad": "North of W. 10th St.",
+    "loc_id": "o4619",
+    "year": 2008
+  },
+  "180613670": {
+    "traffic_index": 0.5642,
+    "aadt": 221,
+    "crossroad": "West of Summit St.",
+    "loc_id": "o4614",
+    "year": 2008
+  },
+  "794946371": {
+    "traffic_index": 0.964,
+    "aadt": 10210,
+    "crossroad": "Bet. W. 3rd St. and S. Adams St.",
+    "loc_id": "o456",
+    "year": 2008
+  },
+  "180602760": {
+    "traffic_index": 0.6533,
+    "aadt": 520,
+    "crossroad": "Bet. N. Pine St. and N. Oak St.",
+    "loc_id": "o4544",
+    "year": 2008
+  },
+  "180632218": {
+    "traffic_index": 1.0,
+    "aadt": 19743,
+    "crossroad": "Bet. S. Westplex Ave. and S. Patterson Dr.",
+    "loc_id": "o454",
+    "year": 2008
+  },
+  "180632043": {
+    "traffic_index": 0.7285,
+    "aadt": 1070,
+    "crossroad": "North of W. 3rd St.",
+    "loc_id": "n454",
+    "year": 2008
+  },
+  "3643414654": {
+    "traffic_index": 0.9732,
+    "aadt": 11149,
+    "crossroad": "W. of Johnson",
+    "loc_id": "n4516",
+    "year": 2008
+  },
+  "4560572846": {
+    "traffic_index": 0.8625,
+    "aadt": 3864,
+    "crossroad": "Between Airport Rd. and Gifford",
+    "loc_id": "i4011",
+    "year": 2008
+  },
+  "180615025": {
+    "traffic_index": 0.7571,
+    "aadt": 1407,
+    "crossroad": "S. of Bell Trace Dr.",
+    "loc_id": "u4620",
+    "year": 2007
+  },
+  "7161813497": {
+    "traffic_index": 1.0,
+    "aadt": 15614,
+    "crossroad": "E. of Bypass",
+    "loc_id": "t4619",
+    "year": 2007
+  },
+  "180631323": {
+    "traffic_index": 0.9202,
+    "aadt": 6715,
+    "crossroad": "Between Jordan and Lingleback",
+    "loc_id": "s483",
+    "year": 2007
+  },
+  "180631318": {
+    "traffic_index": 0.9561,
+    "aadt": 9469,
+    "crossroad": "Between Jordan and Jordan",
+    "loc_id": "s482",
+    "year": 2007
+  },
+  "180636976": {
+    "traffic_index": 0.9187,
+    "aadt": 6619,
+    "crossroad": "S. of 17th St.",
+    "loc_id": "s472",
+    "year": 2007
+  },
+  "180604847": {
+    "traffic_index": 0.9262,
+    "aadt": 7108,
+    "crossroad": "S. of Childs School",
+    "loc_id": "s4038",
+    "year": 2007
+  },
+  "180615081": {
+    "traffic_index": 0.7307,
+    "aadt": 1092,
+    "crossroad": "E. of John Hinkle Pl.",
+    "loc_id": "rcl806",
+    "year": 2007
+  },
+  "180631293": {
+    "traffic_index": 0.995,
+    "aadt": 13733,
+    "crossroad": "W. of Fee Lane",
+    "loc_id": "r484",
+    "year": 2007
+  },
+  "180588480": {
+    "traffic_index": 0.4204,
+    "aadt": 55,
+    "crossroad": "N. of Allen",
+    "loc_id": "q4380",
+    "year": 2007
+  },
+  "180649622": {
+    "traffic_index": 0.7599,
+    "aadt": 1445,
+    "crossroad": "West of Fairview",
+    "loc_id": "p4638",
+    "year": 2007
+  },
+  "180649508": {
+    "traffic_index": 0.6175,
+    "aadt": 369,
+    "crossroad": "N. of Dodds St.",
+    "loc_id": "p444",
+    "year": 2007
+  },
+  "942640603": {
+    "traffic_index": 0.9672,
+    "aadt": 10524,
+    "crossroad": "N. or Rockport Rd.",
+    "loc_id": "p4220",
+    "year": 2007
+  },
+  "180615684": {
+    "traffic_index": 0.9174,
+    "aadt": 6533,
+    "crossroad": "S. of Ralston Dr.",
+    "loc_id": "p4048",
+    "year": 2007
+  },
+  "4681134288": {
+    "traffic_index": 0.9249,
+    "aadt": 7018,
+    "crossroad": "S. of Country Club",
+    "loc_id": "p391",
+    "year": 2007
+  },
+  "180648081": {
+    "traffic_index": 0.6604,
+    "aadt": 557,
+    "crossroad": "350' W. of Forrester",
+    "loc_id": "u406",
+    "year": 2006
+  },
+  "180625747": {
+    "traffic_index": 0.6436,
+    "aadt": 474,
+    "crossroad": "W. of Daniel",
+    "loc_id": "rcl12",
+    "year": 2006
+  },
+  "10605113429": {
+    "traffic_index": 0.995,
+    "aadt": 13735,
+    "crossroad": "E. of Park",
+    "loc_id": "r4558",
+    "year": 2006
+  },
+  "180622036": {
+    "traffic_index": 0.7051,
+    "aadt": 855,
+    "crossroad": "E. of Woodburn",
+    "loc_id": "q4777",
+    "year": 2006
+  },
+  "10605113425": {
+    "traffic_index": 0.9996,
+    "aadt": 14360,
+    "crossroad": "E. of Henderson St.",
+    "loc_id": "q454",
+    "year": 2006
+  },
+  "10605113414": {
+    "traffic_index": 0.6975,
+    "aadt": 795,
+    "crossroad": "W. of Henderson",
+    "loc_id": "q4529",
+    "year": 2006
+  },
+  "180647401": {
+    "traffic_index": 0.6072,
+    "aadt": 334,
+    "crossroad": "East of Henderson St.",
+    "loc_id": "q4337",
+    "year": 2006
+  },
+  "180585015": {
+    "traffic_index": 0.8989,
+    "aadt": 5471,
+    "crossroad": "South of Briarcliff",
+    "loc_id": "p5012",
+    "year": 2006
+  },
+  "180594259": {
+    "traffic_index": 0.5107,
+    "aadt": 132,
+    "crossroad": "South of 15th St.",
+    "loc_id": "p4770",
+    "year": 2006
+  },
+  "180605354": {
+    "traffic_index": 0.6323,
+    "aadt": 425,
+    "crossroad": "N. of 15th St.",
+    "loc_id": "p4758",
+    "year": 2006
+  },
+  "180589059": {
+    "traffic_index": 0.8616,
+    "aadt": 3830,
+    "crossroad": "East of Morton St.",
+    "loc_id": "p4713",
+    "year": 2006
+  },
+  "180637286": {
+    "traffic_index": 0.7101,
+    "aadt": 897,
+    "crossroad": "North of 2nd",
+    "loc_id": "p453",
+    "year": 2006
+  },
+  "180642989": {
+    "traffic_index": 0.6625,
+    "aadt": 568,
+    "crossroad": "West of Milton",
+    "loc_id": "p4136",
+    "year": 2006
+  },
+  "4678659736": {
+    "traffic_index": 0.8471,
+    "aadt": 3334,
+    "crossroad": "East of Leonard Springs Rd.",
+    "loc_id": "m3711",
+    "year": 2006
+  },
+  "180597946": {
+    "traffic_index": 1.0,
+    "aadt": 23390,
+    "crossroad": "Eastbound West of Curry Pike",
+    "loc_id": "ccl2853",
+    "year": 2005
+  },
+  "180617329": {
+    "traffic_index": 0.812,
+    "aadt": 2381,
+    "crossroad": "Between Boltinghouse Rd. and Robs Ln.",
+    "loc_id": "ccl1153",
+    "year": 2005
+  },
+  "180621815": {
+    "traffic_index": 0.6614,
+    "aadt": 562,
+    "crossroad": "S. of SR 45",
+    "loc_id": "ccl1237",
+    "year": 2003
+  },
+  "180589492": {
+    "traffic_index": 0.6606,
+    "aadt": 558,
+    "crossroad": "South of Bill Mallory",
+    "loc_id": "v4425",
+    "year": 2005
+  },
+  "180589488": {
+    "traffic_index": 0.5679,
+    "aadt": 229,
+    "crossroad": "East of Graywell Dr.",
+    "loc_id": "v4311",
+    "year": 2005
+  },
+  "1717128155": {
+    "traffic_index": 0.6198,
+    "aadt": 377,
+    "crossroad": "North of Gentry Blvd",
+    "loc_id": "v4312",
+    "year": 2005
+  },
+  "180577750": {
+    "traffic_index": 0.7069,
+    "aadt": 870,
+    "crossroad": "South of Maplecrest Dr.",
+    "loc_id": "s491",
+    "year": 2005
+  },
+  "180611228": {
+    "traffic_index": 0.9348,
+    "aadt": 7721,
+    "crossroad": "South of Atwater Ave.",
+    "loc_id": "s4519",
+    "year": 2005
+  },
+  "180608495": {
+    "traffic_index": 0.6982,
+    "aadt": 800,
+    "crossroad": "South of Marilyn Dr.",
+    "loc_id": "s4327",
+    "year": 2005
+  },
+  "180586480": {
+    "traffic_index": 0.5604,
+    "aadt": 213,
+    "crossroad": "South of Kensington",
+    "loc_id": "s4034",
+    "year": 2005
+  },
+  "1671414985": {
+    "traffic_index": 0.5474,
+    "aadt": 188,
+    "crossroad": "North of Kensington",
+    "loc_id": "s4033",
+    "year": 2005
+  },
+  "180575563": {
+    "traffic_index": 0.3975,
+    "aadt": 44,
+    "crossroad": "West of Stratford",
+    "loc_id": "s4030",
+    "year": 2005
+  },
+  "180612348": {
+    "traffic_index": 1.0,
+    "aadt": 14789,
+    "crossroad": "From W. Heritage Way to W. Curry Ct.",
+    "loc_id": "rcl984",
+    "year": 1996
+  },
+  "180628917": {
+    "traffic_index": 0.5548,
+    "aadt": 202,
+    "crossroad": "E. of Quarry",
+    "loc_id": "rcl262",
+    "year": 2005
+  },
+  "180592556": {
+    "traffic_index": 0.6382,
+    "aadt": 450,
+    "crossroad": "East of Dunn St.",
+    "loc_id": "r505",
+    "year": 2005
+  },
+  "877329954": {
+    "traffic_index": 0.991,
+    "aadt": 13219,
+    "crossroad": "From S. Woodlawn Ave. to S. Faculty Ave.",
+    "loc_id": "r4559",
+    "year": 1992
+  },
+  "180587714": {
+    "traffic_index": 0.9756,
+    "aadt": 11414,
+    "crossroad": "N. of 3rd St.",
+    "loc_id": "r4547",
+    "year": 2005
+  },
+  "180648808": {
+    "traffic_index": 0.9868,
+    "aadt": 12696,
+    "crossroad": "East of Woodlawn",
+    "loc_id": "r429",
+    "year": 2005
+  },
+  "180622361": {
+    "traffic_index": 0.7325,
+    "aadt": 1112,
+    "crossroad": "West of Pepperchase",
+    "loc_id": "r384",
+    "year": 2005
+  },
+  "180603566": {
+    "traffic_index": 0.7799,
+    "aadt": 1751,
+    "crossroad": "South of Tammarrack",
+    "loc_id": "q502",
+    "year": 2005
+  },
+  "180639815": {
+    "traffic_index": 0.7884,
+    "aadt": 1899,
+    "crossroad": "Bet. Glendora Dr. and Saville Ave.",
+    "loc_id": "q503",
+    "year": 1999
+  },
+  "180596392": {
+    "traffic_index": 0.8919,
+    "aadt": 5119,
+    "crossroad": "West of Patterson Dr.",
+    "loc_id": "p4353",
+    "year": 2005
+  },
+  "8385697463": {
+    "traffic_index": 0.5226,
+    "aadt": 148,
+    "crossroad": "East of Summit St.",
+    "loc_id": "o4612",
+    "year": 2005
+  },
+  "180616916": {
+    "traffic_index": 0.8459,
+    "aadt": 3294,
+    "crossroad": "Bet. 6th St. and 7th St. *Detour Route*",
+    "loc_id": "o4522",
+    "year": 2005
+  },
+  "2681099984": {
+    "traffic_index": 0.795,
+    "aadt": 2024,
+    "crossroad": "South of Arch Haven Dr.",
+    "loc_id": "o451",
+    "year": 2005
+  },
+  "180596468": {
+    "traffic_index": 0.8305,
+    "aadt": 2842,
+    "crossroad": "S. of 2nd St.",
+    "loc_id": "n4328",
+    "year": 2005
+  },
+  "793268507": {
+    "traffic_index": 0.9639,
+    "aadt": 10202,
+    "crossroad": "North of Vernal Pike",
+    "loc_id": "l482",
+    "year": 2005
+  },
+  "1688975817": {
+    "traffic_index": 0.8626,
+    "aadt": 3865,
+    "crossroad": "North of Bloomfield Rd.",
+    "loc_id": "m4231",
+    "year": 2005
+  },
+  "1688975598": {
+    "traffic_index": 0.807,
+    "aadt": 2270,
+    "crossroad": "West of Bloomfield Rd.",
+    "loc_id": "m4226",
+    "year": 2005
+  },
+  "180590431": {
+    "traffic_index": 0.8693,
+    "aadt": 4123,
+    "crossroad": "N. of Smithville Rd. (4th of July Weekend)",
+    "loc_id": "ccl1834",
+    "year": 2005
+  },
+  "180621728": {
+    "traffic_index": 0.6421,
+    "aadt": 467,
+    "crossroad": "West of S.R. 446",
+    "loc_id": "ccl1627",
+    "year": 2004
+  },
+  "180589095": {
+    "traffic_index": 0.8869,
+    "aadt": 4879,
+    "crossroad": "South of Moore's Pike",
+    "loc_id": "w412",
+    "year": 2001
+  },
+  "180631345": {
+    "traffic_index": 0.9202,
+    "aadt": 6715,
+    "crossroad": "South of S.R. 46",
+    "loc_id": "W445",
+    "year": 2004
+  },
+  "4707740352": {
+    "traffic_index": 1.0,
+    "aadt": 15045,
+    "crossroad": "N. of E. 3rd St.",
+    "loc_id": "v4535",
+    "year": 2004
+  },
+  "180637885": {
+    "traffic_index": 0.4927,
+    "aadt": 111,
+    "crossroad": "North of Pickwick Place",
+    "loc_id": "t435",
+    "year": 2004
+  },
+  "180604545": {
+    "traffic_index": 0.6102,
+    "aadt": 344,
+    "crossroad": "East of Harrell Rd.",
+    "loc_id": "t365",
+    "year": 2004
+  },
+  "180645330": {
+    "traffic_index": 0.5357,
+    "aadt": 168,
+    "crossroad": "North of Howe",
+    "loc_id": "rcl778",
+    "year": 2004
+  },
+  "4548694153": {
+    "traffic_index": 0.873,
+    "aadt": 4270,
+    "crossroad": "Between 2nd St. and 3rd St.",
+    "loc_id": "rcl142",
+    "year": 2004
+  },
+  "180655516": {
+    "traffic_index": 0.65,
+    "aadt": 504,
+    "crossroad": "South of Bethal Ln.",
+    "loc_id": "r502",
+    "year": 2004
+  },
+  "180587928": {
+    "traffic_index": 0.9885,
+    "aadt": 12916,
+    "crossroad": "Bet. College and 2nd St.",
+    "loc_id": "q4448",
+    "year": 2004
+  },
+  "798809928": {
+    "traffic_index": 0.9796,
+    "aadt": 11852,
+    "crossroad": "Between 1st St. and Dodds St.",
+    "loc_id": "q4442",
+    "year": 2004
+  },
+  "180604254": {
+    "traffic_index": 0.7459,
+    "aadt": 1264,
+    "crossroad": "South of Dodds St.",
+    "loc_id": "q4365",
+    "year": 2004
+  },
+  "180591045": {
+    "traffic_index": 0.7301,
+    "aadt": 1086,
+    "crossroad": "Bet. Allen St. and Dixie",
+    "loc_id": "q4364",
+    "year": 2004
+  },
+  "180627325": {
+    "traffic_index": 0.6817,
+    "aadt": 683,
+    "crossroad": "North of 8th St.",
+    "loc_id": "p4615",
+    "year": 2002
+  },
+  "180607751": {
+    "traffic_index": 0.6479,
+    "aadt": 494,
+    "crossroad": "East of Euclid",
+    "loc_id": "p4528",
+    "year": 2004
+  },
+  "180623236": {
+    "traffic_index": 0.9998,
+    "aadt": 14392,
+    "crossroad": "Between Elm and Oak",
+    "loc_id": "p45214",
+    "year": 2004
+  },
+  "180609467": {
+    "traffic_index": 0.9995,
+    "aadt": 14340,
+    "crossroad": "Between Maple and Waldron",
+    "loc_id": "p45187",
+    "year": 2004
+  },
+  "180602746": {
+    "traffic_index": 0.6895,
+    "aadt": 736,
+    "crossroad": "West of Maple",
+    "loc_id": "p45185",
+    "year": 2003
+  },
+  "180602743": {
+    "traffic_index": 0.5728,
+    "aadt": 240,
+    "crossroad": "North of Kirkwood Ave.",
+    "loc_id": "p45189",
+    "year": 2004
+  },
+  "180602740": {
+    "traffic_index": 0.5411,
+    "aadt": 177,
+    "crossroad": "North of Kirkwood Ave.",
+    "loc_id": "p45157",
+    "year": 2004
+  },
+  "180596933": {
+    "traffic_index": 1.0,
+    "aadt": 22777,
+    "crossroad": "East of Cory",
+    "loc_id": "o453",
+    "year": 2004
+  },
+  "180623239": {
+    "traffic_index": 0.9995,
+    "aadt": 14347,
+    "crossroad": "Bet. Oak and Pine",
+    "loc_id": "o4524",
+    "year": 2004
+  },
+  "11301229825": {
+    "traffic_index": 0.9964,
+    "aadt": 13924,
+    "crossroad": "Between Pine and Adams",
+    "loc_id": "o4523",
+    "year": 2004
+  },
+  "3045947322": {
+    "traffic_index": 1.0,
+    "aadt": 22780,
+    "crossroad": "West of Cory",
+    "loc_id": "n4518",
+    "year": 2004
+  },
+  "180627717": {
+    "traffic_index": 0.8533,
+    "aadt": 3536,
+    "crossroad": "Between Ratliff and Harbison",
+    "loc_id": "ccl1170",
+    "year": 2004
+  },
+  "180617325": {
+    "traffic_index": 0.7888,
+    "aadt": 1906,
+    "crossroad": "North of 10th St.",
+    "loc_id": "v475",
+    "year": 2003
+  },
+  "180633180": {
+    "traffic_index": 0.6384,
+    "aadt": 451,
+    "crossroad": "West of Hillsdale",
+    "loc_id": "t4510",
+    "year": 2003
+  },
+  "180629160": {
+    "traffic_index": 1.0,
+    "aadt": 22385,
+    "crossroad": "Bet. Jefferson and Roosevelt",
+    "loc_id": "s4558",
+    "year": 2003
+  },
+  "1107935040": {
+    "traffic_index": 0.8617,
+    "aadt": 3831,
+    "crossroad": "Bet. Weatherstone and Southdowns",
+    "loc_id": "rcl957",
+    "year": 2003
+  },
+  "1688976139": {
+    "traffic_index": 0.8111,
+    "aadt": 2361,
+    "crossroad": "S.R. 37 off ramp",
+    "loc_id": "rcl834",
+    "year": 2003
+  },
+  "180655853": {
+    "traffic_index": 0.8494,
+    "aadt": 3408,
+    "crossroad": "South of Whitehall Crossing",
+    "loc_id": "rcl713",
+    "year": 2003
+  },
+  "180611042": {
+    "traffic_index": 0.6783,
+    "aadt": 661,
+    "crossroad": "S. of Pierson Ct.",
+    "loc_id": "rcl539",
+    "year": 2003
+  },
+  "180606985": {
+    "traffic_index": 0.7471,
+    "aadt": 1278,
+    "crossroad": "West of Henderson",
+    "loc_id": "rcl502",
+    "year": 2003
+  },
+  "180613705": {
+    "traffic_index": 0.9619,
+    "aadt": 10011,
+    "crossroad": "South of 10th St.",
+    "loc_id": "rcl1",
+    "year": 2003
+  },
+  "3573138393": {
+    "traffic_index": 0.6496,
+    "aadt": 502,
+    "crossroad": "East of Sheridan",
+    "loc_id": "r449",
+    "year": 2003
+  },
+  "180595196": {
+    "traffic_index": 0.5452,
+    "aadt": 184,
+    "crossroad": "S. of Wilson",
+    "loc_id": "r4311",
+    "year": 2003
+  },
+  "180603497": {
+    "traffic_index": 0.8211,
+    "aadt": 2598,
+    "crossroad": "North of Wylie",
+    "loc_id": "q4453",
+    "year": 2003
+  },
+  "180591048": {
+    "traffic_index": 0.5906,
+    "aadt": 285,
+    "crossroad": "West of Grant",
+    "loc_id": "q434",
+    "year": 2003
+  },
+  "448647004": {
+    "traffic_index": 0.942,
+    "aadt": 8269,
+    "crossroad": "West of Henderson",
+    "loc_id": "q427",
+    "year": 2003
+  },
+  "180656066": {
+    "traffic_index": 0.9707,
+    "aadt": 10883,
+    "crossroad": "East of Cory",
+    "loc_id": "n4429",
+    "year": 2003
+  },
+  "180596460": {
+    "traffic_index": 0.962,
+    "aadt": 10012,
+    "crossroad": "West of Cory",
+    "loc_id": "n431",
+    "year": 2003
+  },
+  "4560572791": {
+    "traffic_index": 0.9944,
+    "aadt": 13662,
+    "crossroad": "North of Profile Parkway",
+    "loc_id": "l462",
+    "year": 2003
+  },
+  "180615321": {
+    "traffic_index": 0.9663,
+    "aadt": 10435,
+    "crossroad": "North of Industrial Boulevarde",
+    "loc_id": "l416",
+    "year": 2003
+  },
+  "4599121809": {
+    "traffic_index": 0.5579,
+    "aadt": 208,
+    "crossroad": "N. of SR 46",
+    "loc_id": "ccl1384",
+    "year": 2003
+  },
+  "180615924": {
+    "traffic_index": 0.9487,
+    "aadt": 8816,
+    "crossroad": "East of Kerr Creek",
+    "loc_id": "x455",
+    "year": 2002
+  },
+  "11287556229": {
+    "traffic_index": 0.6638,
+    "aadt": 575,
+    "crossroad": "East of Christopher Dr.",
+    "loc_id": "v449",
+    "year": 2002
+  },
+  "11211031935": {
+    "traffic_index": 1.0,
+    "aadt": 26893,
+    "crossroad": "South of 17th St.",
+    "loc_id": "t471",
+    "year": 2002
+  },
+  "1688817611": {
+    "traffic_index": 0.706,
+    "aadt": 862,
+    "crossroad": "South of 2nd St.",
+    "loc_id": "t445",
+    "year": 2002
+  },
+  "180650723": {
+    "traffic_index": 0.9513,
+    "aadt": 9041,
+    "crossroad": "SARE ROAD BET SPICEWOOD/WINSTON",
+    "loc_id": "t4128",
+    "year": 2002
+  },
+  "180604632": {
+    "traffic_index": 0.7222,
+    "aadt": 1007,
+    "crossroad": "East of Sare Rd.",
+    "loc_id": "t4122",
+    "year": 2002
+  },
+  "180604552": {
+    "traffic_index": 0.8334,
+    "aadt": 2924,
+    "crossroad": "East of Harrell Rd.",
+    "loc_id": "t377",
+    "year": 2002
+  },
+  "180593767": {
+    "traffic_index": 0.8364,
+    "aadt": 3009,
+    "crossroad": "East of Rose",
+    "loc_id": "s4436",
+    "year": 2002
+  },
+  "180603680": {
+    "traffic_index": 1.0,
+    "aadt": 20195,
+    "crossroad": "W. of Landmark",
+    "loc_id": "rcl565",
+    "year": 2002
+  },
+  "180590936": {
+    "traffic_index": 0.9923,
+    "aadt": 13394,
+    "crossroad": "Bet. Winslow Ct. and Burberry",
+    "loc_id": "r4012",
+    "year": 2002
+  },
+  "180637087": {
+    "traffic_index": 0.5884,
+    "aadt": 279,
+    "crossroad": "East of Hampshire",
+    "loc_id": "r3968",
+    "year": 2002
+  },
+  "180593154": {
+    "traffic_index": 0.4422,
+    "aadt": 68,
+    "crossroad": "West of Dunn",
+    "loc_id": "q4933",
+    "year": 2002
+  },
+  "180595190": {
+    "traffic_index": 0.5799,
+    "aadt": 257,
+    "crossroad": "South of Driscoll",
+    "loc_id": "q4371",
+    "year": 2002
+  },
+  "180587966": {
+    "traffic_index": 1.0,
+    "aadt": 23726,
+    "crossroad": "South of Hillside",
+    "loc_id": "q4240",
+    "year": 2002
+  },
+  "13361621044": {
+    "traffic_index": 1.0,
+    "aadt": 22450,
+    "crossroad": "East of Overwalk",
+    "loc_id": "p4922",
+    "year": 2002
+  },
+  "180605374": {
+    "traffic_index": 0.6819,
+    "aadt": 684,
+    "crossroad": "East of Fairview",
+    "loc_id": "p4649",
+    "year": 2002
+  },
+  "180601170": {
+    "traffic_index": 0.7,
+    "aadt": 814,
+    "crossroad": "North of 3rd St.",
+    "loc_id": "m4525",
+    "year": 2002
+  },
+  "605083991": {
+    "traffic_index": 0.9306,
+    "aadt": 7414,
+    "crossroad": "South of Constitution",
+    "loc_id": "m4112",
+    "year": 2002
+  },
+  "180634812": {
+    "traffic_index": 0.9132,
+    "aadt": 6277,
+    "crossroad": "W. of Mt. Gilead Rd.",
+    "loc_id": "v471",
+    "year": 2001
+  },
+  "180594946": {
+    "traffic_index": 0.5363,
+    "aadt": 169,
+    "crossroad": "Between E. Longview and E. Morningside",
+    "loc_id": "u4534",
+    "year": 2001
+  },
+  "180590336": {
+    "traffic_index": 0.646,
+    "aadt": 485,
+    "crossroad": "Bet. N. Callery Dr. and N. Keystone Ct.",
+    "loc_id": "rcl129",
+    "year": 2001
+  },
+  "180649232": {
+    "traffic_index": 0.7457,
+    "aadt": 1261,
+    "crossroad": "E. of Matlock",
+    "loc_id": "r498",
+    "year": 2001
+  },
+  "180577748": {
+    "traffic_index": 0.5842,
+    "aadt": 268,
+    "crossroad": "North of Matlock Rd.",
+    "loc_id": "r4912",
+    "year": 2001
+  },
+  "180602190": {
+    "traffic_index": 0.8882,
+    "aadt": 4940,
+    "crossroad": "S. of E. 3rd St.",
+    "loc_id": "u4517",
+    "year": 2000
+  },
+  "333281184": {
+    "traffic_index": 0.8611,
+    "aadt": 3809,
+    "crossroad": "Between Auto Mall and Clarizz",
+    "loc_id": "u4313",
+    "year": 2000
+  },
+  "180611531": {
+    "traffic_index": 0.9017,
+    "aadt": 5622,
+    "crossroad": "Buike Cadillac Dr.",
+    "loc_id": "t4442",
+    "year": 2000
+  },
+  "12421374821": {
+    "traffic_index": 1.0,
+    "aadt": 23393,
+    "crossroad": "Bet. Buick Cadillac and 2nd St.",
+    "loc_id": "t4428",
+    "year": 2000
+  },
+  "180588131": {
+    "traffic_index": 0.6781,
+    "aadt": 660,
+    "crossroad": "Bet. Wynwood and Woodbine",
+    "loc_id": "t4330",
+    "year": 2000
+  },
+  "180622405": {
+    "traffic_index": 0.6123,
+    "aadt": 351,
+    "crossroad": "Bet. Winfield and Rechter Ct.",
+    "loc_id": "t4318",
+    "year": 2000
+  },
+  "180622409": {
+    "traffic_index": 0.6167,
+    "aadt": 366,
+    "crossroad": "South of E. Rechter Rd.",
+    "loc_id": "t4315",
+    "year": 2000
+  },
+  "180599581": {
+    "traffic_index": 0.6687,
+    "aadt": 603,
+    "crossroad": "North of East Rogers Rd.",
+    "loc_id": "t4026",
+    "year": 2000
+  },
+  "180593537": {
+    "traffic_index": 1.0,
+    "aadt": 20815,
+    "crossroad": "Bet. Arbutus and Mitchell",
+    "loc_id": "s4548",
+    "year": 2000
+  },
+  "180605832": {
+    "traffic_index": 0.8997,
+    "aadt": 5517,
+    "crossroad": "West of High St.",
+    "loc_id": "s4541",
+    "year": 2000
+  },
+  "180590974": {
+    "traffic_index": 0.8937,
+    "aadt": 5205,
+    "crossroad": "North of Winslow Rd.",
+    "loc_id": "s4037",
+    "year": 2000
+  },
+  "6069240818": {
+    "traffic_index": 0.962,
+    "aadt": 10018,
+    "crossroad": "West of High St.",
+    "loc_id": "s4024",
+    "year": 2000
+  },
+  "180587728": {
+    "traffic_index": 0.8766,
+    "aadt": 4419,
+    "crossroad": "Between Sheridan and University",
+    "loc_id": "r4475",
+    "year": 2000
+  },
+  "3073745136": {
+    "traffic_index": 0.935,
+    "aadt": 7733,
+    "crossroad": "Between S. Madison and College Ave.",
+    "loc_id": "q4519",
+    "year": 2000
+  },
+  "11122701620": {
+    "traffic_index": 0.9475,
+    "aadt": 8716,
+    "crossroad": "Between Grant and Dunn",
+    "loc_id": "q4514",
+    "year": 2000
+  },
+  "180638040": {
+    "traffic_index": 0.63,
+    "aadt": 416,
+    "crossroad": "Bet. S. Palmer Ave. and S. Henderson St.",
+    "loc_id": "q4431",
+    "year": 2000
+  },
+  "180598308": {
+    "traffic_index": 0.5723,
+    "aadt": 239,
+    "crossroad": "Bet. 3rd St. and 4th St.",
+    "loc_id": "p45116",
+    "year": 2000
+  },
+  "180627293": {
+    "traffic_index": 0.785,
+    "aadt": 1838,
+    "crossroad": "Between Vernal Pike and 11th St.",
+    "loc_id": "o4617",
+    "year": 2000
+  },
+  "180605702": {
+    "traffic_index": 1.0,
+    "aadt": 14593,
+    "crossroad": "From W. Airport Rd. to S. Leonard Springs Rd.",
+    "loc_id": "k406",
+    "year": 1993
+  },
+  "180606589": {
+    "traffic_index": 0.8876,
+    "aadt": 4911,
+    "crossroad": "Between Maybury Mall Rd. and Sims Rd.",
+    "loc_id": "l384",
+    "year": 2000
+  },
+  "180600459": {
+    "traffic_index": 0.5963,
+    "aadt": 301,
+    "crossroad": "East of Woodbine Ct.",
+    "loc_id": "t4326",
+    "year": 1999
+  },
+  "180605395": {
+    "traffic_index": 0.6004,
+    "aadt": 313,
+    "crossroad": "E. of S. Winfield Rd.",
+    "loc_id": "t4319",
+    "year": 1999
+  },
+  "180591157": {
+    "traffic_index": 0.657,
+    "aadt": 539,
+    "crossroad": "North of E. Rogers Rd.",
+    "loc_id": "t4014",
+    "year": 1999
+  },
+  "180601189": {
+    "traffic_index": 0.7836,
+    "aadt": 1813,
+    "crossroad": "East of Jordan",
+    "loc_id": "s461",
+    "year": 1999
+  },
+  "180621828": {
+    "traffic_index": 0.6656,
+    "aadt": 585,
+    "crossroad": "West of S. Jefferson St.",
+    "loc_id": "s4568",
+    "year": 1999
+  },
+  "180647207": {
+    "traffic_index": 0.7494,
+    "aadt": 1307,
+    "crossroad": "North of E. 5th St.",
+    "loc_id": "s4529",
+    "year": 1999
+  },
+  "180615550": {
+    "traffic_index": 0.7522,
+    "aadt": 1342,
+    "crossroad": "South of E. 5th St.",
+    "loc_id": "s4528",
+    "year": 1999
+  },
+  "3807722234": {
+    "traffic_index": 0.7763,
+    "aadt": 1692,
+    "crossroad": "South of E. Rogers Rd.",
+    "loc_id": "s4022",
+    "year": 1999
+  },
+  "180605626": {
+    "traffic_index": 0.9221,
+    "aadt": 6833,
+    "crossroad": "South of 7th St.",
+    "loc_id": "r4622",
+    "year": 1999
+  },
+  "3625776690": {
+    "traffic_index": 0.6835,
+    "aadt": 695,
+    "crossroad": "W. of Dunn St.",
+    "loc_id": "r4540",
+    "year": 1999
+  },
+  "180603167": {
+    "traffic_index": 0.8418,
+    "aadt": 3167,
+    "crossroad": "East of Ballentine",
+    "loc_id": "r445",
+    "year": 1999
+  },
+  "180603171": {
+    "traffic_index": 0.6228,
+    "aadt": 388,
+    "crossroad": "South of 2nd St.",
+    "loc_id": "r4464",
+    "year": 1999
+  },
+  "180622799": {
+    "traffic_index": 0.5115,
+    "aadt": 133,
+    "crossroad": "Bet. Sheridan and Maxwell Ln.",
+    "loc_id": "r4321",
+    "year": 1999
+  },
+  "180594253": {
+    "traffic_index": 0.8055,
+    "aadt": 2238,
+    "crossroad": "Bet. College Ave. and Walnut St.",
+    "loc_id": "q4775",
+    "year": 1999
+  },
+  "180608227": {
+    "traffic_index": 0.7436,
+    "aadt": 1236,
+    "crossroad": "Bet. College Ave. and Walnut St.",
+    "loc_id": "q4684",
+    "year": 1999
+  },
+  "180608224": {
+    "traffic_index": 0.6859,
+    "aadt": 711,
+    "crossroad": "Bet. Walnut St. and Washington St.",
+    "loc_id": "q4683",
+    "year": 1999
+  },
+  "180605584": {
+    "traffic_index": 0.8848,
+    "aadt": 4784,
+    "crossroad": "Bet. Walnut St. and Washington St.",
+    "loc_id": "q46102",
+    "year": 1999
+  },
+  "180623221": {
+    "traffic_index": 1.0,
+    "aadt": 16678,
+    "crossroad": "Bet. Kirkwood Ave. and 6th St.",
+    "loc_id": "q4565",
+    "year": 1999
+  },
+  "11539219343": {
+    "traffic_index": 1.0,
+    "aadt": 16449,
+    "crossroad": "Bet. 3rd St. and 4th St.",
+    "loc_id": "q4563",
+    "year": 1999
+  },
+  "180604218": {
+    "traffic_index": 0.8413,
+    "aadt": 3153,
+    "crossroad": "East of 6th St.",
+    "loc_id": "q4547",
+    "year": 1999
+  },
+  "180585740": {
+    "traffic_index": 1.0,
+    "aadt": 16127,
+    "crossroad": "Between 3rd St. and 2nd St. (All Lanes)",
+    "loc_id": "q4444",
+    "year": 1999
+  },
+  "180604257": {
+    "traffic_index": 0.8176,
+    "aadt": 2513,
+    "crossroad": "Between Grimes and Allen",
+    "loc_id": "q4363",
+    "year": 1999
+  },
+  "180622044": {
+    "traffic_index": 1.0,
+    "aadt": 15679,
+    "crossroad": "Bet. Kinser Pike and Woodburn Ave.",
+    "loc_id": "p484",
+    "year": 1999
+  },
+  "180608229": {
+    "traffic_index": 0.7943,
+    "aadt": 2010,
+    "crossroad": "South of 10th St.",
+    "loc_id": "p4628",
+    "year": 1999
+  },
+  "180629453": {
+    "traffic_index": 0.863,
+    "aadt": 3880,
+    "crossroad": "Bet. Rogers and Fairview",
+    "loc_id": "p4481",
+    "year": 1999
+  },
+  "326367663": {
+    "traffic_index": 0.8793,
+    "aadt": 4536,
+    "crossroad": "Bet. Brighton and Moores Pike",
+    "loc_id": "v423",
+    "year": 1998
+  },
+  "180635660": {
+    "traffic_index": 0.8511,
+    "aadt": 3462,
+    "crossroad": "South of 10th St. (S.R. 45)",
+    "loc_id": "u4629",
+    "year": 1998
+  },
+  "180603900": {
+    "traffic_index": 0.6663,
+    "aadt": 589,
+    "crossroad": "Bet. East Side Dr. and Southdowns",
+    "loc_id": "s438",
+    "year": 1998
+  },
+  "180648870": {
+    "traffic_index": 0.5025,
+    "aadt": 122,
+    "crossroad": "Bet. Southdowns and Ruby Ln.",
+    "loc_id": "s437",
+    "year": 1998
+  },
+  "180623757": {
+    "traffic_index": 0.9356,
+    "aadt": 7779,
+    "crossroad": "Bet. Southdowns and Woodstock Pl.",
+    "loc_id": "s4317",
+    "year": 1998
+  },
+  "180617135": {
+    "traffic_index": 0.6189,
+    "aadt": 374,
+    "crossroad": "From E. Circle Dr. to S. Covenanter Dr.",
+    "loc_id": "s4312",
+    "year": 1998
+  },
+  "8765309017": {
+    "traffic_index": 0.7826,
+    "aadt": 1797,
+    "crossroad": "Bet. 3rd St. and Atwater Ave.",
+    "loc_id": "r4571",
+    "year": 1998
+  },
+  "180599529": {
+    "traffic_index": 0.822,
+    "aadt": 2621,
+    "crossroad": "Between Miller and Thornton",
+    "loc_id": "r4238",
+    "year": 1998
+  },
+  "180631265": {
+    "traffic_index": 0.9783,
+    "aadt": 11708,
+    "crossroad": "Bet. Washington St. and Lincoln St.",
+    "loc_id": "q488",
+    "year": 1998
+  },
+  "180626883": {
+    "traffic_index": 0.5608,
+    "aadt": 214,
+    "crossroad": "Bet. 13th St. and 14th St.",
+    "loc_id": "q4744",
+    "year": 1998
+  },
+  "180588450": {
+    "traffic_index": 0.909,
+    "aadt": 6030,
+    "crossroad": "Bet. 4th St. and Kirkwood Ave.",
+    "loc_id": "q4526",
+    "year": 1998
+  },
+  "180594047": {
+    "traffic_index": 0.4258,
+    "aadt": 58,
+    "crossroad": "Bet. Lincoln St. and Grant St.",
+    "loc_id": "q4334",
+    "year": 1998
+  },
+  "180587989": {
+    "traffic_index": 1.0,
+    "aadt": 21054,
+    "crossroad": "Bet. North Dr. and South Dr.",
+    "loc_id": "q412",
+    "year": 1998
+  },
+  "180603954": {
+    "traffic_index": 0.6257,
+    "aadt": 399,
+    "crossroad": "Bet. Stoneycrest and Windcrest",
+    "loc_id": "p5121",
+    "year": 1998
+  },
+  "180618204": {
+    "traffic_index": 0.4711,
+    "aadt": 90,
+    "crossroad": "Bet. 13th St. and 15th St.",
+    "loc_id": "p4755",
+    "year": 1998
+  },
+  "180615682": {
+    "traffic_index": 1.0,
+    "aadt": 14648,
+    "crossroad": "W. of Walnut St.",
+    "loc_id": "p4018",
+    "year": 1998
+  },
+  "180594693": {
+    "traffic_index": 0.5075,
+    "aadt": 128,
+    "crossroad": "South of 1st St.",
+    "loc_id": "s448",
+    "year": 1997
+  },
+  "180593797": {
+    "traffic_index": 0.8858,
+    "aadt": 4829,
+    "crossroad": "Bet. Anita and Rose",
+    "loc_id": "s4457",
+    "year": 1997
+  },
+  "180594695": {
+    "traffic_index": 0.8415,
+    "aadt": 3159,
+    "crossroad": "Between Maxwell Terrace and Rose",
+    "loc_id": "s4435",
+    "year": 1997
+  },
+  "180608486": {
+    "traffic_index": 0.6692,
+    "aadt": 606,
+    "crossroad": "Bet. Covenanter Dr. and Nancy St.",
+    "loc_id": "s4316",
+    "year": 1997
+  },
+  "4599116870": {
+    "traffic_index": 0.6958,
+    "aadt": 782,
+    "crossroad": "Bet. Hickory Stick and Wylie Farm Rd.",
+    "loc_id": "rcl60",
+    "year": 1997
+  },
+  "1717411817": {
+    "traffic_index": 0.9005,
+    "aadt": 5556,
+    "crossroad": "Bet. Heather and Burks",
+    "loc_id": "rcl469",
+    "year": 1997
+  },
+  "4599116852": {
+    "traffic_index": 0.7504,
+    "aadt": 1320,
+    "crossroad": "Bet. Laurelwood Circle and Whitetail Run",
+    "loc_id": "rcl446",
+    "year": 1997
+  },
+  "4599121745": {
+    "traffic_index": 0.6939,
+    "aadt": 768,
+    "crossroad": "Bet. Moss Creek Dr. and Hickory Stick Dr.",
+    "loc_id": "rcl248",
+    "year": 1997
+  },
+  "180609478": {
+    "traffic_index": 0.6164,
+    "aadt": 365,
+    "crossroad": "At Waldron St.",
+    "loc_id": "p4645",
+    "year": 1997
+  },
+  "4547637623": {
+    "traffic_index": 0.4359,
+    "aadt": 64,
+    "crossroad": "East of Monroe St.",
+    "loc_id": "o4616",
+    "year": 1997
+  },
+  "3045924434": {
+    "traffic_index": 1.0,
+    "aadt": 22369,
+    "crossroad": "E. of S.R. 37",
+    "loc_id": "m4520",
+    "year": 1997
+  },
+  "4592113064": {
+    "traffic_index": 0.7977,
+    "aadt": 2076,
+    "crossroad": "From S. High St. to S. Brooks Dr.",
+    "loc_id": "s4339",
+    "year": 1996
+  },
+  "180614002": {
+    "traffic_index": 0.5034,
+    "aadt": 123,
+    "crossroad": "From E. 2nd St. to E. Hunter Ave.",
+    "loc_id": "r4466",
+    "year": 1996
+  },
+  "180609429": {
+    "traffic_index": 0.8288,
+    "aadt": 2797,
+    "crossroad": "From E. 6th St. to E. 7th St.",
+    "loc_id": "q4545",
+    "year": 1996
+  }
+}

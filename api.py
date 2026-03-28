@@ -10,11 +10,15 @@ from typing import List, Dict, Any, Optional
 from fastapi.responses import StreamingResponse
 
 from router import get_nearest_nodes, generate_candidate_routes, load_or_fetch_graph
-from cbr import load_cases, get_preference_summary, retrieve_similar_cases, store_case
+from cbr import load_cases, get_preference_summary, retrieve_similar_cases, store_case, get_preference_drift
 from explainer import explain_route, stream_llm_explanation, explain_route_template
 
 try:
     from argumentation import build_argumentation_framework, generate_argument_explanation
+    from argumentation.explainer import (
+        check_faithfulness, generate_verdict, generate_counterfactual,
+        compute_decisiveness, get_dimension_winners,
+    )
     from kb_refinement import analyze_and_refine
     _ARG_AVAILABLE = True
 except ImportError:
@@ -55,14 +59,14 @@ LANDMARKS = {
     "IU Kelley School of Business": (39.1713, -86.5099),
     "IU Memorial Stadium": (39.1793, -86.5252),
     "Kirkwood Ave & Dunn St": (39.1639, -86.5250),
-    "Olcott Park": (39.1534, -86.5162),
+    "Olcott Park": (39.1483, -86.5140),
     "Bryan Park": (39.1600, -86.5180),
     "Uptown Bloomington": (39.1720, -86.5380),
-    "IU Assembly Hall": (39.1843, -86.5244),
+    "IU Assembly Hall": (39.1814, -86.5263),
     "Eskenazi Museum of Art": (39.1700, -86.5220),
     "Switchyard Park": (39.1568, -86.5340),
-    "College Mall": (39.1520, -86.5058),
-    "IU Luddy School of Informatics": (39.1746, -86.5122),
+    "College Mall": (39.1645, -86.4950),
+    "IU Luddy School of Informatics": (39.1727, -86.5233),
     "IU Musical Arts Center": (39.1672, -86.5168),
     "Cascades Park": (39.1522, -86.5408),
     "IU Ballantine Hall": (39.1697, -86.5192),
@@ -78,6 +82,7 @@ except Exception as e:
 class RouteRequest(BaseModel):
     origin_name: str
     dest_name: str
+    departure_hour: int | None = None
 
 class FeedbackRequest(BaseModel):
     origin_name: str
@@ -101,11 +106,15 @@ class KBRefineRequest(BaseModel):
 
 class StudyResponse(BaseModel):
     participant_id: str
-    condition: str  # template | argumentation | llm
+    condition: str | None = None   # template | argumentation | llm (legacy)
+    mode: str | None = None        # same as condition, sent by new UI
     trust: int
     clarity: int
     safety: int
-    chosen_route_name: str
+    chosen_route_name: str | None = None
+    route_name: str | None = None  # alias from new UI
+    origin: str | None = None
+    destination: str | None = None
     preferred_route_name: str | None = None
     notes: str | None = None
 
@@ -135,7 +144,7 @@ def get_routes(req: RouteRequest):
         raise HTTPException(status_code=400, detail="Origin and destination must be different")
         
     orig_node, dest_node = get_nearest_nodes(G, orig_ll, dest_ll)
-    routes = generate_candidate_routes(G, orig_node, dest_node)
+    routes = generate_candidate_routes(G, orig_node, dest_node, hour=req.departure_hour)
     
     # Strip non-serializable objects like Shapely LineStrings from networkx edges
     clean_routes = []
@@ -200,12 +209,15 @@ def submit_feedback(req: FeedbackRequest):
 @app.post("/api/study/response")
 def submit_study_response(req: StudyResponse):
     record = req.dict()
+    # Normalize: mode/condition are the same field; route_name/chosen_route_name are the same
+    record["condition"] = record.get("condition") or record.get("mode") or "unknown"
+    record["chosen_route_name"] = record.get("chosen_route_name") or record.get("route_name")
     record["ts"] = time.time()
     out_path = Path("data") / "study_responses.jsonl"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open("a") as f:
         f.write(json.dumps(record) + "\n")
-    _log_event("study_response", {k: record[k] for k in ("participant_id", "condition", "chosen_route_name")})
+    _log_event("study_response", {"participant_id": record["participant_id"], "condition": record["condition"], "chosen_route_name": record["chosen_route_name"]})
     return {"status": "recorded"}
 
 # ---------------------------------------------------------------------------
@@ -249,6 +261,18 @@ def argue_routes(req: ArgueRequest):
         af, req.chosen_route, req.all_routes, pref_summary=pref_summary
     )
     recommended = af.recommend()
+    faithfulness = check_faithfulness(af, req.all_routes)
+    semantics = af.compare_semantics()
+    verdict = generate_verdict(af, req.chosen_route, req.all_routes)
+    counterfactual = generate_counterfactual(af, req.chosen_route, req.all_routes)
+    decisiveness = compute_decisiveness(af, req.chosen_route, req.all_routes)
+    dim_winners = get_dimension_winners(req.all_routes)
+
+    _log_event("argue", {
+        "route": req.chosen_route.get("name"),
+        "accepted": af.to_dict()["counts"]["accepted"],
+        "faithfulness_score": faithfulness["score"],
+    })
 
     return {
         "argumentation_framework": af.to_dict(),
@@ -256,7 +280,46 @@ def argue_routes(req: ArgueRequest):
         "chosen_route_name": req.chosen_route.get("name"),
         "recommended_by_af": recommended,
         "af_agrees_with_chosen": recommended == req.chosen_route.get("name"),
+        "faithfulness": faithfulness,
+        "semantics_comparison": semantics,
+        "verdict": verdict,
+        "counterfactual": counterfactual,
+        "decisiveness": decisiveness,
+        "dimension_winners": dim_winners,
     }
+
+
+@app.get("/api/argue/history")
+def argue_history():
+    """Return historical AF argument counts from event logs (last 30 days)."""
+    history = []
+    try:
+        for log_file in sorted(LOG_DIR.glob("*_events.jsonl"))[-30:]:
+            with log_file.open() as f:
+                for line in f:
+                    try:
+                        entry = json.loads(line)
+                        if entry.get("event") == "argue":
+                            history.append({
+                                "ts": entry["ts"],
+                                "route": entry.get("route"),
+                                "accepted": entry.get("accepted", 0),
+                                "faithfulness": entry.get("faithfulness_score", None),
+                            })
+                    except Exception:
+                        pass
+    except Exception:
+        pass
+    return {"history": history, "count": len(history)}
+
+
+@app.get("/api/preference-drift")
+def preference_drift():
+    """Return preference drift metrics — how much user preferences have shifted recently."""
+    drift = get_preference_drift(window=10)
+    if drift is None:
+        return {"status": "insufficient_data", "message": "Need at least 20 rated cases to compute drift."}
+    return {"status": "ok", **drift}
 
 
 @app.get("/api/kb/params")

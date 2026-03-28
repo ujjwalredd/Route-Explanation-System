@@ -1,6 +1,16 @@
 import json as _json
 import os as _os
 
+# Optional traffic data integration — silently disabled if index not built yet.
+# Run `python traffic_data.py` once to download and build data/traffic_index.json.
+try:
+    from traffic_data import load_traffic_index as _load_traffic_index, get_node_traffic_index
+    _TRAFFIC_AVAILABLE = True
+except ImportError:
+    _TRAFFIC_AVAILABLE = False
+    def get_node_traffic_index(node_id):  # type: ignore
+        return None
+
 # ---------------------------------------------------------------------------
 # Load parameterised KB values from data/kb_params.json if available.
 # Falls back to hardcoded defaults so the system starts cleanly even before
@@ -45,11 +55,17 @@ def _load_kb_params() -> dict:
     try:
         with open(_KB_PARAMS_PATH) as _f:
             _p = _json.load(_f)
-        return {
+        result = {
             "road_stress": _p.get("road_stress_scores", _DEFAULT_ROAD_STRESS),
             "turn_rules":  _p.get("turn_difficulty_rules", _DEFAULT_TURN_RULES),
             "turn_penalties": _p.get("turn_penalties", _DEFAULT_TURN_PENALTIES),
         }
+        # Carry through top-level scalar/dict params needed at scoring time
+        for key in ("traffic_blend_weight", "time_of_day_modifiers",
+                    "argument_thresholds", "attack_weights", "refinement"):
+            if key in _p:
+                result[key] = _p[key]
+        return result
     except (FileNotFoundError, _json.JSONDecodeError):
         return {
             "road_stress": _DEFAULT_ROAD_STRESS,
@@ -83,7 +99,23 @@ def reload_kb_params() -> None:
     _TURN_PENALTIES = _KB["turn_penalties"]
 
 
-def get_road_stress(highway_type, maxspeed=None, lanes=None):
+def _apply_time_of_day(traffic_stress_contribution: float, hour: int, blend_w: float) -> float:
+    """Return the time-of-day multiplier applied to the traffic stress contribution."""
+    tod = _KB.get("time_of_day_modifiers", {})
+    if not tod:
+        return traffic_stress_contribution
+    morning = tod.get("morning_peak_hours", [7, 9])
+    evening = tod.get("evening_peak_hours", [16, 19])
+    if morning[0] <= hour < morning[1]:
+        multiplier = tod.get("morning_peak_multiplier", 1.4)
+    elif evening[0] <= hour < evening[1]:
+        multiplier = tod.get("evening_peak_multiplier", 1.5)
+    else:
+        multiplier = tod.get("off_peak_multiplier", 1.0)
+    return traffic_stress_contribution * multiplier
+
+
+def get_road_stress(highway_type, maxspeed=None, lanes=None, node_id=None, hour: int = None):
     if isinstance(highway_type, list):
         highway_type = highway_type[0]
     base = ROAD_STRESS_SCORES.get(str(highway_type).lower(), 2.0)
@@ -115,7 +147,23 @@ def get_road_stress(highway_type, maxspeed=None, lanes=None):
         except (ValueError, TypeError):
             pass
 
-    return round(min(5.0, max(0.0, base + speed_mod + lane_mod)), 2)
+    heuristic = min(5.0, max(0.0, base + speed_mod + lane_mod))
+
+    # Blend with observed traffic volume if the index is available for this node.
+    # traffic_index is [0, 1] normalised AADT; scaled to [0, 5] stress units.
+    # Blend weight is read from kb_params.json ("traffic_blend_weight", default 0.3)
+    # so the KB refinement loop can tune it based on feedback.
+    if node_id is not None:
+        traffic_idx = get_node_traffic_index(int(node_id))
+        if traffic_idx is not None:
+            blend_w = _KB.get("traffic_blend_weight", 0.3)
+            traffic_stress = traffic_idx * 5.0
+            # Apply time-of-day modifier to the traffic contribution if hour is provided
+            if hour is not None:
+                traffic_stress = _apply_time_of_day(traffic_stress, hour, blend_w)
+            heuristic = round((1.0 - blend_w) * heuristic + blend_w * traffic_stress, 2)
+
+    return round(min(5.0, max(0.0, heuristic)), 2)
 
 
 def stress_to_label(score):
@@ -165,7 +213,7 @@ def classify_turn(angle_deg, has_signal=False, lanes=1, is_left_turn=False):
     return label, round(min(max_score, base_score), 2)
 
 
-def score_edge(edge_data):
+def score_edge(edge_data, node_id=None, hour: int = None):
     highway = edge_data.get("highway", "unclassified")
     maxspeed = edge_data.get("maxspeed")
     lanes = edge_data.get("lanes", 1)
@@ -181,12 +229,13 @@ def score_edge(edge_data):
         except (ValueError, TypeError):
             lanes = 1
 
-    road_stress = get_road_stress(highway, maxspeed, lanes)
+    road_stress = get_road_stress(highway, maxspeed, lanes, node_id=node_id, hour=hour)
     return {
         "road_stress": road_stress,
         "stress_label": stress_to_label(road_stress),
         "highway_type": highway if not isinstance(highway, list) else highway[0],
         "lanes": lanes or 1,
+        "traffic_informed": node_id is not None and get_node_traffic_index(int(node_id)) is not None,
     }
 
 

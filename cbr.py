@@ -373,3 +373,37 @@ def get_preference_summary():
         "fast_pct": round(prefs.count("fast") / total * 100),
         "balanced_pct": round(prefs.count("balanced") / total * 100),
     }
+
+
+def get_preference_drift(window: int = 10) -> dict | None:
+    cases = load_cases()
+    if len(cases) < window * 2:
+        return None
+
+    recent = cases[-window:]
+    older = cases[:-window]
+
+    def pref_dist(c_list):
+        prefs = [c.get("user_preference", "balanced") for c in c_list if c.get("feedback_score", 0) >= 4]
+        if not prefs:
+            return {"low_stress": 0.0, "fast": 0.0, "balanced": 0.0}
+        total = len(prefs)
+        return {
+            "low_stress": round(prefs.count("low_stress") / total, 3),
+            "fast": round(prefs.count("fast") / total, 3),
+            "balanced": round(prefs.count("balanced") / total, 3),
+        }
+
+    recent_dist = pref_dist(recent)
+    older_dist = pref_dist(older)
+
+    drift = sum(abs(recent_dist[k] - older_dist[k]) for k in recent_dist) / 2.0
+
+    return {
+        "drift_score": round(drift, 3),
+        "recent_window": window,
+        "recent_distribution": recent_dist,
+        "historical_distribution": older_dist,
+        "dominant_shift": max(recent_dist, key=lambda k: abs(recent_dist[k] - older_dist[k])),
+        "is_drifting": drift > 0.20,
+    }

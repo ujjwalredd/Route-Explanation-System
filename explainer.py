@@ -67,9 +67,9 @@ def explain_route(chosen_route, all_routes):
         return _template_explanation(chosen_route, all_routes, _get_similar_cases(chosen_route))
 
 
-    def explain_route_template(chosen_route, all_routes):
-        """Deterministic template-only explanation (no LLM, no argumentation)."""
-        return _template_explanation(chosen_route, all_routes, _get_similar_cases(chosen_route))
+def explain_route_template(chosen_route, all_routes):
+    """Deterministic template-only explanation (no LLM, no argumentation)."""
+    return _template_explanation(chosen_route, all_routes, _get_similar_cases(chosen_route))
 
 
 def _argumentation_explanation(chosen_route, all_routes):

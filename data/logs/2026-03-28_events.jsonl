@@ -1,0 +1,56 @@
+{"event": "routes_generated", "ts": 1774707104.567095, "origin": "IU Memorial Union", "dest": "IU Assembly Hall", "route_count": 1, "latency_ms": 82.3}
+{"event": "explain", "ts": 1774707104.58578, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "routes_generated", "ts": 1774707109.036281, "origin": "IU Memorial Union", "dest": "IU Luddy School of Informatics", "route_count": 2, "latency_ms": 64.8}
+{"event": "explain", "ts": 1774707109.0428631, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774707111.1176572, "mode": "llm", "route": "Easiest Route", "latency_ms": 0.0}
+{"event": "routes_generated", "ts": 1774707115.181142, "origin": "IU Sample Gates", "dest": "IU Luddy School of Informatics", "route_count": 2, "latency_ms": 52.7}
+{"event": "explain", "ts": 1774707115.186996, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "routes_generated", "ts": 1774707120.040543, "origin": "IU Sample Gates", "dest": "IU Ballantine Hall", "route_count": 1, "latency_ms": 26.9}
+{"event": "explain", "ts": 1774707120.054833, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.1}
+{"event": "routes_generated", "ts": 1774707827.968184, "origin": "IU Memorial Union", "dest": "Olcott Park", "route_count": 2, "latency_ms": 130.9}
+{"event": "explain", "ts": 1774707827.9809768, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774707834.351563, "mode": "llm", "route": "Easiest Route", "latency_ms": 0.2}
+{"event": "routes_generated", "ts": 1774708227.8026822, "origin": "IU Memorial Union", "dest": "IU Health Bloomington Hospital", "route_count": 3, "latency_ms": 161.3}
+{"event": "explain", "ts": 1774708227.814002, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774708233.347671, "mode": "llm", "route": "Easiest Route", "latency_ms": 0.1}
+{"event": "explain", "ts": 1774708235.044301, "mode": "llm", "route": "Balanced Route", "latency_ms": 0.0}
+{"event": "routes_generated", "ts": 1774708661.9191911, "origin": "Monroe County Courthouse", "dest": "IU Kelley School of Business", "route_count": 3, "latency_ms": 281.6}
+{"event": "explain", "ts": 1774708661.943115, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.1}
+{"event": "routes_generated", "ts": 1774709294.537584, "origin": "IU Memorial Union", "dest": "IU Wells Library", "route_count": 3, "latency_ms": 55.7}
+{"event": "explain", "ts": 1774709294.5532632, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "routes_generated", "ts": 1774709596.56656, "origin": "IU Wells Library", "dest": "IU Luddy School of Informatics", "route_count": 3, "latency_ms": 42.7}
+{"event": "explain", "ts": 1774709596.580208, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709602.602763, "mode": "template", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709607.004724, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709609.0115688, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709612.839473, "mode": "template", "route": "Fastest Route", "latency_ms": 0.1}
+{"event": "explain", "ts": 1774709620.1905658, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709630.5666401, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "routes_generated", "ts": 1774709682.161139, "origin": "IU Wells Library", "dest": "IU Memorial Stadium", "route_count": 3, "latency_ms": 118.2}
+{"event": "explain", "ts": 1774709682.175133, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709709.3263528, "mode": "template", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709726.989942, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.1}
+{"event": "explain", "ts": 1774709729.151029, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.1}
+{"event": "explain", "ts": 1774709734.866364, "mode": "template", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709735.264451, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "routes_generated", "ts": 1774709765.854932, "origin": "Olcott Park", "dest": "IU Memorial Union", "route_count": 3, "latency_ms": 88.3}
+{"event": "explain", "ts": 1774709765.870795, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709773.7846558, "mode": "template", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709776.775549, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709778.731572, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "routes_generated", "ts": 1774709920.495898, "origin": "Monroe County Courthouse", "dest": "Bryan Park", "route_count": 3, "latency_ms": 204.0}
+{"event": "explain", "ts": 1774709920.5099561, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709939.646652, "mode": "template", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709946.361525, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709951.809988, "mode": "llm", "route": "Easiest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709953.3113248, "mode": "template", "route": "Easiest Route", "latency_ms": 0.1}
+{"event": "explain", "ts": 1774709955.647935, "mode": "template", "route": "Easiest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709962.6592808, "mode": "template", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774709963.651405, "mode": "template", "route": "Balanced Route", "latency_ms": 0.1}
+{"event": "routes_generated", "ts": 1774710198.32623, "origin": "Monroe County Courthouse", "dest": "Uptown Bloomington", "route_count": 3, "latency_ms": 72.2}
+{"event": "explain", "ts": 1774710198.336483, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774710201.195112, "mode": "argumentation", "route": "Easiest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774710202.22402, "mode": "argumentation", "route": "Balanced Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774710231.76669, "mode": "template", "route": "Balanced Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774710243.208729, "mode": "template", "route": "Easiest Route", "latency_ms": 0.0}
+{"event": "explain", "ts": 1774710249.917589, "mode": "llm", "route": "Easiest Route", "latency_ms": 0.0}
