@@ -3,7 +3,7 @@
 **CSCI-B 551 — Elements of Artificial Intelligence**
 Indiana University, Fall 2026
 
-**Team:** Ujjwal Reddy Kalvolu, Rithvik Mysore Suresh, Divya Prasanth Paraman
+**Team:** Ujjwal Reddy Kalvolu Sreenivasa Reddy, Rithvik Mysore Suresh, Divya Prasanth Paraman
 
 ---
 
