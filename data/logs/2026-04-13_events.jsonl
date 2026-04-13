@@ -1,0 +1,48 @@
+{"event": "routes_generated", "ts": 1776086011.9339101, "origin": "Monroe County Courthouse", "dest": "Kirkwood Ave & Dunn St", "route_count": 3, "latency_ms": 105.9}
+{"event": "explain", "ts": 1776086011.952054, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.1}
+{"event": "argue", "ts": 1776086011.974606, "route": "Fastest Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086014.974441, "mode": "argumentation", "route": "Easiest Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086014.999456, "route": "Easiest Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086016.545258, "mode": "argumentation", "route": "Balanced Route", "latency_ms": 0.1}
+{"event": "argue", "ts": 1776086016.559343, "route": "Balanced Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086019.199883, "mode": "template", "route": "Balanced Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086019.224687, "route": "Balanced Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086022.8466911, "mode": "llm", "route": "Balanced Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086022.8733492, "route": "Balanced Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086037.542196, "mode": "argumentation", "route": "Balanced Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086037.56202, "route": "Balanced Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086044.075167, "mode": "template", "route": "Balanced Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086044.102498, "route": "Balanced Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086051.124655, "mode": "llm", "route": "Balanced Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086051.162067, "route": "Balanced Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086053.649573, "mode": "argumentation", "route": "Balanced Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086053.6654332, "route": "Balanced Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086056.872242, "mode": "argumentation", "route": "Easiest Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086056.896523, "route": "Easiest Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086060.439619, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086060.466828, "route": "Fastest Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086068.333473, "mode": "template", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086068.3562481, "route": "Fastest Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086108.9023511, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.2}
+{"event": "argue", "ts": 1776086108.9252322, "route": "Fastest Route", "accepted": 5, "faithfulness_score": 1.0}
+{"event": "routes_generated", "ts": 1776086302.865716, "origin": "IU Memorial Union", "dest": "Uptown Bloomington", "route_count": 3, "latency_ms": 194.4}
+{"event": "explain", "ts": 1776086302.8783538, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086302.894576, "route": "Fastest Route", "accepted": 6, "faithfulness_score": 1.0}
+{"event": "routes_generated", "ts": 1776086331.0944371, "origin": "Monroe County Courthouse", "dest": "Olcott Park", "route_count": 3, "latency_ms": 136.1}
+{"event": "explain", "ts": 1776086331.105345, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086331.122598, "route": "Fastest Route", "accepted": 6, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086415.754955, "mode": "template", "route": "Fastest Route", "latency_ms": 0.1}
+{"event": "argue", "ts": 1776086415.7783098, "route": "Fastest Route", "accepted": 6, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086418.216938, "mode": "llm", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086418.238247, "route": "Fastest Route", "accepted": 6, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086426.7517598, "mode": "template", "route": "Fastest Route", "latency_ms": 0.1}
+{"event": "argue", "ts": 1776086426.77304, "route": "Fastest Route", "accepted": 6, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086433.31333, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086433.3329191, "route": "Fastest Route", "accepted": 6, "faithfulness_score": 1.0}
+{"event": "routes_generated", "ts": 1776086461.428001, "origin": "IU Memorial Union", "dest": "Switchyard Park", "route_count": 3, "latency_ms": 135.8}
+{"event": "explain", "ts": 1776086461.440543, "mode": "argumentation", "route": "Fastest Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086461.4591, "route": "Fastest Route", "accepted": 6, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086464.637341, "mode": "argumentation", "route": "Easiest Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086464.660852, "route": "Easiest Route", "accepted": 6, "faithfulness_score": 1.0}
+{"event": "explain", "ts": 1776086466.137341, "mode": "argumentation", "route": "Balanced Route", "latency_ms": 0.0}
+{"event": "argue", "ts": 1776086466.160838, "route": "Balanced Route", "accepted": 6, "faithfulness_score": 1.0}

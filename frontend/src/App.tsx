@@ -7,6 +7,7 @@ import { Explanation } from './components/Explanation';
 import { SkeletonCard } from './components/SkeletonCard';
 import { api } from './api';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Zap, Clock, MapPin, Gauge } from 'lucide-react';
 
 // Generate or retrieve a persistent participant ID for study mode
 function getParticipantId(): string {
@@ -231,82 +232,134 @@ const App = () => {
 
       <div className={`flex-1 p-2 md:p-6 flex flex-col h-[65vh] md:h-screen overflow-hidden relative z-10 w-full mb-[35vh] md:mb-0 ${isStudyMode ? 'pt-10 md:pt-12' : ''}`}>
         <div className="w-full flex flex-col h-full gap-4 md:gap-6">
-          <div className="flex-1 relative z-0 min-h-0">
-            <Map
-              routes={routes}
-              selectedRouteName={selectedRoute?.name}
-              origin={landmarks.find(l => l.name === originName)}
-              dest={landmarks.find(l => l.name === destName)}
-              focusedTurnCoord={focusedTurnCoord}
-            />
+
+          {/* Middle row: Map + Right panel (KPI + Explanation) */}
+          <div className="flex-1 flex flex-col lg:flex-row gap-4 md:gap-6 min-h-0">
+            <div className="flex-1 relative z-0 min-h-0">
+              <Map
+                routes={routes}
+                selectedRouteName={selectedRoute?.name}
+                origin={landmarks.find(l => l.name === originName)}
+                dest={landmarks.find(l => l.name === destName)}
+                focusedTurnCoord={focusedTurnCoord}
+              />
+            </div>
+
+            {/* Right panel */}
+            <AnimatePresence>
+              {(routes.length > 0 || isLoading) && (
+                <motion.div
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 40 }}
+                  className="w-full lg:w-[320px] xl:w-[360px] flex flex-col gap-3 shrink-0 min-h-0 overflow-y-auto custom-scrollbar"
+                >
+                  {/* Fastest Route KPI */}
+                  {!isLoading && routes.length > 0 && (() => {
+                    const fastest = routes.find(r => r.name.toLowerCase().includes('fast')) || routes[0];
+                    return (
+                      <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-xl shadow-slate-200/50 shrink-0">
+                        <h3 className="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest mb-3">Fastest Route KPI</h3>
+                        <div className="flex items-center gap-2 mb-3">
+                          <Zap size={18} className="text-rose-500" />
+                          <span className="font-extrabold text-slate-800 text-base">{fastest.name}</span>
+                        </div>
+                        <div className="flex gap-2">
+                          <div className="flex-1 bg-rose-50 rounded-xl p-3 text-center">
+                            <div className="flex items-center justify-center gap-1 mb-0.5">
+                              <Clock size={12} className="text-rose-400" />
+                            </div>
+                            <div className="text-2xl font-black text-rose-600">{fastest.stats.travel_time_min}</div>
+                            <div className="text-[10px] font-bold text-slate-400 uppercase">min</div>
+                          </div>
+                          <div className="flex-1 bg-slate-50 rounded-xl p-3 text-center">
+                            <div className="flex items-center justify-center gap-1 mb-0.5">
+                              <MapPin size={12} className="text-emerald-400" />
+                            </div>
+                            <div className="text-2xl font-black text-slate-700">{fastest.stats.distance_km}</div>
+                            <div className="text-[10px] font-bold text-slate-400 uppercase">km</div>
+                          </div>
+                          <div className="flex-1 bg-orange-50 rounded-xl p-3 text-center">
+                            <div className="flex items-center justify-center gap-1 mb-0.5">
+                              <Gauge size={12} className="text-orange-400" />
+                            </div>
+                            <div className="text-2xl font-black text-orange-600">{fastest.profile.avg_road_stress?.toFixed(1) ?? '–'}</div>
+                            <div className="text-[10px] font-bold text-slate-400 uppercase">stress</div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
+
+                  {/* Explanation */}
+                  <div className="flex-1 min-h-0 h-[380px] lg:h-auto">
+                    {!isLoading && selectedRoute && (
+                      <Explanation
+                        route={selectedRoute}
+                        explanation={explanation}
+                        isStreaming={isStreaming}
+                        onFeedback={handleFeedback}
+                        feedbackGiven={feedbackGiven}
+                        onHoverTurn={setFocusedTurnCoord}
+                        argueData={argueData}
+                        activeMode={activeMode}
+                        onModeChange={handleModeChange}
+                      />
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
+          {/* Bottom strip: Proposed Routes */}
           <AnimatePresence>
             {(routes.length > 0 || isLoading) && (
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 50 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 shrink-0 z-10 lg:h-[400px] xl:h-[440px] overflow-visible pb-[20vh] md:pb-0"
+                exit={{ opacity: 0, y: 40 }}
+                className="bg-white shadow-xl shadow-slate-200/50 border border-slate-200 rounded-2xl p-4 shrink-0 z-10 pb-[20vh] md:pb-4"
               >
-                <div className="flex flex-col h-[280px] lg:h-full bg-white shadow-xl shadow-slate-200/50 border border-slate-200 rounded-2xl p-5 lg:p-6 overflow-hidden min-h-0">
-                  <h3 className="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest mb-3 lg:mb-4 px-1 shrink-0">Proposed Routes</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5 overflow-y-auto custom-scrollbar pr-2 md:pr-0 flex-1 pb-2 auto-rows-fr">
-                    {isLoading ? (
-                      <>
-                        {[1, 2, 3].map((i, idx) => (
-                          <motion.div
-                            key={`skeleton-${i}`}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ delay: idx * 0.12, type: 'spring' }}
-                            className="h-full"
-                          >
-                            <SkeletonCard />
-                          </motion.div>
-                        ))}
-                      </>
-                    ) : (
-                      <AnimatePresence>
-                        {routes.map((route, idx) => (
-                          <motion.div
-                            key={`route-${route.name}`}
-                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ delay: idx * 0.1, type: 'spring' }}
-                            className="h-full"
-                          >
-                            <RouteCard
-                              route={route}
-                              isSelected={selectedRoute?.name === route.name}
-                              onSelect={(r) => handleSelectRoute(r, routes)}
-                            />
-                          </motion.div>
-                        ))}
-                      </AnimatePresence>
-                    )}
-                  </div>
-                </div>
-
-                <div className="h-[380px] lg:h-full min-h-0">
-                  {!isLoading && selectedRoute && (
-                    <Explanation
-                      route={selectedRoute}
-                      explanation={explanation}
-                      isStreaming={isStreaming}
-                      onFeedback={handleFeedback}
-                      feedbackGiven={feedbackGiven}
-                      onHoverTurn={setFocusedTurnCoord}
-                      argueData={argueData}
-                      activeMode={activeMode}
-                      onModeChange={handleModeChange}
-                    />
+                <h3 className="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest mb-3 px-1">Proposed Routes</h3>
+                <div className="flex flex-row gap-4 pb-1">
+                  {isLoading ? (
+                    [1, 2, 3].map((i, idx) => (
+                      <motion.div
+                        key={`skeleton-${i}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ delay: idx * 0.12, type: 'spring' }}
+                        className="flex-1 min-w-0"
+                      >
+                        <SkeletonCard />
+                      </motion.div>
+                    ))
+                  ) : (
+                    <AnimatePresence>
+                      {routes.map((route, idx) => (
+                        <motion.div
+                          key={`route-${route.name}`}
+                          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          transition={{ delay: idx * 0.1, type: 'spring' }}
+                          className="flex-1 min-w-0 h-[220px]"
+                        >
+                          <RouteCard
+                            route={route}
+                            isSelected={selectedRoute?.name === route.name}
+                            onSelect={(r) => handleSelectRoute(r, routes)}
+                          />
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
                   )}
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
+
         </div>
       </div>
 
