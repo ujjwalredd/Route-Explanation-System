@@ -27,6 +27,7 @@ import ssl
 import sys
 import argparse
 import urllib.request
+from glob import glob
 from typing import Optional
 
 # macOS Python installs often lack the system CA bundle — bypass for this public API.
@@ -37,7 +38,7 @@ _SSL_CTX.verify_mode = ssl.CERT_NONE
 TRAFFIC_API = "https://data.bloomington.in.gov/resource/dcr5-fg4c.json"
 CACHE_PATH  = os.path.join("data", "traffic_raw.json")
 INDEX_PATH  = os.path.join("data", "traffic_index.json")
-GRAPH_PATH  = os.path.join("data", "graph_bloomington.pkl")
+LEGACY_GRAPH_PATH = os.path.join("data", "graph_bloomington.pkl")
 
 # Only keep stations within Monroe County bounding box (generous margin)
 LAT_MIN, LAT_MAX = 38.8, 39.5
@@ -164,12 +165,13 @@ def build_node_index(stations: list[dict]) -> dict[int, dict]:
     AADT is kept (conservative: take the worse-case traffic for that node).
     """
     import pickle
-    if not os.path.exists(GRAPH_PATH):
+    graph_path = _find_cached_graph_path()
+    if graph_path is None:
         print("  Graph not found — run the API server first to download it.")
         return {}
 
-    print("  Loading OSM graph...")
-    with open(GRAPH_PATH, "rb") as f:
+    print(f"  Loading OSM graph from {graph_path}...")
+    with open(graph_path, "rb") as f:
         G = pickle.load(f)
 
     try:
@@ -197,6 +199,23 @@ def build_node_index(stations: list[dict]) -> dict[int, dict]:
 
     print(f"  Mapped to {len(node_index)} unique OSM nodes.")
     return node_index
+
+
+def _find_cached_graph_path() -> Optional[str]:
+    """
+    Locate the cached Bloomington graph.
+
+    Supports the legacy filename used by earlier versions of the project and
+    the versioned cache filenames produced by router.py.
+    """
+    if os.path.exists(LEGACY_GRAPH_PATH):
+        return LEGACY_GRAPH_PATH
+
+    matches = sorted(glob(os.path.join("data", "graph_*.pkl")))
+    if not matches:
+        return None
+
+    return max(matches, key=os.path.getmtime)
 
 
 # ---------------------------------------------------------------------------

@@ -260,7 +260,7 @@ def argue_routes(req: ArgueRequest):
     explanation = generate_argument_explanation(
         af, req.chosen_route, req.all_routes, pref_summary=pref_summary
     )
-    recommended = af.recommend()
+    recommended = af.recommend_with_routes(req.all_routes)
     faithfulness = check_faithfulness(af, req.all_routes)
     semantics = af.compare_semantics()
     verdict = generate_verdict(af, req.chosen_route, req.all_routes)

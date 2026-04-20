@@ -53,26 +53,26 @@ User Feedback → CBR Case Library → KB Refinement Analyzer
 
 ## Benchmark Results
 
-All metrics collected by running `python benchmark.py` across **40 randomly sampled landmark pairs** (out of 380 total). Run: March 2026, with corrected landmark coordinates (4 locations fixed — see Coordinate Corrections below).
+All metrics below come from running `python benchmark.py --sample 40 --seed 42` across **40 landmark pairs** (out of 380 directed pairs). Run date: **April 20, 2026**.
 
 | Metric | Value |
 |---|---|
 | Pairs evaluated | 40 |
 | 3 distinct routes generated | **39 / 40 (98%)** |
 | 2 distinct routes | 0 / 40 (0%) |
-| Unreachable pairs | 1 / 40 (2%) |
-| Mean route diversity (Jaccard) | **0.774** |
+| Pairs with <=1 route generated | 1 / 40 (2%) |
+| Mean route diversity (Jaccard) | **0.739** |
 | Pareto non-dominated recommendation | **40 / 40 (100%)** |
-| Mean accepted arguments / query | 5.2 |
-| Mean successful attacks / query | 6.6 |
+| Mean accepted arguments / query | 4.7 |
+| Mean successful attacks / query | 7.1 |
 | Mean faithfulness score | **1.000** |
 | All 3 semantics agree | **100%** |
 
-> **Faithfulness 1.000** — all accepted pro-arguments are fully consistent with actual route statistics. Fixing the landmark coordinates eliminated the borderline CBR violations seen in earlier runs.
+> **Faithfulness 1.000** — under the current threshold-based checker, all accepted pro-arguments are consistent with the route statistics and argument thresholds that generated them.
 
-> **Jaccard diversity 0.774** means on average 77% of road nodes across two candidate routes are non-overlapping — confirming the edge-penalty diversity mechanism produces genuinely distinct options.
+> **Jaccard diversity 0.739** means on average about 74% of road nodes across two candidate routes are non-overlapping — confirming the edge-penalty diversity mechanism still produces meaningfully distinct options.
 
-> **Pareto 100%** — every recommendation is undominated across (time, stress, turns) with the corrected landmark set.
+> **Pareto 100%** — the final recommendation step now applies a Pareto sanity check, so the seeded sample does not return any strictly dominated route.
 
 ---
 
@@ -87,20 +87,20 @@ Comparison of 4 system configurations across 20 sampled pairs. Each configuratio
 | + CBR only | 1.000 | **100%** | 100% |
 | **Full system** | **1.000** | **100%** | **100%** |
 
-> With corrected landmark coordinates, baseline already achieves 100% Pareto non-domination on this sample. Traffic data alone shows a slight dip (95%) as it reshapes stress scores causing one edge case; when combined with CBR the full system stays at 100%. All configurations achieve perfect faithfulness and 3-route diversity.
+> In the seeded 20-pair ablation sample, baseline already achieves 100% Pareto non-domination. Traffic data alone shows a slight dip (95%) as it reshapes stress scores on one edge case; when combined with CBR the full system returns to 100%. All configurations achieve perfect faithfulness and 3-route diversity.
 
 ---
 
 ## KB Convergence Results
 
-Simulated 60 feedback rounds using `python simulate_feedback.py`. Parameters adjust via the refinement loop (learning rate 0.05).
+Simulated 60 feedback rounds using `python simulate_feedback.py --rounds 60`. Parameters adjust via the refinement loop (learning rate 0.05). The script now records both per-round snapshots and checkpoint-based convergence metadata in `data/convergence.json`.
 
-| Parameter | Start | End (round 60) | Converged at round |
+| Parameter | Start | End (round 60) | First change round |
 |---|---|---|---|
-| `stress_pro_ceiling` | 2.000 | 1.909 | **11** |
+| `stress_pro_ceiling` | 2.000 | 1.909 | **21** |
 | `left_turn_penalty` | 0.300 | 0.666 | **11** |
 
-> Convergence is defined as < 0.005 change in `stress_pro_ceiling` over 5 consecutive rounds. The system converges within **11 feedback rounds** — answering RQ3. The shift in `left_turn_penalty` from 0.30 → 0.67 reflects the simulated user preference for routes with fewer difficult turns.
+> Using the current convergence criterion — **< 0.005 variation in `stress_pro_ceiling` across 5 refinement checkpoints after the first stress update** — the simulation does **not** converge within 60 rounds. The first parameter change appears at round 11, `stress_pro_ceiling` first moves at round 21, and `left_turn_penalty` rises from 0.30 → 0.67 as the simulated user keeps favoring easier turns.
 
 ---
 
@@ -136,7 +136,7 @@ Uses OSMnx to pull the Bloomington road graph from OpenStreetMap and NetworkX fo
 | Easiest | 0.2 | 1.0 | 1.8 |
 | Balanced | 0.6 | 0.6 | 0.8 |
 
-When weight perturbation fails to produce a geometrically distinct third route, an **edge-penalty diversity pass** re-runs Dijkstra with a 4× cost multiplier on edges already used in accepted routes. This accounts for the 95% 3-distinct-route rate observed in the benchmark.
+When weight perturbation fails to produce a geometrically distinct third route, an **edge-penalty diversity pass** re-runs Dijkstra with a 4× cost multiplier on edges already used in accepted routes. This accounts for the 98% 3-distinct-route rate observed in the seeded benchmark sample.
 
 Accepts an optional `hour` parameter for time-of-day-aware routing (passed from `departure_hour` in the route request).
 
@@ -163,7 +163,9 @@ Argument strength values are **normalized relative to the actual route set** on 
 - *Preferred* — all maximal admissible sets; exhaustive up to 20 arguments
 - *Stable* — conflict-free sets attacking every outside argument
 
-All three semantics agree **100% of the time** in the benchmark (40 pairs), validating grounded semantics as the primary recommendation mechanism.
+All three semantics agree **100% of the time** in the seeded 40-pair benchmark, validating grounded semantics as the primary recommendation mechanism.
+
+The final route recommendation applies a lightweight **Pareto sanity check** on top of the AF scores so a strictly dominated route is not returned when an undominated AF-supported alternative exists.
 
 **Structured explainability** (new):
 - `generate_verdict()` — one-sentence bottom-line: "Balanced Route was recommended because time: lowest travel time, and stress: quietest roads."
@@ -182,7 +184,7 @@ Closes the loop between case-based experiential learning and symbolic rule-based
 - **Argument threshold calibration:** shift `stress_pro_ceiling` toward observed high-rated trip stress
 - **Attack weight calibration:** adjust `self_stress_to_time` and `self_turns_to_time` based on user acceptance patterns
 
-Convergence within **11 rounds** (see benchmark above). All adjustments are capped and stepped conservatively (learning rate 0.05).
+In the current 60-round simulation, `left_turn_penalty` starts adapting at round 11 and `stress_pro_ceiling` at round 21; under the stricter checkpoint-based criterion above, convergence is not yet reached within 60 rounds. All adjustments are capped and stepped conservatively (learning rate 0.05).
 
 ### 7. Explanation UI (`frontend/`)
 
@@ -219,7 +221,7 @@ ollama pull llama3.2
 python traffic_data.py
 ```
 
-Downloads 2,625 AADT records, matches to OSM nodes, caches `data/traffic_index.json`. Requires the graph to be cached first (starts automatically when the API server runs).
+Downloads 2,625 AADT records, matches to OSM nodes, caches `data/traffic_index.json`. If no cached graph exists yet, run `python api.py` once first; `traffic_data.py` will then reuse the cached versioned graph file automatically.
 
 ### Start the backend
 
@@ -242,7 +244,7 @@ Open `http://localhost:5173`. For study mode: `http://localhost:5173?study=true`
 ### Run the benchmark
 
 ```bash
-python benchmark.py --sample 40   # fast: 40 random pairs (~5 min)
+python benchmark.py --sample 40 --seed 42   # reproducible 40-pair sample (~5 min)
 python benchmark.py               # full: all 380 landmark pairs (~45 min)
 python benchmark.py --report      # print summary from saved results
 ```
@@ -253,12 +255,12 @@ python benchmark.py --report      # print summary from saved results
 python simulate_feedback.py --rounds 60
 ```
 
-Simulates feedback rounds and outputs `data/convergence.json` with per-round parameter snapshots.
+Simulates feedback rounds and outputs `data/convergence.json` with per-round snapshots, refinement checkpoints, and convergence metadata.
 
 ### Run ablation study
 
 ```bash
-python ablation.py --sample 20
+python ablation.py --sample 20 --seed 42
 ```
 
 Compares 4 configurations (baseline / +traffic / +cbr / full_system) across sampled pairs.
@@ -278,7 +280,7 @@ Compares 4 configurations (baseline / +traffic / +cbr / full_system) across samp
    - **Mode tabs** — switch between Argumentation / Template / LLM explanations
    - **Argument graph** — live SVG showing the full AF with attack relations
    - **Counterfactual** — what would flip the recommendation
-   - **Faithfulness badge** — confirms accepted arguments match route statistics
+   - **Faithfulness badge** — checks accepted arguments against route statistics and argument thresholds
    - **Semantics agreement** — whether grounded/preferred/stable all agree
 6. Rate the route — adds a CBR case, eventually triggers KB refinement
 7. Study mode (`?study=true`) — shows Trust / Clarity / Safety Likert scales after each explanation
@@ -378,9 +380,9 @@ Route Explanation System/
 │   ├── traffic_raw.json    Raw downloaded AADT records (2,625 rows, cached)
 │   ├── benchmark_results.json  Latest benchmark run results
 │   ├── ablation_results.json   Ablation study results
-│   ├── convergence.json    KB convergence simulation snapshots
+│   ├── convergence.json    KB convergence snapshots + checkpoint metadata
 │   ├── study_responses.jsonl   Study participant ratings (appended per response)
-│   └── graph_bloomington.pkl   Cached OSM road graph
+│   └── graph_bloomington__indiana__usa_v1.pkl   Cached OSM road graph
 │
 └── frontend/               React + TypeScript + MapLibre GL UI
     └── src/
@@ -414,25 +416,25 @@ Route Explanation System/
 ## Research questions
 
 1. **RQ1 — Representation:** What argument scheme best formalizes route trade-offs and maps road features to argument strength?
-   > *Answer:* Dung-style AF with normalized strength scores and segment-level claims. Faithfulness 0.988 across 40 pairs confirms arguments are grounded in actual route statistics.
+   > *Answer:* Dung-style AF with normalized strength scores and segment-level claims. In the seeded 40-pair benchmark, the current faithfulness checker scores **1.000**, meaning accepted pro-arguments match the route statistics and thresholds used to generate them.
 
 2. **RQ2 — Semantics:** Which Dung semantics (grounded, preferred, stable) produces the most accurate and interpretable route recommendations?
    > *Answer:* All three semantics agree 100% of the time in the benchmark. Grounded semantics is recommended as primary: it always yields a unique extension and is the most computationally efficient.
 
 3. **RQ3 — Learning:** How many feedback cases does the KB refinement loop need before converging to stable parameters?
-   > *Answer:* **11 rounds** (from convergence simulation). `stress_pro_ceiling` adjusts from 2.000 → 1.909; `left_turn_penalty` from 0.300 → 0.666.
+   > *Answer:* In the current 60-round simulation, the first parameter change appears at **round 11**, `stress_pro_ceiling` first changes at **round 21**, and the tracked parameters end at `stress_pro_ceiling = 1.909` and `left_turn_penalty = 0.666`. Under the stricter checkpoint-based convergence test, the system does **not** fully converge within 60 rounds.
 
 4. **RQ4 — Explanation Quality:** Do argumentation-traced explanations increase user trust and comprehension compared to template and LLM explanations?
    > *Target:* Human-subject study using `?study=true` mode. Collect Trust / Clarity / Safety Likert ratings per mode. Compare mean scores across argumentation / template / LLM.
 
 5. **RQ5 — Argument Composition:** Can segment-level arguments be composed into route-level structures without combinatorial explosion?
-   > *Answer:* Yes. Mean 5.0 accepted arguments / query, with 6.7 successful attacks. The generator produces ≤ 12 arguments per query (4 dimensions × 3 routes × 2 polarities), well within the exhaustive preferred/stable semantics threshold (20 arguments).
+   > *Answer:* Yes. In the seeded 40-pair benchmark, the system averages **4.7 accepted arguments** and **7.1 successful attacks** per query. The generator still produces at most 12 arguments per query (4 dimensions × 3 routes × 2 polarities), well within the exhaustive preferred/stable semantics threshold (20 arguments).
 
 6. **RQ6 — Preference Drift:** Does KB refinement track shifting user preferences, or does it lag behind?
    > *Target:* Requires longitudinal study data. Preference drift detection (`get_preference_drift`) is operational; expose its output over a study period.
 
 7. **RQ7 — Traffic Grounding:** Does blending real AADT data into stress scores improve route quality vs. heuristic-only scoring?
-   > *Answer:* Ablation shows full system achieves 100% Pareto non-domination vs. 95% for baseline-without-traffic (+5 percentage points). Combined CBR + traffic closes the gap entirely.
+   > *Answer:* In the seeded 20-pair ablation, **traffic-only** reaches **95%** Pareto non-domination, while **baseline**, **+CBR**, and the **full system** each reach **100%**. Traffic changes the frontier on one edge case, and adding CBR recovers the full score.
 
 ---
 

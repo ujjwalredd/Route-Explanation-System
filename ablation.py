@@ -1,7 +1,7 @@
 """
 Ablation study: compare 4 system configurations on a sample of landmark pairs.
 Usage:
-    python ablation.py --sample 20
+    python ablation.py --sample 20 --seed 42
 """
 import argparse, json, random, time
 from pathlib import Path
@@ -73,7 +73,7 @@ def run_config(G, pairs, use_cbr=True, use_traffic=True, label="full"):
 
             af = build_argumentation_framework(routes, cbr_per_route)
             af.compute_grounded_extension()
-            recommended = af.recommend()
+            recommended = af.recommend_with_routes(routes)
             faith = check_faithfulness(af, routes)
 
             rec_route = next((r for r in routes if r["name"] == recommended), None)
@@ -108,6 +108,7 @@ def run_config(G, pairs, use_cbr=True, use_traffic=True, label="full"):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--sample", type=int, default=20)
+    parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
     print("Loading graph...")
@@ -119,8 +120,8 @@ def main():
         for d, dll in LANDMARKS.items()
         if o != d
     ]
-    random.seed(42)
-    pairs = random.sample(pairs, min(args.sample, len(pairs)))
+    rng = random.Random(args.seed)
+    pairs = rng.sample(pairs, min(args.sample, len(pairs)))
     print(f"Running {len(pairs)} pairs across 4 configurations...")
 
     configs = [

@@ -324,15 +324,32 @@ import json
 import os
 
 
-def _load_stress_ceiling() -> float:
-    """Load stress_pro_ceiling from kb_params.json; fall back to 2.0 if missing."""
+def _load_argument_thresholds() -> dict:
+    """Load argument thresholds from kb_params.json; fall back to defaults if missing."""
     kb_path = os.path.join(os.path.dirname(__file__), "..", "data", "kb_params.json")
     try:
         with open(kb_path, "r") as fh:
             params = json.load(fh)
-        return float(params.get("stress_pro_ceiling", 2.0))
+        return params.get("argument_thresholds", {})
     except Exception:
-        return 2.0
+        return {}
+
+
+def _time_strength(travel_time: float, all_times: list[float]) -> float:
+    t_min, t_max = min(all_times), max(all_times)
+    if t_max == t_min:
+        return 0.5
+    return max(0.05, (t_max - travel_time) / (t_max - t_min))
+
+
+def _parse_evidence(evidence: list[str]) -> dict:
+    parsed = {}
+    for item in evidence:
+        if "=" not in item:
+            continue
+        key, value = item.split("=", 1)
+        parsed[key] = value
+    return parsed
 
 
 def check_faithfulness(af: ArgumentationFramework, routes: list) -> dict:
@@ -357,12 +374,13 @@ def check_faithfulness(af: ArgumentationFramework, routes: list) -> dict:
     trace = af.trace()
     route_by_name = {r["name"]: r for r in routes}
 
-    # Pre-compute minimum travel time across all routes
-    min_time = min(
-        r["stats"]["travel_time_min"] for r in routes if "stats" in r
-    ) if routes else 0.0
-
-    stress_ceiling = _load_stress_ceiling()
+    thresholds = _load_argument_thresholds()
+    stress_ceiling = float(thresholds.get("stress_pro_ceiling", 2.0))
+    turns_pro_max = int(thresholds.get("turns_pro_max_difficult", 0))
+    time_pro_min_gap = float(thresholds.get("time_pro_min_gap", 0.15))
+    cbr_min_similarity = float(thresholds.get("cbr_pro_min_similarity", 0.55))
+    cbr_min_feedback = int(thresholds.get("cbr_pro_min_feedback", 4))
+    all_times = [r["stats"]["travel_time_min"] for r in routes if "stats" in r]
 
     details: list = []
 
@@ -379,13 +397,16 @@ def check_faithfulness(af: ArgumentationFramework, routes: list) -> dict:
         profile = route.get("profile", {})
 
         if dim == "time":
-            faithful = stats.get("travel_time_min", float("inf")) <= min_time * 1.1
+            faithful = _time_strength(stats.get("travel_time_min", float("inf")), all_times) >= time_pro_min_gap
         elif dim == "stress":
-            faithful = profile.get("avg_road_stress", float("inf")) <= stress_ceiling + 0.5
+            faithful = profile.get("avg_road_stress", float("inf")) <= stress_ceiling
         elif dim == "turns":
-            faithful = profile.get("difficult_turns", float("inf")) <= 1
+            faithful = profile.get("difficult_turns", float("inf")) <= turns_pro_max
         elif dim == "cbr":
-            faithful = True
+            evidence = _parse_evidence(arg.get("evidence", []))
+            similarity = float(evidence.get("similarity", 0.0))
+            score = int(float(evidence.get("score", 0)))
+            faithful = similarity >= cbr_min_similarity and score >= cbr_min_feedback
         else:
             # Unknown dimension — skip faithfulness check
             continue

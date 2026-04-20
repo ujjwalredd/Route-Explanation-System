@@ -6,7 +6,7 @@ collecting metrics for RQ1–RQ3 in the research paper.
 
 Usage:
     python benchmark.py              # full run, saves benchmark_results.json
-    python benchmark.py --sample 20  # random sample of 20 pairs (fast)
+    python benchmark.py --sample 20 --seed 42  # reproducible sample of 20 pairs
     python benchmark.py --report     # print summary table from existing results
 """
 
@@ -46,6 +46,7 @@ LANDMARKS = {
 
 PREF_MAP = {"Fastest Route": "fast", "Easiest Route": "low_stress", "Balanced Route": "balanced"}
 RESULTS_PATH = Path("data/benchmark_results.json")
+DEFAULT_SAMPLE_SEED = 42
 
 
 def route_diversity(path_a: list, path_b: list) -> float:
@@ -99,7 +100,7 @@ def run_pair(G, orig_name: str, orig_ll, dest_name: str, dest_ll) -> dict | None
 
     af = build_argumentation_framework(routes, cbr_per_route)
     af.compute_grounded_extension()
-    recommended = af.recommend()
+    recommended = af.recommend_with_routes(routes)
     af_dict = af.to_dict()
 
     # Faithfulness
@@ -154,7 +155,7 @@ def print_report(results: list):
     print(f"  Pairs evaluated:              {n}")
     print(f"  3 distinct routes:            {n3} ({round(n3/n*100)}%)")
     print(f"  2 distinct routes:            {n2} ({round(n2/n*100)}%)")
-    print(f"  ≤1 route (unreachable):       {n1} ({round(n1/n*100)}%)")
+    print(f"  ≤1 route generated:          {n1} ({round(n1/n*100)}%)")
     print(f"  Mean route diversity (Jaccard):{mean_div:.3f}")
     print(f"  Pareto non-dominated rec.:    {pareto_ok}/{pareto_total} ({round(pareto_ok/max(pareto_total,1)*100)}%)")
     print(f"  Mean accepted args/query:     {mean_accepted:.1f}")
@@ -167,6 +168,7 @@ def print_report(results: list):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--sample", type=int, default=0, help="Number of random pairs (0 = all 380)")
+    parser.add_argument("--seed", type=int, default=DEFAULT_SAMPLE_SEED, help="Random seed used when sampling pairs")
     parser.add_argument("--report", action="store_true", help="Print report from existing results file")
     args = parser.parse_args()
 
@@ -189,7 +191,9 @@ def main():
     ]
 
     if args.sample > 0:
-        pairs = random.sample(pairs, min(args.sample, len(pairs)))
+        rng = random.Random(args.seed)
+        pairs = rng.sample(pairs, min(args.sample, len(pairs)))
+        print(f"Using sample seed: {args.seed}")
 
     print(f"Running {len(pairs)} pairs...")
     results = []

@@ -173,6 +173,34 @@ class ArgumentationFramework:
                 scores[a.route] = scores.get(a.route, 0.0) + a.strength
         return max(scores, key=scores.get) if scores else None
 
+    def recommend_with_routes(self, routes: list[dict]) -> Optional[str]:
+        """
+        Returns the AF recommendation, but avoids selecting a strictly dominated
+        route when an undominated AF-supported alternative is available.
+
+        This keeps the grounded-semantics scoring intact while adding a final
+        Pareto sanity check over the concrete route metrics shown to the user.
+        """
+        self.compute_grounded_extension()
+        scores: Dict[str, float] = {}
+        for a in self.arguments.values():
+            if a.polarity == "pro" and a.status == "IN":
+                scores[a.route] = scores.get(a.route, 0.0) + a.strength
+
+        if not scores:
+            return None
+
+        route_by_name = {r["name"]: r for r in routes}
+        ranked = sorted(scores.items(), key=lambda item: (-item[1], item[0]))
+        for route_name, _ in ranked:
+            route = route_by_name.get(route_name)
+            if route is None:
+                continue
+            if not _is_pareto_dominated(route, routes):
+                return route_name
+
+        return ranked[0][0]
+
     def trace(self) -> dict:
         """
         Returns a fully serialisable trace of the resolved framework for use by the
@@ -466,3 +494,20 @@ def _arg_dict(a: Argument) -> dict:
         "evidence":  a.evidence,
         "status":    a.status,
     }
+
+
+def _is_pareto_dominated(route: dict, others: list[dict]) -> bool:
+    """Return True if `route` is strictly dominated on time, stress, and turns."""
+    t = route["stats"]["travel_time_min"]
+    s = route["profile"].get("avg_road_stress", 0)
+    d = route["profile"].get("difficult_turns", 0)
+
+    for other in others:
+        if other["name"] == route["name"]:
+            continue
+        ot = other["stats"]["travel_time_min"]
+        os_ = other["profile"].get("avg_road_stress", 0)
+        od = other["profile"].get("difficult_turns", 0)
+        if ot <= t and os_ <= s and od <= d and (ot < t or os_ < s or od < d):
+            return True
+    return False

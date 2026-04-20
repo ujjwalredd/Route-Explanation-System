@@ -4,7 +4,7 @@ Usage:
     python simulate_feedback.py              # 60 rounds, saves data/convergence.json
     python simulate_feedback.py --rounds 30  # custom count
 """
-import argparse, json, random, copy
+import argparse, json, random
 from pathlib import Path
 
 KB_PATH = Path("data/kb_params.json")
@@ -16,6 +16,57 @@ ROUTE_PROFILES = [
     {"name": "Easiest Route", "avg_road_stress": 1.4, "difficult_turns": 0, "travel_time_min": 12.0, "distance_km": 4.1, "preference": "low_stress"},
     {"name": "Balanced Route", "avg_road_stress": 2.1, "difficult_turns": 1, "travel_time_min": 9.5, "distance_km": 3.8, "preference": "balanced"},
 ]
+
+CONVERGENCE_THRESHOLD = 0.005
+CONVERGENCE_WINDOW = 5
+
+
+def detect_convergence(update_snapshots: list[dict]) -> dict:
+    """
+    Detect convergence across refinement checkpoints rather than raw rounds.
+
+    Using per-round snapshots is misleading because parameters only update every
+    5 rounds, creating long flat stretches even while the system is still
+    drifting at each refinement step.
+    """
+    first_parameter_change_round = None
+    first_stress_change_round = None
+
+    for idx in range(1, len(update_snapshots)):
+        prev = update_snapshots[idx - 1]
+        curr = update_snapshots[idx]
+        if first_parameter_change_round is None and (
+            curr["stress_pro_ceiling"] != prev["stress_pro_ceiling"]
+            or curr["left_turn_penalty"] != prev["left_turn_penalty"]
+            or curr["self_stress_to_time"] != prev["self_stress_to_time"]
+        ):
+            first_parameter_change_round = curr["round"]
+        if first_stress_change_round is None and curr["stress_pro_ceiling"] != prev["stress_pro_ceiling"]:
+            first_stress_change_round = curr["round"]
+
+    for idx in range(CONVERGENCE_WINDOW - 1, len(update_snapshots)):
+        window = update_snapshots[idx - CONVERGENCE_WINDOW + 1:idx + 1]
+        if first_stress_change_round is None or window[0]["round"] < first_stress_change_round:
+            continue
+        values = [snap["stress_pro_ceiling"] for snap in window]
+        if max(values) - min(values) < CONVERGENCE_THRESHOLD:
+            return {
+                "reached": True,
+                "round": window[-1]["round"],
+                "threshold": CONVERGENCE_THRESHOLD,
+                "window_checkpoints": CONVERGENCE_WINDOW,
+                "first_parameter_change_round": first_parameter_change_round,
+                "first_stress_change_round": first_stress_change_round,
+            }
+
+    return {
+        "reached": False,
+        "round": None,
+        "threshold": CONVERGENCE_THRESHOLD,
+        "window_checkpoints": CONVERGENCE_WINDOW,
+        "first_parameter_change_round": first_parameter_change_round,
+        "first_stress_change_round": first_stress_change_round,
+    }
 
 def simulate_feedback_score(route_profile: dict) -> int:
     """Simulate user feedback: low-stress routes rated higher."""
@@ -31,6 +82,7 @@ def run_simulation(rounds: int):
         params = json.load(f)
 
     snapshots = []
+    update_snapshots = []
     cases = []
 
     for i in range(rounds):
@@ -63,6 +115,13 @@ def run_simulation(rounds: int):
                     delta = gap * 0.02
                     params["turn_penalties"]["left_turn_penalty"] = round(min(1.0, current + delta), 3)
 
+            update_snapshots.append({
+                "round": i + 1,
+                "stress_pro_ceiling": params["argument_thresholds"]["stress_pro_ceiling"],
+                "left_turn_penalty": params["turn_penalties"]["left_turn_penalty"],
+                "self_stress_to_time": params["attack_weights"]["self_stress_to_time"],
+            })
+
         snapshots.append({
             "round": i + 1,
             "stress_pro_ceiling": params["argument_thresholds"]["stress_pro_ceiling"],
@@ -71,7 +130,13 @@ def run_simulation(rounds: int):
         })
 
     OUT_PATH.parent.mkdir(exist_ok=True)
-    result = {"rounds": rounds, "snapshots": snapshots}
+    convergence = detect_convergence(update_snapshots)
+    result = {
+        "rounds": rounds,
+        "snapshots": snapshots,
+        "update_snapshots": update_snapshots,
+        "convergence": convergence,
+    }
     with open(OUT_PATH, "w") as f:
         json.dump(result, f, indent=2)
 
@@ -81,13 +146,19 @@ def run_simulation(rounds: int):
     print(f"left_turn_penalty:  {snapshots[0]['left_turn_penalty']:.3f} → {snapshots[-1]['left_turn_penalty']:.3f}")
     print(f"Saved to {OUT_PATH}")
 
-    # Find convergence round (when delta < 0.01 for 5 consecutive rounds)
-    for j in range(5, len(snapshots)):
-        window = snapshots[j-5:j]
-        stress_range = max(s["stress_pro_ceiling"] for s in window) - min(s["stress_pro_ceiling"] for s in window)
-        if stress_range < 0.005:
-            print(f"Convergence detected at round {j+1}")
-            break
+    if convergence["first_parameter_change_round"] is not None:
+        print(f"First parameter change detected at round {convergence['first_parameter_change_round']}")
+
+    if convergence["reached"]:
+        print(
+            f"Convergence detected at round {convergence['round']} "
+            f"(threshold {CONVERGENCE_THRESHOLD} across {CONVERGENCE_WINDOW} refinement checkpoints)"
+        )
+    else:
+        print(
+            f"Convergence not reached within {rounds} rounds "
+            f"(threshold {CONVERGENCE_THRESHOLD} across {CONVERGENCE_WINDOW} refinement checkpoints)"
+        )
 
     return result
 
