@@ -130,7 +130,10 @@ def _find_diverse_path(G, orig, dest, weights, existing_paths, hour=None):
 
 
 def _path_key(path):
-    # Sample every 5th node so near-identical paths aren't treated as duplicates
+    # Preserve short paths exactly; otherwise sample every 5th node so
+    # near-identical long paths aren't treated as duplicates.
+    if len(path) <= 10:
+        return tuple(path)
     return tuple(path[::5] + [path[-1]])
 
 

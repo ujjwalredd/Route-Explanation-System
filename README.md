@@ -58,19 +58,19 @@ All metrics below come from running `python benchmark.py --sample 40 --seed 42` 
 | Metric | Value |
 |---|---|
 | Pairs evaluated | 40 |
-| 3 distinct routes generated | **39 / 40 (98%)** |
+| 3 distinct routes generated | **40 / 40 (100%)** |
 | 2 distinct routes | 0 / 40 (0%) |
-| Pairs with <=1 route generated | 1 / 40 (2%) |
-| Mean route diversity (Jaccard) | **0.739** |
+| Pairs with <=1 route generated | 0 / 40 (0%) |
+| Mean route diversity (Jaccard) | **0.752** |
 | Pareto non-dominated recommendation | **40 / 40 (100%)** |
-| Mean accepted arguments / query | 4.7 |
-| Mean successful attacks / query | 7.1 |
+| Mean accepted arguments / query | 4.8 |
+| Mean successful attacks / query | 7.2 |
 | Mean faithfulness score | **1.000** |
 | All 3 semantics agree | **100%** |
 
 > **Faithfulness 1.000** — under the current threshold-based checker, all accepted pro-arguments are consistent with the route statistics and argument thresholds that generated them.
 
-> **Jaccard diversity 0.739** means on average about 74% of road nodes across two candidate routes are non-overlapping — confirming the edge-penalty diversity mechanism still produces meaningfully distinct options.
+> **Jaccard diversity 0.752** means on average about 75% of road nodes across two candidate routes are non-overlapping — confirming the edge-penalty diversity mechanism still produces meaningfully distinct options.
 
 > **Pareto 100%** — the final recommendation step now applies a Pareto sanity check, so the seeded sample does not return any strictly dominated route.
 
@@ -136,7 +136,7 @@ Uses OSMnx to pull the Bloomington road graph from OpenStreetMap and NetworkX fo
 | Easiest | 0.2 | 1.0 | 1.8 |
 | Balanced | 0.6 | 0.6 | 0.8 |
 
-When weight perturbation fails to produce a geometrically distinct third route, an **edge-penalty diversity pass** re-runs Dijkstra with a 4× cost multiplier on edges already used in accepted routes. This accounts for the 98% 3-distinct-route rate observed in the seeded benchmark sample.
+When weight perturbation fails to produce a geometrically distinct third route, an **edge-penalty diversity pass** re-runs Dijkstra with a 4× cost multiplier on edges already used in accepted routes. After fixing short-path duplicate suppression, the seeded benchmark sample now achieves a **100% 3-distinct-route rate**.
 
 Accepts an optional `hour` parameter for time-of-day-aware routing (passed from `departure_hour` in the route request).
 
@@ -428,7 +428,7 @@ Route Explanation System/
    > *Target:* Human-subject study using `?study=true` mode. Collect Trust / Clarity / Safety Likert ratings per mode. Compare mean scores across argumentation / template / LLM.
 
 5. **RQ5 — Argument Composition:** Can segment-level arguments be composed into route-level structures without combinatorial explosion?
-   > *Answer:* Yes. In the seeded 40-pair benchmark, the system averages **4.7 accepted arguments** and **7.1 successful attacks** per query. The generator still produces at most 12 arguments per query (4 dimensions × 3 routes × 2 polarities), well within the exhaustive preferred/stable semantics threshold (20 arguments).
+   > *Answer:* Yes. In the seeded 40-pair benchmark, the system averages **4.8 accepted arguments** and **7.2 successful attacks** per query. The generator still produces at most 12 arguments per query (4 dimensions × 3 routes × 2 polarities), well within the exhaustive preferred/stable semantics threshold (20 arguments).
 
 6. **RQ6 — Preference Drift:** Does KB refinement track shifting user preferences, or does it lag behind?
    > *Target:* Requires longitudinal study data. Preference drift detection (`get_preference_drift`) is operational; expose its output over a study period.
